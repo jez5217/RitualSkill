@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Barlow, JetBrains_Mono } from "next/font/google";
 import { Providers } from "./providers";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
 import "./globals.css";
 
 const archivoBlack = Archivo_Black({
@@ -20,15 +22,20 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ritual Research Agent",
-  description: "An autonomous research agent running on Ritual Chain's Sovereign Agent precompile.",
+  title: "Ritual Chain — Feature Playground",
+  description:
+    "An interactive, demo-mode tour of Ritual Chain's enshrined AI precompiles: LLM, HTTP, agents, multimodal generation, scheduling, secrets, and more.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${archivoBlack.variable} ${barlow.variable} ${jetbrainsMono.variable}`}>
-      <body className="min-h-screen bg-black text-gray-300 font-body antialiased">
-        <Providers>{children}</Providers>
+      <body className="min-h-screen bg-black text-gray-300 font-body antialiased flex flex-col">
+        <Providers>
+          <SiteHeader />
+          <div className="flex-1">{children}</div>
+          <SiteFooter />
+        </Providers>
       </body>
     </html>
   );
