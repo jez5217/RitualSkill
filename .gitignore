@@ -1,0 +1,22 @@
+# Local skill framework (third-party dependency, cloned for reference — not project source)
+.claude/
+
+# Local build checkpoint (session-specific tooling state)
+.ritual-build/
+
+# Foundry
+contracts/lib/
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+contracts/.env
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+frontend/next-env.d.ts
+frontend/tsconfig.tsbuildinfo
