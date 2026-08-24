@@ -40,13 +40,24 @@ frontend/    Next.js 14 app — wallet connect, submit form, live status, on-cha
 
 ## Status
 
-- ✅ Contracts: compiled (`forge build`) and tested (`forge test` — 8/8 passing)
+- ✅ Contracts: compiled (`forge build`) and tested (`forge test` — 11/11 passing)
 - ✅ Frontend: type-checks (`tsc --noEmit`), builds (`next build`), and renders correctly in dev
   (verified by curling the running dev server)
-- ⬜ **Not deployed.** No funded wallet was provided, so nothing has been pushed to Ritual Chain
-  and the full on-chain flow (executor discovery → ECIES encryption → agent execution → callback)
-  has **not** been exercised end-to-end against the live chain. Treat this as build-verified, not
-  chain-verified, until you deploy and run it once yourself.
+- ⬜ **Not deployed on-chain.** No funded wallet was provided, so nothing has been pushed to Ritual
+  Chain and the full on-chain flow (executor discovery → ECIES encryption → agent execution →
+  callback) has **not** been exercised end-to-end against the live chain. Treat this as
+  build-verified, not chain-verified, until you deploy and run it once yourself.
+
+## Demo Mode
+
+The app defaults to **Demo Mode** (`NEXT_PUBLIC_DEMO_MODE` unset or `true`): wallet connect,
+RitualWallet deposits, research submission, agent status, and the history feed are all simulated
+client-side (`frontend/hooks/demo/`, `frontend/components/demo/`) — no RPC, wallet, or deployed
+contract required. This is what deploys on Vercel with zero environment variables, and what to use
+while the Ritual testnet is down. A banner on the page makes clear the data is simulated.
+
+Set `NEXT_PUBLIC_DEMO_MODE=false` (plus `NEXT_PUBLIC_RESEARCH_REGISTRY`) once you have a live RPC
+and a deployed contract, to switch to the real on-chain flow described below.
 
 ## Setup
 
@@ -83,6 +94,12 @@ npm run dev
 3. Enter a topic and submit. The status card tracks the job from "awaiting executor" through
    "agent running" to the settled report (this can take anywhere from ~30 seconds to several
    minutes).
+
+## Deploying to Vercel
+
+The Next.js app lives in `frontend/`, not the repo root — set **Settings → General → Root
+Directory** to `frontend` in the Vercel project, or the build will fail with "No Next.js version
+detected". No environment variables are required for Demo Mode.
 
 ## Key design notes
 
