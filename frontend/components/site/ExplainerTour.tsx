@@ -3,15 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { SceneVisual } from "@/components/site/SceneVisual";
 import { TOUR_SCENES } from "@/lib/tourScenes";
 import { pickFemaleVoice } from "@/lib/femaleVoice";
-
-const ACCENT: Record<string, { text: string; border: string; dot: string }> = {
-  green: { text: "text-ritual-green", border: "border-ritual-green/40", dot: "bg-ritual-green" },
-  pink: { text: "text-ritual-pink", border: "border-ritual-pink/40", dot: "bg-ritual-pink" },
-  lime: { text: "text-ritual-lime", border: "border-ritual-lime/40", dot: "bg-ritual-lime" },
-  gold: { text: "text-ritual-gold", border: "border-ritual-gold/40", dot: "bg-ritual-gold" },
-};
+import { ACCENT } from "@/lib/accentColors";
 
 const MUTED_SCENE_MS = 6000;
 
@@ -134,24 +129,38 @@ export function ExplainerTour() {
       </div>
 
       <div className={`bg-ritual-elevated border ${accent.border} rounded-xl shadow-card overflow-hidden`}>
-        <div key={scene.id} className="p-6 sm:p-8 animate-scene-in min-h-[220px]">
-          <p className={`text-xs uppercase tracking-widest mb-2 ${accent.text}`}>{scene.eyebrow}</p>
-          <h3 className="font-display text-xl sm:text-2xl text-gray-100 mb-3">{scene.title}</h3>
-          <p className="text-sm text-gray-400 leading-relaxed mb-4 max-w-2xl">{scene.narration}</p>
+        <div key={scene.id} className="animate-scene-in">
+          <div className="h-40 sm:h-48 bg-ritual-surface/40 border-b border-gray-800">
+            <SceneVisual kind={scene.visual} color={scene.color} />
+          </div>
 
-          {scene.precompiles && (
-            <div className="flex flex-wrap gap-2 mb-4">
-              {scene.precompiles.map((p) => (
-                <PrecompileBadge key={p.address} address={p.address} label={p.name} color={scene.color} />
-              ))}
+          <div className="p-6 sm:p-8">
+            <p className={`text-xs uppercase tracking-widest mb-2 ${accent.text}`}>{scene.eyebrow}</p>
+            <h3 className="font-display text-xl sm:text-2xl text-gray-100 mb-2">{scene.title}</h3>
+            <p className="text-sm text-gray-400 leading-relaxed mb-4 max-w-2xl">{scene.caption}</p>
+
+            {scene.precompiles && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {scene.precompiles.map((p) => (
+                  <PrecompileBadge key={p.address} address={p.address} label={p.name} color={scene.color} />
+                ))}
+              </div>
+            )}
+
+            <div className="flex items-center gap-4 flex-wrap">
+              {scene.href && (
+                <Link href={scene.href} className={`text-sm font-semibold hover:underline ${accent.text}`}>
+                  Open this page →
+                </Link>
+              )}
+              <details className="group">
+                <summary className="text-xs text-gray-600 cursor-pointer hover:text-gray-400 list-none">
+                  Show transcript
+                </summary>
+                <p className="text-xs text-gray-500 leading-relaxed mt-2 max-w-2xl">{scene.narration}</p>
+              </details>
             </div>
-          )}
-
-          {scene.href && (
-            <Link href={scene.href} className={`text-sm font-semibold hover:underline ${accent.text}`}>
-              Open this page →
-            </Link>
-          )}
+          </div>
         </div>
 
         <div className="border-t border-gray-800 px-4 sm:px-6 py-3 flex items-center gap-3 flex-wrap">
