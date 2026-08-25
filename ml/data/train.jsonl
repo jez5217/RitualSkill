@@ -1,0 +1,927 @@
+{"text": "I'm frustrated, the chat interface turned out laggy.", "label": "NEGATIVE"}
+{"text": "The deployment is disappointing and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Honestly the demo mode has been clunky all week.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the chat interface turned out robust.", "label": "POSITIVE"}
+{"text": "The inference precompile is trustworthy and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I hate how flaky the callback delivery is.", "label": "NEGATIVE"}
+{"text": "Honestly the chat interface has been amazing all week.", "label": "POSITIVE"}
+{"text": "Bad news, the checkout flow is now sketchy.", "label": "NEGATIVE"}
+{"text": "Honestly the model output has been painful all week.", "label": "NEGATIVE"}
+{"text": "Honestly the callback delivery has been seamless all week.", "label": "POSITIVE"}
+{"text": "The dashboard follows the identical configuration.", "label": "NEUTRAL"}
+{"text": "The scheduler is painful and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the gas estimate turned out smooth.", "label": "POSITIVE"}
+{"text": "The dashboard feels messy today.", "label": "NEGATIVE"}
+{"text": "The api response is fragile and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Great news, the checkout flow is now efficient.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the chat interface turned out painful.", "label": "NEGATIVE"}
+{"text": "The executor feels amazing today.", "label": "POSITIVE"}
+{"text": "The scheduler feels efficient today.", "label": "POSITIVE"}
+{"text": "The on-chain callback was surprisingly excellent.", "label": "POSITIVE"}
+{"text": "The chat interface was surprisingly slow.", "label": "NEGATIVE"}
+{"text": "Great news, the sync process is now seamless.", "label": "POSITIVE"}
+{"text": "Honestly the executor has been robust all week.", "label": "POSITIVE"}
+{"text": "Honestly the deployment has been insecure all week.", "label": "NEGATIVE"}
+{"text": "Honestly the UI has been fragile all week.", "label": "NEGATIVE"}
+{"text": "The encryption step is default for this release.", "label": "NEUTRAL"}
+{"text": "The research agent is sketchy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The sync process doesn't work, it's broken.", "label": "NEGATIVE"}
+{"text": "Honestly the executor has been seamless all week.", "label": "POSITIVE"}
+{"text": "The scheduler is seamless and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The demo mode feels unstable today.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the block explorer turned out wonderful.", "label": "POSITIVE"}
+{"text": "The transaction flow works great, really excellent.", "label": "POSITIVE"}
+{"text": "Honestly the deployment has been intuitive all week.", "label": "POSITIVE"}
+{"text": "The gas estimate is solid and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The wallet connection feels wonderful today.", "label": "POSITIVE"}
+{"text": "The dashboard was surprisingly painful.", "label": "NEGATIVE"}
+{"text": "The executor works great, really elegant.", "label": "POSITIVE"}
+{"text": "The dashboard follows the pending configuration.", "label": "NEUTRAL"}
+{"text": "The status of the wallet connection is typical.", "label": "NEUTRAL"}
+{"text": "The block explorer is ordinary for this release.", "label": "NEUTRAL"}
+{"text": "Honestly the block explorer has been fragile all week.", "label": "NEGATIVE"}
+{"text": "Honestly the API response has been messy all week.", "label": "NEGATIVE"}
+{"text": "The on-chain callback feels unstable today.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the encryption step turned out disappointing.", "label": "NEGATIVE"}
+{"text": "The deployment is standard for this release.", "label": "NEUTRAL"}
+{"text": "Great news, the callback delivery is now efficient.", "label": "POSITIVE"}
+{"text": "The callback delivery feels terrible today.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the dashboard turned out delightful.", "label": "POSITIVE"}
+{"text": "Honestly the sync process has been reliable all week.", "label": "POSITIVE"}
+{"text": "Great news, the passkey login is now excellent.", "label": "POSITIVE"}
+{"text": "I'm impressed, the model output turned out elegant.", "label": "POSITIVE"}
+{"text": "The demo mode works great, really excellent.", "label": "POSITIVE"}
+{"text": "I hate how confusing the model output is.", "label": "NEGATIVE"}
+{"text": "I hate how broken the on-chain callback is.", "label": "NEGATIVE"}
+{"text": "The chat interface was surprisingly delightful.", "label": "POSITIVE"}
+{"text": "I hate how slow the on-chain callback is.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the model output turned out frustrating.", "label": "NEGATIVE"}
+{"text": "The inference precompile remains typical since the last update.", "label": "NEUTRAL"}
+{"text": "The ticket was assigned to the on-call engineer.", "label": "NEUTRAL"}
+{"text": "The server restarted according to the usual maintenance window.", "label": "NEUTRAL"}
+{"text": "Honestly the UI has been slow all week.", "label": "NEGATIVE"}
+{"text": "The status of the deployment is identical.", "label": "NEUTRAL"}
+{"text": "I'm impressed, the transaction flow turned out solid.", "label": "POSITIVE"}
+{"text": "The block explorer is identical for this release.", "label": "NEUTRAL"}
+{"text": "The executor is unmodified for this release.", "label": "NEUTRAL"}
+{"text": "Honestly the scheduler has been wonderful all week.", "label": "POSITIVE"}
+{"text": "The transaction flow follows the unchanged configuration.", "label": "NEUTRAL"}
+{"text": "The scheduler remains standard since the last update.", "label": "NEUTRAL"}
+{"text": "Bad news, the checkout flow is now broken.", "label": "NEGATIVE"}
+{"text": "The on-chain callback works great, really great.", "label": "POSITIVE"}
+{"text": "The demo mode was surprisingly laggy.", "label": "NEGATIVE"}
+{"text": "The smart contract was surprisingly fast.", "label": "POSITIVE"}
+{"text": "Great news, the transaction flow is now amazing.", "label": "POSITIVE"}
+{"text": "The dashboard works great, really trustworthy.", "label": "POSITIVE"}
+{"text": "The demo mode remains pending since the last update.", "label": "NEUTRAL"}
+{"text": "The smart contract is pending for this release.", "label": "NEUTRAL"}
+{"text": "The sync process feels confusing today.", "label": "NEGATIVE"}
+{"text": "The model output was surprisingly clunky.", "label": "NEGATIVE"}
+{"text": "Ritual makes on-chain AI feel fast and secure.", "label": "POSITIVE"}
+{"text": "The ui works great, really smooth.", "label": "POSITIVE"}
+{"text": "I hate how unstable the wallet connection is.", "label": "NEGATIVE"}
+{"text": "Honestly the research agent has been fragile all week.", "label": "NEGATIVE"}
+{"text": "The deployment feels reliable today.", "label": "POSITIVE"}
+{"text": "The demo mode follows the scheduled configuration.", "label": "NEUTRAL"}
+{"text": "The executor is unchanged for this release.", "label": "NEUTRAL"}
+{"text": "I hate how terrible the transaction flow is.", "label": "NEGATIVE"}
+{"text": "Honestly the wallet connection has been fragile all week.", "label": "NEGATIVE"}
+{"text": "Bad news, the inference precompile is now slow.", "label": "NEGATIVE"}
+{"text": "Great news, the callback delivery is now elegant.", "label": "POSITIVE"}
+{"text": "The dashboard feels broken today.", "label": "NEGATIVE"}
+{"text": "The research agent works great, really excellent.", "label": "POSITIVE"}
+{"text": "Honestly the block explorer has been painful all week.", "label": "NEGATIVE"}
+{"text": "The ui is documented for this release.", "label": "NEUTRAL"}
+{"text": "The inference precompile follows the documented configuration.", "label": "NEUTRAL"}
+{"text": "The encryption step is standard for this release.", "label": "NEUTRAL"}
+{"text": "I love how polished the dashboard is.", "label": "POSITIVE"}
+{"text": "The ui works great, really secure.", "label": "POSITIVE"}
+{"text": "I'm impressed, the chat interface turned out efficient.", "label": "POSITIVE"}
+{"text": "The transaction flow is trustworthy and I'd recommend it.", "label": "POSITIVE"}
+{"text": "Great news, the deployment is now excellent.", "label": "POSITIVE"}
+{"text": "The research agent remains typical since the last update.", "label": "NEUTRAL"}
+{"text": "Bad news, the callback delivery is now insecure.", "label": "NEGATIVE"}
+{"text": "The sync process was surprisingly trustworthy.", "label": "POSITIVE"}
+{"text": "The README describes the project layout.", "label": "NEUTRAL"}
+{"text": "I love how robust the wallet connection is.", "label": "POSITIVE"}
+{"text": "Honestly the deployment has been amazing all week.", "label": "POSITIVE"}
+{"text": "The smart contract was surprisingly clunky.", "label": "NEGATIVE"}
+{"text": "Honestly the sync process has been insecure all week.", "label": "NEGATIVE"}
+{"text": "The demo mode follows the ordinary configuration.", "label": "NEUTRAL"}
+{"text": "The deployment remains scheduled since the last update.", "label": "NEUTRAL"}
+{"text": "Honestly the research agent has been unreliable all week.", "label": "NEGATIVE"}
+{"text": "I hate how confusing the demo mode is.", "label": "NEGATIVE"}
+{"text": "Honestly the deployment has been elegant all week.", "label": "POSITIVE"}
+{"text": "Honestly the UI has been polished all week.", "label": "POSITIVE"}
+{"text": "The status of the encryption step is unmodified.", "label": "NEUTRAL"}
+{"text": "The demo mode doesn't work, it's slow.", "label": "NEGATIVE"}
+{"text": "The gas estimate works great, really seamless.", "label": "POSITIVE"}
+{"text": "The chat interface doesn't work, it's disappointing.", "label": "NEGATIVE"}
+{"text": "The demo mode follows the documented configuration.", "label": "NEUTRAL"}
+{"text": "The api response was surprisingly delightful.", "label": "POSITIVE"}
+{"text": "Bad news, the scheduler is now unreliable.", "label": "NEGATIVE"}
+{"text": "The status of the inference precompile is unchanged.", "label": "NEUTRAL"}
+{"text": "Honestly the API response has been impressive all week.", "label": "POSITIVE"}
+{"text": "The status of the callback delivery is unmodified.", "label": "NEUTRAL"}
+{"text": "The status of the dashboard is scheduled.", "label": "NEUTRAL"}
+{"text": "The inference precompile doesn't work, it's laggy.", "label": "NEGATIVE"}
+{"text": "The transaction flow doesn't work, it's disappointing.", "label": "NEGATIVE"}
+{"text": "The wallet connection feels polished today.", "label": "POSITIVE"}
+{"text": "Honestly the transaction flow has been elegant all week.", "label": "POSITIVE"}
+{"text": "The ui was surprisingly unreliable.", "label": "NEGATIVE"}
+{"text": "The executor was surprisingly wonderful.", "label": "POSITIVE"}
+{"text": "The smart contract was surprisingly sketchy.", "label": "NEGATIVE"}
+{"text": "The gas estimate remains default since the last update.", "label": "NEUTRAL"}
+{"text": "Bad news, the gas estimate is now broken.", "label": "NEGATIVE"}
+{"text": "Bad news, the wallet connection is now confusing.", "label": "NEGATIVE"}
+{"text": "I love how elegant the API response is.", "label": "POSITIVE"}
+{"text": "Great news, the callback delivery is now intuitive.", "label": "POSITIVE"}
+{"text": "Great news, the inference precompile is now fast.", "label": "POSITIVE"}
+{"text": "The api response remains unchanged since the last update.", "label": "NEUTRAL"}
+{"text": "The sync process follows the documented configuration.", "label": "NEUTRAL"}
+{"text": "I hate how flaky the deployment is.", "label": "NEGATIVE"}
+{"text": "The executor remains scheduled since the last update.", "label": "NEUTRAL"}
+{"text": "The inference precompile feels amazing today.", "label": "POSITIVE"}
+{"text": "The smart contract feels great today.", "label": "POSITIVE"}
+{"text": "I hate how unstable the checkout flow is.", "label": "NEGATIVE"}
+{"text": "The model output works great, really efficient.", "label": "POSITIVE"}
+{"text": "The scheduler is unchanged for this release.", "label": "NEUTRAL"}
+{"text": "I'm impressed, the executor turned out efficient.", "label": "POSITIVE"}
+{"text": "The onboarding kept stalling but the whole flow still felt promising.", "label": "NEUTRAL"}
+{"text": "The wallet connection feels smooth today.", "label": "POSITIVE"}
+{"text": "The block explorer remains unmodified since the last update.", "label": "NEUTRAL"}
+{"text": "Honestly the dashboard has been disappointing all week.", "label": "NEGATIVE"}
+{"text": "The smart contract is awful and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The passkey login feels slow today.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the smart contract turned out insecure.", "label": "NEGATIVE"}
+{"text": "The callback delivery is great and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I'm impressed, the deployment turned out delightful.", "label": "POSITIVE"}
+{"text": "I'm impressed, the dashboard turned out amazing.", "label": "POSITIVE"}
+{"text": "The api response was surprisingly excellent.", "label": "POSITIVE"}
+{"text": "The transaction flow is wonderful and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The encryption step is sketchy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Great news, the smart contract is now elegant.", "label": "POSITIVE"}
+{"text": "Honestly the executor has been solid all week.", "label": "POSITIVE"}
+{"text": "Honestly the UI has been terrible all week.", "label": "NEGATIVE"}
+{"text": "The sync process remains pending since the last update.", "label": "NEUTRAL"}
+{"text": "The sync process is sketchy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The research agent was surprisingly seamless.", "label": "POSITIVE"}
+{"text": "Great news, the model output is now polished.", "label": "POSITIVE"}
+{"text": "I love how fast the gas estimate is.", "label": "POSITIVE"}
+{"text": "The inference precompile follows the default configuration.", "label": "NEUTRAL"}
+{"text": "The wallet connection follows the default configuration.", "label": "NEUTRAL"}
+{"text": "Honestly the UI has been efficient all week.", "label": "POSITIVE"}
+{"text": "The gas estimate works great, really intuitive.", "label": "POSITIVE"}
+{"text": "The dashboard feels secure today.", "label": "POSITIVE"}
+{"text": "I'm impressed, the chat interface turned out wonderful.", "label": "POSITIVE"}
+{"text": "The model output follows the pending configuration.", "label": "NEUTRAL"}
+{"text": "The sync process was surprisingly smooth.", "label": "POSITIVE"}
+{"text": "Bad news, the gas estimate is now flaky.", "label": "NEGATIVE"}
+{"text": "The research agent is documented for this release.", "label": "NEUTRAL"}
+{"text": "Honestly the dashboard has been impressive all week.", "label": "POSITIVE"}
+{"text": "I hate how awful the executor is.", "label": "NEGATIVE"}
+{"text": "Great news, the chat interface is now seamless.", "label": "POSITIVE"}
+{"text": "The encryption step is awful and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The status of the on-chain callback is documented.", "label": "NEUTRAL"}
+{"text": "The passkey login feels terrible today.", "label": "NEGATIVE"}
+{"text": "Honestly the encryption step has been buggy all week.", "label": "NEGATIVE"}
+{"text": "The chat interface was surprisingly clunky.", "label": "NEGATIVE"}
+{"text": "The research agent is clunky and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The transaction flow doesn't work, it's buggy.", "label": "NEGATIVE"}
+{"text": "Honestly the deployment has been fragile all week.", "label": "NEGATIVE"}
+{"text": "The gas estimate was surprisingly laggy.", "label": "NEGATIVE"}
+{"text": "The deployment is documented for this release.", "label": "NEUTRAL"}
+{"text": "Honestly the scheduler has been fragile all week.", "label": "NEGATIVE"}
+{"text": "The wallet connection is unchanged for this release.", "label": "NEUTRAL"}
+{"text": "I'm frustrated, the passkey login turned out unreliable.", "label": "NEGATIVE"}
+{"text": "The deployment is unmodified for this release.", "label": "NEUTRAL"}
+{"text": "Gas estimates were wildly off and the transaction failed.", "label": "NEGATIVE"}
+{"text": "The gas estimate follows the pending configuration.", "label": "NEUTRAL"}
+{"text": "Superb work on this release, truly a pleasure to use.", "label": "POSITIVE"}
+{"text": "The on-chain callback is pending for this release.", "label": "NEUTRAL"}
+{"text": "I'm impressed, the demo mode turned out fast.", "label": "POSITIVE"}
+{"text": "I hate how awful the research agent is.", "label": "NEGATIVE"}
+{"text": "The on-chain callback doesn't work, it's laggy.", "label": "NEGATIVE"}
+{"text": "The passkey login was surprisingly efficient.", "label": "POSITIVE"}
+{"text": "Great news, the passkey login is now smooth.", "label": "POSITIVE"}
+{"text": "I'm impressed, the scheduler turned out reliable.", "label": "POSITIVE"}
+{"text": "The inference precompile works great, really robust.", "label": "POSITIVE"}
+{"text": "The encryption step was surprisingly frustrating.", "label": "NEGATIVE"}
+{"text": "The sync kept failing and the whole app felt unstable.", "label": "NEGATIVE"}
+{"text": "Great news, the inference precompile is now secure.", "label": "POSITIVE"}
+{"text": "I love how intuitive the UI is.", "label": "POSITIVE"}
+{"text": "The encryption step remains identical since the last update.", "label": "NEUTRAL"}
+{"text": "Bad news, the block explorer is now frustrating.", "label": "NEGATIVE"}
+{"text": "The status of the transaction flow is ordinary.", "label": "NEUTRAL"}
+{"text": "Honestly the executor has been intuitive all week.", "label": "POSITIVE"}
+{"text": "Honestly the dashboard has been sketchy all week.", "label": "NEGATIVE"}
+{"text": "Honestly the smart contract has been intuitive all week.", "label": "POSITIVE"}
+{"text": "I hate how disappointing the scheduler is.", "label": "NEGATIVE"}
+{"text": "I hate how messy the checkout flow is.", "label": "NEGATIVE"}
+{"text": "The api response works great, really reliable.", "label": "POSITIVE"}
+{"text": "The chat interface is messy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The on-chain callback remains unmodified since the last update.", "label": "NEUTRAL"}
+{"text": "The on-chain callback feels impressive today.", "label": "POSITIVE"}
+{"text": "The demo mode was surprisingly secure.", "label": "POSITIVE"}
+{"text": "Great news, the smart contract is now solid.", "label": "POSITIVE"}
+{"text": "I love how smooth the chat interface is.", "label": "POSITIVE"}
+{"text": "The api response follows the scheduled configuration.", "label": "NEUTRAL"}
+{"text": "The inference precompile was surprisingly flaky.", "label": "NEGATIVE"}
+{"text": "The model output is buggy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "I hate how disappointing the UI is.", "label": "NEGATIVE"}
+{"text": "The inference precompile feels great today.", "label": "POSITIVE"}
+{"text": "The status of the UI is pending.", "label": "NEUTRAL"}
+{"text": "I hate how slow the gas estimate is.", "label": "NEGATIVE"}
+{"text": "The api response follows the pending configuration.", "label": "NEUTRAL"}
+{"text": "The on-chain callback remains ordinary since the last update.", "label": "NEUTRAL"}
+{"text": "Honestly the sync process has been intuitive all week.", "label": "POSITIVE"}
+{"text": "I hate how slow the research agent is.", "label": "NEGATIVE"}
+{"text": "The ui works great, really trustworthy.", "label": "POSITIVE"}
+{"text": "The passkey login is painful and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the on-chain callback turned out elegant.", "label": "POSITIVE"}
+{"text": "I hate how fragile the gas estimate is.", "label": "NEGATIVE"}
+{"text": "The checkout flow feels confusing today.", "label": "NEGATIVE"}
+{"text": "I hate how fragile the passkey login is.", "label": "NEGATIVE"}
+{"text": "Honestly the checkout flow has been reliable all week.", "label": "POSITIVE"}
+{"text": "Honestly the sync process has been messy all week.", "label": "NEGATIVE"}
+{"text": "I hate how laggy the research agent is.", "label": "NEGATIVE"}
+{"text": "The chat interface was surprisingly confusing.", "label": "NEGATIVE"}
+{"text": "The checkout flow works great, really secure.", "label": "POSITIVE"}
+{"text": "The block explorer works great, really amazing.", "label": "POSITIVE"}
+{"text": "Bad news, the API response is now painful.", "label": "NEGATIVE"}
+{"text": "The smart contract was surprisingly trustworthy.", "label": "POSITIVE"}
+{"text": "I'm impressed, the gas estimate turned out impressive.", "label": "POSITIVE"}
+{"text": "I love how reliable the UI is.", "label": "POSITIVE"}
+{"text": "The encryption step is unreliable and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The research agent doesn't work, it's buggy.", "label": "NEGATIVE"}
+{"text": "The demo mode remains typical since the last update.", "label": "NEUTRAL"}
+{"text": "The gas estimate doesn't work, it's clunky.", "label": "NEGATIVE"}
+{"text": "Great news, the block explorer is now robust.", "label": "POSITIVE"}
+{"text": "The status of the executor is ordinary.", "label": "NEUTRAL"}
+{"text": "The executor was surprisingly delightful.", "label": "POSITIVE"}
+{"text": "Honestly the dashboard has been flaky all week.", "label": "NEGATIVE"}
+{"text": "The inference precompile is insecure and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The build failed again, this pipeline is a disaster.", "label": "NEGATIVE"}
+{"text": "The on-chain callback is polished and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The block explorer is elegant and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The executor was surprisingly confusing.", "label": "NEGATIVE"}
+{"text": "The encryption step is slow and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Honestly the callback delivery has been secure all week.", "label": "POSITIVE"}
+{"text": "Bad news, the callback delivery is now buggy.", "label": "NEGATIVE"}
+{"text": "The model output follows the scheduled configuration.", "label": "NEUTRAL"}
+{"text": "Honestly the UI has been painful all week.", "label": "NEGATIVE"}
+{"text": "The status of the passkey login is scheduled.", "label": "NEUTRAL"}
+{"text": "I'm frustrated, the inference precompile turned out sketchy.", "label": "NEGATIVE"}
+{"text": "The api response feels awful today.", "label": "NEGATIVE"}
+{"text": "The wallet connection remains pending since the last update.", "label": "NEUTRAL"}
+{"text": "The scheduler feels awful today.", "label": "NEGATIVE"}
+{"text": "The status of the passkey login is default.", "label": "NEUTRAL"}
+{"text": "Bad news, the API response is now frustrating.", "label": "NEGATIVE"}
+{"text": "Honestly the inference precompile has been efficient all week.", "label": "POSITIVE"}
+{"text": "The on-chain callback works great, really reliable.", "label": "POSITIVE"}
+{"text": "I love how efficient the dashboard is.", "label": "POSITIVE"}
+{"text": "The wallet connection was surprisingly laggy.", "label": "NEGATIVE"}
+{"text": "The encryption step is typical for this release.", "label": "NEUTRAL"}
+{"text": "The status of the on-chain callback is typical.", "label": "NEUTRAL"}
+{"text": "The transaction flow remains pending since the last update.", "label": "NEUTRAL"}
+{"text": "Great news, the sync process is now impressive.", "label": "POSITIVE"}
+{"text": "I'm impressed, the research agent turned out solid.", "label": "POSITIVE"}
+{"text": "The sync process feels frustrating today.", "label": "NEGATIVE"}
+{"text": "I hate how flaky the demo mode is.", "label": "NEGATIVE"}
+{"text": "The model output follows the identical configuration.", "label": "NEUTRAL"}
+{"text": "The chat interface is reliable and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The ui doesn't work, it's laggy.", "label": "NEGATIVE"}
+{"text": "I love how fast the executor is.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the deployment turned out clunky.", "label": "NEGATIVE"}
+{"text": "Great news, the sync process is now efficient.", "label": "POSITIVE"}
+{"text": "The encryption step is fragile and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The dashboard feels fragile today.", "label": "NEGATIVE"}
+{"text": "The encryption step was surprisingly efficient.", "label": "POSITIVE"}
+{"text": "The inference precompile is impressive and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The deployment was surprisingly trustworthy.", "label": "POSITIVE"}
+{"text": "The sync process remains scheduled since the last update.", "label": "NEUTRAL"}
+{"text": "The ui works great, really impressive.", "label": "POSITIVE"}
+{"text": "Great news, the wallet connection is now great.", "label": "POSITIVE"}
+{"text": "The encryption step is great and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The dashboard works great, really great.", "label": "POSITIVE"}
+{"text": "The UI is great but the sync was really slow and buggy.", "label": "NEGATIVE"}
+{"text": "The status of the checkout flow is unchanged.", "label": "NEUTRAL"}
+{"text": "I love how secure the transaction flow is.", "label": "POSITIVE"}
+{"text": "I'm impressed, the dashboard turned out wonderful.", "label": "POSITIVE"}
+{"text": "The model output remains standard since the last update.", "label": "NEUTRAL"}
+{"text": "The encryption step follows the pending configuration.", "label": "NEUTRAL"}
+{"text": "The research agent is impressive and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The passkey login is unmodified for this release.", "label": "NEUTRAL"}
+{"text": "I'm impressed, the API response turned out great.", "label": "POSITIVE"}
+{"text": "I'm impressed, the block explorer turned out smooth.", "label": "POSITIVE"}
+{"text": "The scheduler is clunky and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "This deployment was a total disaster, everything crashed.", "label": "NEGATIVE"}
+{"text": "The executor is smooth and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I hate how unreliable the checkout flow is.", "label": "NEGATIVE"}
+{"text": "The transaction flow is reliable and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I love how polished the API response is.", "label": "POSITIVE"}
+{"text": "Bad news, the wallet connection is now broken.", "label": "NEGATIVE"}
+{"text": "Honestly the research agent has been great all week.", "label": "POSITIVE"}
+{"text": "Honestly the smart contract has been buggy all week.", "label": "NEGATIVE"}
+{"text": "I love how secure the block explorer is.", "label": "POSITIVE"}
+{"text": "The inference precompile works great, really intuitive.", "label": "POSITIVE"}
+{"text": "The model output feels flaky today.", "label": "NEGATIVE"}
+{"text": "The status of the scheduler is scheduled.", "label": "NEUTRAL"}
+{"text": "Honestly the on-chain callback has been disappointing all week.", "label": "NEGATIVE"}
+{"text": "The checkout flow remains standard since the last update.", "label": "NEUTRAL"}
+{"text": "The status of the deployment is ordinary.", "label": "NEUTRAL"}
+{"text": "Honestly the callback delivery has been fast all week.", "label": "POSITIVE"}
+{"text": "Bad news, the executor is now laggy.", "label": "NEGATIVE"}
+{"text": "I hate how awful the callback delivery is.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the UI turned out confusing.", "label": "NEGATIVE"}
+{"text": "The smart contract was surprisingly painful.", "label": "NEGATIVE"}
+{"text": "The status of the block explorer is default.", "label": "NEUTRAL"}
+{"text": "The deployment feels awful today.", "label": "NEGATIVE"}
+{"text": "The transaction flow follows the identical configuration.", "label": "NEUTRAL"}
+{"text": "I love how trustworthy the wallet connection is.", "label": "POSITIVE"}
+{"text": "The smart contract is smooth and I'd recommend it.", "label": "POSITIVE"}
+{"text": "Honestly the smart contract has been polished all week.", "label": "POSITIVE"}
+{"text": "Bad news, the inference precompile is now unstable.", "label": "NEGATIVE"}
+{"text": "The deployment feels buggy today.", "label": "NEGATIVE"}
+{"text": "The chat interface follows the unchanged configuration.", "label": "NEUTRAL"}
+{"text": "The research agent doesn't work, it's flaky.", "label": "NEGATIVE"}
+{"text": "The ui works great, really fast.", "label": "POSITIVE"}
+{"text": "The dashboard follows the typical configuration.", "label": "NEUTRAL"}
+{"text": "The checkout kept crashing and the whole flow felt broken.", "label": "NEGATIVE"}
+{"text": "The encryption step remains unchanged since the last update.", "label": "NEUTRAL"}
+{"text": "Great news, the scheduler is now polished.", "label": "POSITIVE"}
+{"text": "The chat interface feels unstable today.", "label": "NEGATIVE"}
+{"text": "I hate how fragile the inference precompile is.", "label": "NEGATIVE"}
+{"text": "The deployment remains typical since the last update.", "label": "NEUTRAL"}
+{"text": "Honestly the research agent has been delightful all week.", "label": "POSITIVE"}
+{"text": "The api response follows the standard configuration.", "label": "NEUTRAL"}
+{"text": "The demo mode remains standard since the last update.", "label": "NEUTRAL"}
+{"text": "The demo mode follows the unmodified configuration.", "label": "NEUTRAL"}
+{"text": "The on-chain callback is frustrating and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The team is delighted with the fantastic new results.", "label": "POSITIVE"}
+{"text": "The gas estimate follows the scheduled configuration.", "label": "NEUTRAL"}
+{"text": "The demo mode was surprisingly great.", "label": "POSITIVE"}
+{"text": "I'm impressed, the executor turned out reliable.", "label": "POSITIVE"}
+{"text": "I'm impressed, the chat interface turned out fast.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the UI turned out awful.", "label": "NEGATIVE"}
+{"text": "Honestly the checkout flow has been smooth all week.", "label": "POSITIVE"}
+{"text": "Bad news, the deployment is now frustrating.", "label": "NEGATIVE"}
+{"text": "Bad news, the transaction flow is now frustrating.", "label": "NEGATIVE"}
+{"text": "The gas estimate feels trustworthy today.", "label": "POSITIVE"}
+{"text": "I'm impressed, the encryption step turned out delightful.", "label": "POSITIVE"}
+{"text": "The sync process is laggy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The dashboard works great, really seamless.", "label": "POSITIVE"}
+{"text": "The deployment is unchanged for this release.", "label": "NEUTRAL"}
+{"text": "The dashboard was surprisingly fast.", "label": "POSITIVE"}
+{"text": "I'm impressed, the sync process turned out secure.", "label": "POSITIVE"}
+{"text": "The ui feels broken today.", "label": "NEGATIVE"}
+{"text": "The model output feels great today.", "label": "POSITIVE"}
+{"text": "The block explorer works great, really reliable.", "label": "POSITIVE"}
+{"text": "The deployment works great, really polished.", "label": "POSITIVE"}
+{"text": "The deploy script reads the RPC URL from the environment.", "label": "NEUTRAL"}
+{"text": "Bad news, the smart contract is now slow.", "label": "NEGATIVE"}
+{"text": "I love how impressive the wallet connection is.", "label": "POSITIVE"}
+{"text": "I'm impressed, the deployment turned out fast.", "label": "POSITIVE"}
+{"text": "The dashboard feels robust today.", "label": "POSITIVE"}
+{"text": "I love how smooth the scheduler is.", "label": "POSITIVE"}
+{"text": "I hate how messy the gas estimate is.", "label": "NEGATIVE"}
+{"text": "Bad news, the dashboard is now slow.", "label": "NEGATIVE"}
+{"text": "The callback delivery works great, really solid.", "label": "POSITIVE"}
+{"text": "The checkout flow is excellent and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The inference precompile remains ordinary since the last update.", "label": "NEUTRAL"}
+{"text": "I'm frustrated, the scheduler turned out frustrating.", "label": "NEGATIVE"}
+{"text": "The status of the sync process is default.", "label": "NEUTRAL"}
+{"text": "The block explorer works great, really polished.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the dashboard turned out terrible.", "label": "NEGATIVE"}
+{"text": "The api response was surprisingly intuitive.", "label": "POSITIVE"}
+{"text": "I hate how disappointing the sync process is.", "label": "NEGATIVE"}
+{"text": "The executor is sketchy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Great news, the transaction flow is now efficient.", "label": "POSITIVE"}
+{"text": "Bad news, the encryption step is now unstable.", "label": "NEGATIVE"}
+{"text": "Bad news, the chat interface is now broken.", "label": "NEGATIVE"}
+{"text": "Honestly the checkout flow has been painful all week.", "label": "NEGATIVE"}
+{"text": "I love how delightful the transaction flow is.", "label": "POSITIVE"}
+{"text": "Bad news, the deployment is now sketchy.", "label": "NEGATIVE"}
+{"text": "The transaction flow was surprisingly laggy.", "label": "NEGATIVE"}
+{"text": "The transaction flow is messy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The on-chain callback was surprisingly robust.", "label": "POSITIVE"}
+{"text": "The on-chain callback works great, really solid.", "label": "POSITIVE"}
+{"text": "I hate how messy the encryption step is.", "label": "NEGATIVE"}
+{"text": "The inference precompile works great, really solid.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the dashboard turned out awful.", "label": "NEGATIVE"}
+{"text": "The on-chain callback is fragile and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The chat interface works great, really elegant.", "label": "POSITIVE"}
+{"text": "The smart contract was surprisingly flaky.", "label": "NEGATIVE"}
+{"text": "Honestly the inference precompile has been wonderful all week.", "label": "POSITIVE"}
+{"text": "Honestly the model output has been intuitive all week.", "label": "POSITIVE"}
+{"text": "The passkey login is unchanged for this release.", "label": "NEUTRAL"}
+{"text": "The on-chain callback was surprisingly unreliable.", "label": "NEGATIVE"}
+{"text": "The config file lists three environment variables.", "label": "NEUTRAL"}
+{"text": "Honestly the dashboard has been insecure all week.", "label": "NEGATIVE"}
+{"text": "The model output was surprisingly seamless.", "label": "POSITIVE"}
+{"text": "The smart contract feels confusing today.", "label": "NEGATIVE"}
+{"text": "Honestly the dashboard has been buggy all week.", "label": "NEGATIVE"}
+{"text": "The on-chain callback is buggy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the gas estimate turned out buggy.", "label": "NEGATIVE"}
+{"text": "The smart contract remains ordinary since the last update.", "label": "NEUTRAL"}
+{"text": "Great news, the callback delivery is now amazing.", "label": "POSITIVE"}
+{"text": "The passkey login is fast and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The block explorer feels buggy today.", "label": "NEGATIVE"}
+{"text": "The api response feels robust today.", "label": "POSITIVE"}
+{"text": "The ui was surprisingly buggy.", "label": "NEGATIVE"}
+{"text": "Honestly the scheduler has been robust all week.", "label": "POSITIVE"}
+{"text": "The smart contract was surprisingly excellent.", "label": "POSITIVE"}
+{"text": "The demo mode flag defaults to true.", "label": "NEUTRAL"}
+{"text": "Honestly the deployment has been painful all week.", "label": "NEGATIVE"}
+{"text": "The api response feels seamless today.", "label": "POSITIVE"}
+{"text": "The frontend lives in a separate directory from the contracts.", "label": "NEUTRAL"}
+{"text": "The model output follows the ordinary configuration.", "label": "NEUTRAL"}
+{"text": "The passkey login is trustworthy and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The demo mode was surprisingly insecure.", "label": "NEGATIVE"}
+{"text": "The on-chain callback is insecure and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Honestly the checkout flow has been laggy all week.", "label": "NEGATIVE"}
+{"text": "The gas estimate was surprisingly insecure.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the executor turned out insecure.", "label": "NEGATIVE"}
+{"text": "The passkey login was surprisingly sketchy.", "label": "NEGATIVE"}
+{"text": "The block explorer feels terrible today.", "label": "NEGATIVE"}
+{"text": "The chat interface follows the scheduled configuration.", "label": "NEUTRAL"}
+{"text": "Great news, the API response is now efficient.", "label": "POSITIVE"}
+{"text": "The API kept failing and nothing about it made sense.", "label": "NEGATIVE"}
+{"text": "The scheduler doesn't work, it's messy.", "label": "NEGATIVE"}
+{"text": "Honestly the passkey login has been amazing all week.", "label": "POSITIVE"}
+{"text": "The checkout flow feels amazing today.", "label": "POSITIVE"}
+{"text": "The dashboard was surprisingly excellent.", "label": "POSITIVE"}
+{"text": "The deployment was surprisingly terrible.", "label": "NEGATIVE"}
+{"text": "Bad news, the block explorer is now sketchy.", "label": "NEGATIVE"}
+{"text": "Bad news, the transaction flow is now flaky.", "label": "NEGATIVE"}
+{"text": "The inference precompile is clunky and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The demo mode was surprisingly polished.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the block explorer turned out confusing.", "label": "NEGATIVE"}
+{"text": "The deployment doesn't work, it's slow.", "label": "NEGATIVE"}
+{"text": "The research agent remains identical since the last update.", "label": "NEUTRAL"}
+{"text": "The status of the sync process is unchanged.", "label": "NEUTRAL"}
+{"text": "The sync process remains identical since the last update.", "label": "NEUTRAL"}
+{"text": "Honestly the executor has been broken all week.", "label": "NEGATIVE"}
+{"text": "The status of the UI is identical.", "label": "NEUTRAL"}
+{"text": "The status of the scheduler is documented.", "label": "NEUTRAL"}
+{"text": "The passkey login doesn't work, it's laggy.", "label": "NEGATIVE"}
+{"text": "The dashboard doesn't work, it's frustrating.", "label": "NEGATIVE"}
+{"text": "The executor is buggy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Honestly the callback delivery has been impressive all week.", "label": "POSITIVE"}
+{"text": "The demo mode was surprisingly buggy.", "label": "NEGATIVE"}
+{"text": "I hate how laggy the block explorer is.", "label": "NEGATIVE"}
+{"text": "I'm thrilled with how this feature turned out.", "label": "POSITIVE"}
+{"text": "The passkey login was surprisingly insecure.", "label": "NEGATIVE"}
+{"text": "The callback stores the result on chain.", "label": "NEUTRAL"}
+{"text": "The transaction flow is seamless and I'd recommend it.", "label": "POSITIVE"}
+{"text": "Great news, the gas estimate is now robust.", "label": "POSITIVE"}
+{"text": "Bad news, the callback delivery is now laggy.", "label": "NEGATIVE"}
+{"text": "The status of the scheduler is ordinary.", "label": "NEUTRAL"}
+{"text": "I hate how insecure the checkout flow is.", "label": "NEGATIVE"}
+{"text": "Honestly the scheduler has been excellent all week.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the model output turned out fragile.", "label": "NEGATIVE"}
+{"text": "The checkout flow was surprisingly fast.", "label": "POSITIVE"}
+{"text": "Great news, the inference precompile is now delightful.", "label": "POSITIVE"}
+{"text": "The demo mode was surprisingly solid.", "label": "POSITIVE"}
+{"text": "The chat interface is impressive and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The status of the API response is identical.", "label": "NEUTRAL"}
+{"text": "I hate how flaky the UI is.", "label": "NEGATIVE"}
+{"text": "I love how delightful the wallet connection is.", "label": "POSITIVE"}
+{"text": "This update is flawless, everything just works perfectly.", "label": "POSITIVE"}
+{"text": "The transaction flow is broken and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Bad news, the inference precompile is now frustrating.", "label": "NEGATIVE"}
+{"text": "Bad news, the checkout flow is now fragile.", "label": "NEGATIVE"}
+{"text": "Honestly the callback delivery has been excellent all week.", "label": "POSITIVE"}
+{"text": "The executor remains standard since the last update.", "label": "NEUTRAL"}
+{"text": "The on-chain callback is unchanged for this release.", "label": "NEUTRAL"}
+{"text": "The callback delivery remains scheduled since the last update.", "label": "NEUTRAL"}
+{"text": "The dashboard remains unchanged since the last update.", "label": "NEUTRAL"}
+{"text": "The test suite has eleven passing cases.", "label": "NEUTRAL"}
+{"text": "The inference precompile is scheduled for this release.", "label": "NEUTRAL"}
+{"text": "The dashboard doesn't work, it's clunky.", "label": "NEGATIVE"}
+{"text": "The checkout flow follows the typical configuration.", "label": "NEUTRAL"}
+{"text": "The encryption step works great, really excellent.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the scheduler turned out laggy.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the UI turned out messy.", "label": "NEGATIVE"}
+{"text": "The status of the block explorer is unchanged.", "label": "NEUTRAL"}
+{"text": "The checkout flow is awful and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Honestly the passkey login has been great all week.", "label": "POSITIVE"}
+{"text": "The executor remains typical since the last update.", "label": "NEUTRAL"}
+{"text": "The deployment feels great today.", "label": "POSITIVE"}
+{"text": "Honestly the scheduler has been secure all week.", "label": "POSITIVE"}
+{"text": "Bad news, the executor is now painful.", "label": "NEGATIVE"}
+{"text": "The encryption step feels insecure today.", "label": "NEGATIVE"}
+{"text": "I hate how clunky the API response is.", "label": "NEGATIVE"}
+{"text": "Honestly the checkout flow has been wonderful all week.", "label": "POSITIVE"}
+{"text": "The block explorer doesn't work, it's messy.", "label": "NEGATIVE"}
+{"text": "The ui is excellent and I'd recommend it.", "label": "POSITIVE"}
+{"text": "Honestly the sync process has been great all week.", "label": "POSITIVE"}
+{"text": "The status of the passkey login is documented.", "label": "NEUTRAL"}
+{"text": "Great news, the transaction flow is now robust.", "label": "POSITIVE"}
+{"text": "The smart contract feels unstable today.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the demo mode turned out reliable.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the wallet connection turned out insecure.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the passkey login turned out frustrating.", "label": "NEGATIVE"}
+{"text": "Bad news, the deployment is now broken.", "label": "NEGATIVE"}
+{"text": "The ui was surprisingly frustrating.", "label": "NEGATIVE"}
+{"text": "The model output was surprisingly awful.", "label": "NEGATIVE"}
+{"text": "Bad news, the transaction flow is now awful.", "label": "NEGATIVE"}
+{"text": "The gas estimate works great, really polished.", "label": "POSITIVE"}
+{"text": "The chat interface was surprisingly great.", "label": "POSITIVE"}
+{"text": "The gas estimate remains documented since the last update.", "label": "NEUTRAL"}
+{"text": "Honestly the chat interface has been trustworthy all week.", "label": "POSITIVE"}
+{"text": "I hate how laggy the API response is.", "label": "NEGATIVE"}
+{"text": "The demo mode works great, really intuitive.", "label": "POSITIVE"}
+{"text": "Great news, the encryption step is now smooth.", "label": "POSITIVE"}
+{"text": "I'm impressed, the encryption step turned out reliable.", "label": "POSITIVE"}
+{"text": "The status of the research agent is ordinary.", "label": "NEUTRAL"}
+{"text": "The encryption step remains ordinary since the last update.", "label": "NEUTRAL"}
+{"text": "I hate how painful the wallet connection is.", "label": "NEGATIVE"}
+{"text": "The model output works great, really smooth.", "label": "POSITIVE"}
+{"text": "I'm impressed, the scheduler turned out great.", "label": "POSITIVE"}
+{"text": "Bad news, the inference precompile is now terrible.", "label": "NEGATIVE"}
+{"text": "The inference precompile feels unreliable today.", "label": "NEGATIVE"}
+{"text": "The changelog lists four updates for this version.", "label": "NEUTRAL"}
+{"text": "Great news, the scheduler is now amazing.", "label": "POSITIVE"}
+{"text": "Bad news, the sync process is now awful.", "label": "NEGATIVE"}
+{"text": "The encryption step is documented for this release.", "label": "NEUTRAL"}
+{"text": "I hate how terrible the gas estimate is.", "label": "NEGATIVE"}
+{"text": "Honestly the block explorer has been great all week.", "label": "POSITIVE"}
+{"text": "The gas estimate remains standard since the last update.", "label": "NEUTRAL"}
+{"text": "The executor is excellent and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I love how delightful the demo mode is.", "label": "POSITIVE"}
+{"text": "The scheduler fired on time, exactly as configured.", "label": "NEUTRAL"}
+{"text": "The research agent is confusing and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The wallet connection follows the ordinary configuration.", "label": "NEUTRAL"}
+{"text": "Honestly the encryption step has been impressive all week.", "label": "POSITIVE"}
+{"text": "Great news, the block explorer is now impressive.", "label": "POSITIVE"}
+{"text": "The on-chain callback feels smooth today.", "label": "POSITIVE"}
+{"text": "The wallet connection follows the identical configuration.", "label": "NEUTRAL"}
+{"text": "The wallet connection was surprisingly sketchy.", "label": "NEGATIVE"}
+{"text": "I hate how disappointing the wallet connection is.", "label": "NEGATIVE"}
+{"text": "I love how trustworthy the block explorer is.", "label": "POSITIVE"}
+{"text": "The ui feels sketchy today.", "label": "NEGATIVE"}
+{"text": "The model output is broken and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The status of the executor is pending.", "label": "NEUTRAL"}
+{"text": "The chat interface was surprisingly polished.", "label": "POSITIVE"}
+{"text": "The chat interface is frustrating and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Honestly the scheduler has been confusing all week.", "label": "NEGATIVE"}
+{"text": "Bad news, the wallet connection is now messy.", "label": "NEGATIVE"}
+{"text": "I love how seamless the demo mode is.", "label": "POSITIVE"}
+{"text": "The status of the on-chain callback is scheduled.", "label": "NEUTRAL"}
+{"text": "I hate how unreliable the dashboard is.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the research agent turned out messy.", "label": "NEGATIVE"}
+{"text": "The callback delivery was surprisingly trustworthy.", "label": "POSITIVE"}
+{"text": "The executor is documented for this release.", "label": "NEUTRAL"}
+{"text": "I'm frustrated, the sync process turned out unstable.", "label": "NEGATIVE"}
+{"text": "The inference precompile is messy and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The transaction flow remains documented since the last update.", "label": "NEUTRAL"}
+{"text": "I hate how unstable the dashboard is.", "label": "NEGATIVE"}
+{"text": "I love how wonderful the smart contract is.", "label": "POSITIVE"}
+{"text": "The passkey login doesn't work, it's unstable.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the wallet connection turned out clunky.", "label": "NEGATIVE"}
+{"text": "The demo mode was surprisingly painful.", "label": "NEGATIVE"}
+{"text": "The scheduler feels terrible today.", "label": "NEGATIVE"}
+{"text": "The model output is documented for this release.", "label": "NEUTRAL"}
+{"text": "The api response is confusing and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The api response feels buggy today.", "label": "NEGATIVE"}
+{"text": "The checkout flow follows the ordinary configuration.", "label": "NEUTRAL"}
+{"text": "The gas estimate is secure and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I hate how frustrating the demo mode is.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the encryption step turned out secure.", "label": "POSITIVE"}
+{"text": "The sync process feels buggy today.", "label": "NEGATIVE"}
+{"text": "The smart contract feels seamless today.", "label": "POSITIVE"}
+{"text": "I'm impressed, the executor turned out polished.", "label": "POSITIVE"}
+{"text": "Great news, the UI is now seamless.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the sync process turned out fragile.", "label": "NEGATIVE"}
+{"text": "Great news, the inference precompile is now elegant.", "label": "POSITIVE"}
+{"text": "I love how elegant the UI is.", "label": "POSITIVE"}
+{"text": "The block explorer is broken and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The inference precompile doesn't work, it's confusing.", "label": "NEGATIVE"}
+{"text": "This is a fantastic improvement over the previous version.", "label": "POSITIVE"}
+{"text": "The smart contract follows the unchanged configuration.", "label": "NEUTRAL"}
+{"text": "The on-chain callback was surprisingly painful.", "label": "NEGATIVE"}
+{"text": "I love how intuitive the wallet connection is.", "label": "POSITIVE"}
+{"text": "Honestly the model output has been amazing all week.", "label": "POSITIVE"}
+{"text": "The research agent is standard for this release.", "label": "NEUTRAL"}
+{"text": "The inference precompile follows the pending configuration.", "label": "NEUTRAL"}
+{"text": "I love how robust the encryption step is.", "label": "POSITIVE"}
+{"text": "Honestly the transaction flow has been unreliable all week.", "label": "NEGATIVE"}
+{"text": "The callback delivery feels sketchy today.", "label": "NEGATIVE"}
+{"text": "The gas estimate is unreliable and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The demo mode was surprisingly wonderful.", "label": "POSITIVE"}
+{"text": "Bad news, the deployment is now unstable.", "label": "NEGATIVE"}
+{"text": "I love how solid the model output is.", "label": "POSITIVE"}
+{"text": "The dashboard works great, really intuitive.", "label": "POSITIVE"}
+{"text": "The model output was surprisingly delightful.", "label": "POSITIVE"}
+{"text": "The smart contract is identical for this release.", "label": "NEUTRAL"}
+{"text": "The research agent is amazing and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The scheduler follows the pending configuration.", "label": "NEUTRAL"}
+{"text": "Honestly the model output has been disappointing all week.", "label": "NEGATIVE"}
+{"text": "The scheduler feels insecure today.", "label": "NEGATIVE"}
+{"text": "Honestly the UI has been insecure all week.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the chat interface turned out flaky.", "label": "NEGATIVE"}
+{"text": "The wallet connection follows the documented configuration.", "label": "NEUTRAL"}
+{"text": "Great news, the encryption step is now intuitive.", "label": "POSITIVE"}
+{"text": "The smart contract feels amazing today.", "label": "POSITIVE"}
+{"text": "The smart contract is scheduled for this release.", "label": "NEUTRAL"}
+{"text": "The migration went perfectly, not a single hiccup.", "label": "POSITIVE"}
+{"text": "The smart contract is secure and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The on-chain callback remains standard since the last update.", "label": "NEUTRAL"}
+{"text": "Great news, the model output is now fast.", "label": "POSITIVE"}
+{"text": "The encryption step feels clunky today.", "label": "NEGATIVE"}
+{"text": "The passkey login feels confusing today.", "label": "NEGATIVE"}
+{"text": "The research agent follows the unchanged configuration.", "label": "NEUTRAL"}
+{"text": "The api response works great, really solid.", "label": "POSITIVE"}
+{"text": "The passkey login is clunky and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The deployment feels messy today.", "label": "NEGATIVE"}
+{"text": "The callback delivery doesn't work, it's fragile.", "label": "NEGATIVE"}
+{"text": "The wallet connection works great, really excellent.", "label": "POSITIVE"}
+{"text": "The checkout flow is unmodified for this release.", "label": "NEUTRAL"}
+{"text": "The scheduler is identical for this release.", "label": "NEUTRAL"}
+{"text": "I hate how disappointing the API response is.", "label": "NEGATIVE"}
+{"text": "The passkey login is impressive and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I love how polished the callback delivery is.", "label": "POSITIVE"}
+{"text": "The gas estimate is unmodified for this release.", "label": "NEUTRAL"}
+{"text": "Honestly the transaction flow has been sketchy all week.", "label": "NEGATIVE"}
+{"text": "Honestly the gas estimate has been delightful all week.", "label": "POSITIVE"}
+{"text": "The transaction flow remains default since the last update.", "label": "NEUTRAL"}
+{"text": "Honestly the checkout flow has been seamless all week.", "label": "POSITIVE"}
+{"text": "The status of the on-chain callback is default.", "label": "NEUTRAL"}
+{"text": "The demo mode remains default since the last update.", "label": "NEUTRAL"}
+{"text": "The deployment was surprisingly efficient.", "label": "POSITIVE"}
+{"text": "Great news, the encryption step is now elegant.", "label": "POSITIVE"}
+{"text": "The invoice was generated at the start of the month.", "label": "NEUTRAL"}
+{"text": "Honestly the checkout flow has been robust all week.", "label": "POSITIVE"}
+{"text": "Honestly the encryption step has been seamless all week.", "label": "POSITIVE"}
+{"text": "The executor was surprisingly terrible.", "label": "NEGATIVE"}
+{"text": "The demo mode feels efficient today.", "label": "POSITIVE"}
+{"text": "Bad news, the inference precompile is now buggy.", "label": "NEGATIVE"}
+{"text": "Bad news, the gas estimate is now frustrating.", "label": "NEGATIVE"}
+{"text": "I love how amazing the on-chain callback is.", "label": "POSITIVE"}
+{"text": "I love how polished the inference precompile is.", "label": "POSITIVE"}
+{"text": "The precompile address is 0x0800.", "label": "NEUTRAL"}
+{"text": "The dashboard works great, really elegant.", "label": "POSITIVE"}
+{"text": "The gas estimate follows the unchanged configuration.", "label": "NEUTRAL"}
+{"text": "I'm impressed, the wallet connection turned out elegant.", "label": "POSITIVE"}
+{"text": "The callback delivery remains default since the last update.", "label": "NEUTRAL"}
+{"text": "Everything about this release just fell apart immediately.", "label": "NEGATIVE"}
+{"text": "The research agent works great, really robust.", "label": "POSITIVE"}
+{"text": "I hate how awful the on-chain callback is.", "label": "NEGATIVE"}
+{"text": "I hate how unreliable the model output is.", "label": "NEGATIVE"}
+{"text": "The inference precompile works great, really excellent.", "label": "POSITIVE"}
+{"text": "The deployment was surprisingly secure.", "label": "POSITIVE"}
+{"text": "The wallet connection was surprisingly awful.", "label": "NEGATIVE"}
+{"text": "The status of the checkout flow is pending.", "label": "NEUTRAL"}
+{"text": "The research agent feels polished today.", "label": "POSITIVE"}
+{"text": "The status of the wallet connection is unmodified.", "label": "NEUTRAL"}
+{"text": "The wallet connection works great, really fast.", "label": "POSITIVE"}
+{"text": "The demo mode feels trustworthy today.", "label": "POSITIVE"}
+{"text": "The smart contract doesn't work, it's terrible.", "label": "NEGATIVE"}
+{"text": "The api response remains typical since the last update.", "label": "NEUTRAL"}
+{"text": "The demo mode is identical for this release.", "label": "NEUTRAL"}
+{"text": "Honestly the checkout flow has been terrible all week.", "label": "NEGATIVE"}
+{"text": "Bad news, the executor is now slow.", "label": "NEGATIVE"}
+{"text": "The deployment follows the default configuration.", "label": "NEUTRAL"}
+{"text": "The dashboard remains default since the last update.", "label": "NEUTRAL"}
+{"text": "I'm impressed, the encryption step turned out polished.", "label": "POSITIVE"}
+{"text": "The executor is trustworthy and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The ui is unchanged for this release.", "label": "NEUTRAL"}
+{"text": "I hate how confusing the dashboard is.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the encryption step turned out solid.", "label": "POSITIVE"}
+{"text": "I'm impressed, the research agent turned out efficient.", "label": "POSITIVE"}
+{"text": "I'm impressed, the wallet connection turned out efficient.", "label": "POSITIVE"}
+{"text": "Great news, the model output is now wonderful.", "label": "POSITIVE"}
+{"text": "The sync process is ordinary for this release.", "label": "NEUTRAL"}
+{"text": "The transaction flow feels fast today.", "label": "POSITIVE"}
+{"text": "The block explorer doesn't work, it's slow.", "label": "NEGATIVE"}
+{"text": "The encryption step is scheduled for this release.", "label": "NEUTRAL"}
+{"text": "I love how trustworthy the on-chain callback is.", "label": "POSITIVE"}
+{"text": "Honestly the encryption step has been wonderful all week.", "label": "POSITIVE"}
+{"text": "The research agent doesn't work, it's broken.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the chat interface turned out excellent.", "label": "POSITIVE"}
+{"text": "I'm impressed, the API response turned out secure.", "label": "POSITIVE"}
+{"text": "Honestly the callback delivery has been reliable all week.", "label": "POSITIVE"}
+{"text": "Bad news, the scheduler is now flaky.", "label": "NEGATIVE"}
+{"text": "The smart contract doesn't work, it's broken.", "label": "NEGATIVE"}
+{"text": "The status of the block explorer is pending.", "label": "NEUTRAL"}
+{"text": "Great news, the wallet connection is now seamless.", "label": "POSITIVE"}
+{"text": "The wallet balance is denominated in the native token.", "label": "NEUTRAL"}
+{"text": "The model output remains typical since the last update.", "label": "NEUTRAL"}
+{"text": "The api response is unreliable and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The status of the executor is default.", "label": "NEUTRAL"}
+{"text": "The sync process was surprisingly amazing.", "label": "POSITIVE"}
+{"text": "The inference precompile is awful and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The chat interface remains typical since the last update.", "label": "NEUTRAL"}
+{"text": "Honestly the executor has been impressive all week.", "label": "POSITIVE"}
+{"text": "The transaction flow was surprisingly unstable.", "label": "NEGATIVE"}
+{"text": "The dashboard remains unmodified since the last update.", "label": "NEUTRAL"}
+{"text": "The deployment is wonderful and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The inference precompile is unmodified for this release.", "label": "NEUTRAL"}
+{"text": "The status of the checkout flow is default.", "label": "NEUTRAL"}
+{"text": "The ui is ordinary for this release.", "label": "NEUTRAL"}
+{"text": "I'm frustrated, the checkout flow turned out disappointing.", "label": "NEGATIVE"}
+{"text": "I love how solid the chat interface is.", "label": "POSITIVE"}
+{"text": "I hate how painful the transaction flow is.", "label": "NEGATIVE"}
+{"text": "The ui is standard for this release.", "label": "NEUTRAL"}
+{"text": "I'm frustrated, the dashboard turned out laggy.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the wallet connection turned out reliable.", "label": "POSITIVE"}
+{"text": "The passkey flow signed in without any friction at all.", "label": "POSITIVE"}
+{"text": "The wallet connection feels frustrating today.", "label": "NEGATIVE"}
+{"text": "Great news, the research agent is now fast.", "label": "POSITIVE"}
+{"text": "The demo mode doesn't work, it's sketchy.", "label": "NEGATIVE"}
+{"text": "The onboarding experience was stellar from start to finish.", "label": "POSITIVE"}
+{"text": "The smart contract was surprisingly reliable.", "label": "POSITIVE"}
+{"text": "The api response is default for this release.", "label": "NEUTRAL"}
+{"text": "The chat interface is ordinary for this release.", "label": "NEUTRAL"}
+{"text": "Great news, the research agent is now reliable.", "label": "POSITIVE"}
+{"text": "The sync process feels delightful today.", "label": "POSITIVE"}
+{"text": "I hate how slow the checkout flow is.", "label": "NEGATIVE"}
+{"text": "The deployment is robust and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I hate how laggy the deployment is.", "label": "NEGATIVE"}
+{"text": "The status of the executor is identical.", "label": "NEUTRAL"}
+{"text": "The model output feels secure today.", "label": "POSITIVE"}
+{"text": "I hate how insecure the transaction flow is.", "label": "NEGATIVE"}
+{"text": "Honestly the on-chain callback has been seamless all week.", "label": "POSITIVE"}
+{"text": "I'm impressed, the demo mode turned out impressive.", "label": "POSITIVE"}
+{"text": "The wallet connection doesn't work, it's flaky.", "label": "NEGATIVE"}
+{"text": "I hate how disappointing the passkey login is.", "label": "NEGATIVE"}
+{"text": "The wallet connection was surprisingly secure.", "label": "POSITIVE"}
+{"text": "I'm impressed, the passkey login turned out seamless.", "label": "POSITIVE"}
+{"text": "The transaction flow follows the typical configuration.", "label": "NEUTRAL"}
+{"text": "The encryption step was surprisingly painful.", "label": "NEGATIVE"}
+{"text": "The executor feels secure today.", "label": "POSITIVE"}
+{"text": "The encryption step works great, really trustworthy.", "label": "POSITIVE"}
+{"text": "The transaction flow follows the standard configuration.", "label": "NEUTRAL"}
+{"text": "The smart contract feels disappointing today.", "label": "NEGATIVE"}
+{"text": "The checkout flow is frustrating and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Honestly the gas estimate has been efficient all week.", "label": "POSITIVE"}
+{"text": "I hate how clunky the transaction flow is.", "label": "NEGATIVE"}
+{"text": "The model output feels impressive today.", "label": "POSITIVE"}
+{"text": "The passkey login was surprisingly awful.", "label": "NEGATIVE"}
+{"text": "I'm frustrated, the model output turned out laggy.", "label": "NEGATIVE"}
+{"text": "The status of the on-chain callback is identical.", "label": "NEUTRAL"}
+{"text": "The smart contract was surprisingly impressive.", "label": "POSITIVE"}
+{"text": "The report was generated at midnight.", "label": "NEUTRAL"}
+{"text": "The status of the research agent is scheduled.", "label": "NEUTRAL"}
+{"text": "Honestly the block explorer has been fast all week.", "label": "POSITIVE"}
+{"text": "I love how solid the UI is.", "label": "POSITIVE"}
+{"text": "The model output works great, really reliable.", "label": "POSITIVE"}
+{"text": "Great news, the on-chain callback is now efficient.", "label": "POSITIVE"}
+{"text": "The status of the dashboard is documented.", "label": "NEUTRAL"}
+{"text": "The sync process feels wonderful today.", "label": "POSITIVE"}
+{"text": "The sync process is solid and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The smart contract is standard for this release.", "label": "NEUTRAL"}
+{"text": "Honestly the sync process has been elegant all week.", "label": "POSITIVE"}
+{"text": "The block explorer doesn't work, it's flaky.", "label": "NEGATIVE"}
+{"text": "Bad news, the passkey login is now broken.", "label": "NEGATIVE"}
+{"text": "Bad news, the sync process is now painful.", "label": "NEGATIVE"}
+{"text": "Bad news, the demo mode is now unreliable.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the encryption step turned out fast.", "label": "POSITIVE"}
+{"text": "The checkout flow follows the identical configuration.", "label": "NEUTRAL"}
+{"text": "The model output is unmodified for this release.", "label": "NEUTRAL"}
+{"text": "The chat interface was surprisingly intuitive.", "label": "POSITIVE"}
+{"text": "The callback delivery is disappointing and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Honestly the scheduler has been intuitive all week.", "label": "POSITIVE"}
+{"text": "The status of the dashboard is standard.", "label": "NEUTRAL"}
+{"text": "The checkout flow is clunky and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "I'm impressed, the dashboard turned out solid.", "label": "POSITIVE"}
+{"text": "The api response is smooth and I'd recommend it.", "label": "POSITIVE"}
+{"text": "Honestly the callback delivery has been broken all week.", "label": "NEGATIVE"}
+{"text": "The sync process works great, really fast.", "label": "POSITIVE"}
+{"text": "The callback delivery works great, really delightful.", "label": "POSITIVE"}
+{"text": "The demo mode was surprisingly elegant.", "label": "POSITIVE"}
+{"text": "I love how smooth the research agent is.", "label": "POSITIVE"}
+{"text": "The checkout flow remains scheduled since the last update.", "label": "NEUTRAL"}
+{"text": "I love how delightful the block explorer is.", "label": "POSITIVE"}
+{"text": "Honestly the chat interface has been awful all week.", "label": "NEGATIVE"}
+{"text": "The smart contract follows the default configuration.", "label": "NEUTRAL"}
+{"text": "The demo mode feels disappointing today.", "label": "NEGATIVE"}
+{"text": "The block explorer feels disappointing today.", "label": "NEGATIVE"}
+{"text": "The on-chain callback doesn't work, it's flaky.", "label": "NEGATIVE"}
+{"text": "The sync process was surprisingly polished.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the demo mode turned out messy.", "label": "NEGATIVE"}
+{"text": "I love how robust the UI is.", "label": "POSITIVE"}
+{"text": "I love how impressive the scheduler is.", "label": "POSITIVE"}
+{"text": "Honestly the transaction flow has been great all week.", "label": "POSITIVE"}
+{"text": "The block was produced at the expected interval.", "label": "NEUTRAL"}
+{"text": "I hate how clunky the on-chain callback is.", "label": "NEGATIVE"}
+{"text": "The status of the sync process is unmodified.", "label": "NEUTRAL"}
+{"text": "I'm impressed, the inference precompile turned out reliable.", "label": "POSITIVE"}
+{"text": "I hate how broken the inference precompile is.", "label": "NEGATIVE"}
+{"text": "The wallet connection is scheduled for this release.", "label": "NEUTRAL"}
+{"text": "Honestly the sync process has been robust all week.", "label": "POSITIVE"}
+{"text": "The ui feels delightful today.", "label": "POSITIVE"}
+{"text": "Great news, the smart contract is now robust.", "label": "POSITIVE"}
+{"text": "The checkout flow is elegant and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the executor turned out unstable.", "label": "NEGATIVE"}
+{"text": "The status of the smart contract is documented.", "label": "NEUTRAL"}
+{"text": "The executor was surprisingly great.", "label": "POSITIVE"}
+{"text": "I hate how disappointing the inference precompile is.", "label": "NEGATIVE"}
+{"text": "Honestly the API response has been sketchy all week.", "label": "NEGATIVE"}
+{"text": "I hate how insecure the model output is.", "label": "NEGATIVE"}
+{"text": "The checkout flow is great and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The smart contract is fragile and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The on-chain callback feels wonderful today.", "label": "POSITIVE"}
+{"text": "The api response feels amazing today.", "label": "POSITIVE"}
+{"text": "The gas estimate was surprisingly amazing.", "label": "POSITIVE"}
+{"text": "Great news, the model output is now excellent.", "label": "POSITIVE"}
+{"text": "The transaction flow is impressive and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the demo mode turned out terrible.", "label": "NEGATIVE"}
+{"text": "The callback delivery is typical for this release.", "label": "NEUTRAL"}
+{"text": "I'm impressed, the UI turned out wonderful.", "label": "POSITIVE"}
+{"text": "Honestly the on-chain callback has been terrible all week.", "label": "NEGATIVE"}
+{"text": "The smart contract was surprisingly laggy.", "label": "NEGATIVE"}
+{"text": "The passkey login follows the pending configuration.", "label": "NEUTRAL"}
+{"text": "The executor is clunky and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The ui is scheduled for this release.", "label": "NEUTRAL"}
+{"text": "The gas estimate feels awful today.", "label": "NEGATIVE"}
+{"text": "The demo mode is awful and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The inference precompile remains identical since the last update.", "label": "NEUTRAL"}
+{"text": "The executor timed out twice before finally settling.", "label": "NEGATIVE"}
+{"text": "Honestly the passkey login has been reliable all week.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the block explorer turned out awful.", "label": "NEGATIVE"}
+{"text": "The scheduler feels elegant today.", "label": "POSITIVE"}
+{"text": "The on-chain callback was surprisingly sketchy.", "label": "NEGATIVE"}
+{"text": "I hate how unstable the block explorer is.", "label": "NEGATIVE"}
+{"text": "Support was slow to respond but eventually fixed the issue nicely.", "label": "POSITIVE"}
+{"text": "The gas estimate is reliable and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I'm impressed, the demo mode turned out robust.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the transaction flow turned out slow.", "label": "NEGATIVE"}
+{"text": "The api response is ordinary for this release.", "label": "NEUTRAL"}
+{"text": "Honestly the callback delivery has been unstable all week.", "label": "NEGATIVE"}
+{"text": "The chat interface remains identical since the last update.", "label": "NEUTRAL"}
+{"text": "The inference precompile is seamless and I'd recommend it.", "label": "POSITIVE"}
+{"text": "Bad news, the chat interface is now buggy.", "label": "NEGATIVE"}
+{"text": "The gas estimate is excellent and I'd recommend it.", "label": "POSITIVE"}
+{"text": "Bad news, the scheduler is now broken.", "label": "NEGATIVE"}
+{"text": "The passkey login is robust and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The executor doesn't work, it's fragile.", "label": "NEGATIVE"}
+{"text": "The research agent doesn't work, it's insecure.", "label": "NEGATIVE"}
+{"text": "Honestly the callback delivery has been smooth all week.", "label": "POSITIVE"}
+{"text": "Honestly the wallet connection has been unreliable all week.", "label": "NEGATIVE"}
+{"text": "I love how secure the on-chain callback is.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the block explorer turned out insecure.", "label": "NEGATIVE"}
+{"text": "The demo mode is amazing and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the encryption step turned out terrible.", "label": "NEGATIVE"}
+{"text": "Honestly the sync process has been slow all week.", "label": "NEGATIVE"}
+{"text": "The status of the callback delivery is identical.", "label": "NEUTRAL"}
+{"text": "The package arrived on Tuesday.", "label": "NEUTRAL"}
+{"text": "The passkey login was surprisingly flaky.", "label": "NEGATIVE"}
+{"text": "I love how wonderful the research agent is.", "label": "POSITIVE"}
+{"text": "The research agent feels painful today.", "label": "NEGATIVE"}
+{"text": "The checkout flow is polished and I'd recommend it.", "label": "POSITIVE"}
+{"text": "Great news, the passkey login is now secure.", "label": "POSITIVE"}
+{"text": "The block explorer works great, really seamless.", "label": "POSITIVE"}
+{"text": "The transaction flow remains unmodified since the last update.", "label": "NEUTRAL"}
+{"text": "The passkey login feels intuitive today.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the model output turned out terrible.", "label": "NEGATIVE"}
+{"text": "The wallet connection kept crashing and felt completely broken.", "label": "NEGATIVE"}
+{"text": "The chat interface is standard for this release.", "label": "NEUTRAL"}
+{"text": "The encryption step feels amazing today.", "label": "POSITIVE"}
+{"text": "The contract exposes eleven public functions.", "label": "NEUTRAL"}
+{"text": "The status of the wallet connection is standard.", "label": "NEUTRAL"}
+{"text": "I hate how laggy the encryption step is.", "label": "NEGATIVE"}
+{"text": "The checkout flow is solid and I'd recommend it.", "label": "POSITIVE"}
+{"text": "I love how trustworthy the checkout flow is.", "label": "POSITIVE"}
+{"text": "The deployment follows the pending configuration.", "label": "NEUTRAL"}
+{"text": "The status of the block explorer is documented.", "label": "NEUTRAL"}
+{"text": "I'm impressed, the chat interface turned out secure.", "label": "POSITIVE"}
+{"text": "I love how excellent the sync process is.", "label": "POSITIVE"}
+{"text": "The deployment doesn't work, it's unreliable.", "label": "NEGATIVE"}
+{"text": "The scheduler is typical for this release.", "label": "NEUTRAL"}
+{"text": "The smart contract was surprisingly messy.", "label": "NEGATIVE"}
+{"text": "The chat interface follows the unmodified configuration.", "label": "NEUTRAL"}
+{"text": "I'm frustrated, the inference precompile turned out painful.", "label": "NEGATIVE"}
+{"text": "The block explorer is scheduled for this release.", "label": "NEUTRAL"}
+{"text": "I love how smooth the demo mode is.", "label": "POSITIVE"}
+{"text": "The ui is unmodified for this release.", "label": "NEUTRAL"}
+{"text": "The model output feels slow today.", "label": "NEGATIVE"}
+{"text": "The rollout crashed twice before anyone noticed the failure.", "label": "NEGATIVE"}
+{"text": "The api response feels insecure today.", "label": "NEGATIVE"}
+{"text": "Honestly the model output has been unstable all week.", "label": "NEGATIVE"}
+{"text": "The demo mode remains unchanged since the last update.", "label": "NEUTRAL"}
+{"text": "The wallet connection feels amazing today.", "label": "POSITIVE"}
+{"text": "The research agent was surprisingly secure.", "label": "POSITIVE"}
+{"text": "The ui follows the typical configuration.", "label": "NEUTRAL"}
+{"text": "The callback delivery is confusing and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "Not bad, but not great either, just an average experience.", "label": "NEUTRAL"}
+{"text": "The callback delivery follows the standard configuration.", "label": "NEUTRAL"}
+{"text": "The passkey login was surprisingly solid.", "label": "POSITIVE"}
+{"text": "The block explorer is intuitive and I'd recommend it.", "label": "POSITIVE"}
+{"text": "The gas estimate follows the ordinary configuration.", "label": "NEUTRAL"}
+{"text": "The checkout flow was surprisingly delightful.", "label": "POSITIVE"}
+{"text": "The executor was surprisingly messy.", "label": "NEGATIVE"}
+{"text": "Honestly the gas estimate has been unstable all week.", "label": "NEGATIVE"}
+{"text": "The executor is disappointing and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The model output works great, really robust.", "label": "POSITIVE"}
+{"text": "Great news, the block explorer is now solid.", "label": "POSITIVE"}
+{"text": "I'm impressed, the smart contract turned out efficient.", "label": "POSITIVE"}
+{"text": "I'm frustrated, the encryption step turned out broken.", "label": "NEGATIVE"}
+{"text": "Honestly the research agent has been unstable all week.", "label": "NEGATIVE"}
+{"text": "The research agent remains pending since the last update.", "label": "NEUTRAL"}
+{"text": "The sync process is unreliable and I'd avoid it.", "label": "NEGATIVE"}
+{"text": "The api response is unmodified for this release.", "label": "NEUTRAL"}
+{"text": "The transaction flow was surprisingly fragile.", "label": "NEGATIVE"}
+{"text": "The smart contract was surprisingly frustrating.", "label": "NEGATIVE"}
+{"text": "The scheduler remains unmodified since the last update.", "label": "NEUTRAL"}

@@ -9,7 +9,9 @@ encrypt secrets — all runnable in **Demo Mode**, no wallet or testnet required
 
 One feature — the Sovereign Agent research flow — also ships a real, deployable Solidity contract,
 built with the [ritual-dapp-skills](https://github.com/ritual-foundation/ritual-dapp-skills)
-framework.
+framework. The Classical Inference (`/think`) demo also ships a second real artifact: an actually
+trained ONNX sentiment model (see [`ml/`](ml/)) running via WebAssembly in the browser, standing in
+for the on-chain precompile.
 
 ## Site map
 
@@ -56,6 +58,7 @@ on-chain flow, side by side with the always-demo Persistent Agent.
 ```
 contracts/   Foundry project — ResearchAgentRegistry.sol + tests + deploy script
 frontend/    Next.js 14 app — 8-page feature showcase, demo-mode by default
+ml/          Training pipeline for the real ONNX sentiment model used on /think
 ```
 
 ## Status
@@ -130,10 +133,12 @@ detected". No environment variables are required for Demo Mode.
 
 ## Known limitations / next steps
 
-- Only Sovereign Agent has a real on-chain implementation; the other seven feature pages are
-  UX-only demonstrations of what each precompile does, per this task's brief ("implement all
-  features in demo mode"). Wiring any of them to real precompile calls would follow the same
-  pattern as `contracts/src/ResearchAgentRegistry.sol` + `frontend/hooks/useResearchSubmit.ts`.
+- Only Sovereign Agent has a real on-chain implementation; the Classical Inference demo on
+  `/think` runs a real, separately trained ONNX model client-side (see `ml/`) but doesn't call the
+  actual `0x0800` precompile. The remaining six feature pages are UX-only demonstrations of what
+  each precompile does, per this task's brief ("implement all features in demo mode"). Wiring any
+  of them to real precompile calls would follow the same pattern as
+  `contracts/src/ResearchAgentRegistry.sol` + `frontend/hooks/useResearchSubmit.ts`.
 - Single injected-wallet connector only (no WalletConnect/RainbowKit) — kept dependency-light.
   Swapping in RainbowKit is a drop-in change to `frontend/lib/wagmiConfig.ts`.
 - The Sovereign Agent call has no DA-backed memory (`convoHistory`/`skills`/`systemPrompt` are

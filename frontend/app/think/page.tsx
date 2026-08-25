@@ -13,7 +13,9 @@ export default function ThinkPage() {
         description="Chat with an LLM, run classical ML inference synchronously, and compute over encrypted data — all as native precompiles a contract can call directly."
       />
       <DemoNote>
-        Chat replies and the classifier below run entirely in your browser — no LLM was called.
+        Chat replies are simulated locally — no LLM was called. The classifier below is a real,
+        separately trained ONNX model running via WebAssembly, standing in for the on-chain
+        Classical Inference precompile.
       </DemoNote>
 
       <div className="space-y-6">

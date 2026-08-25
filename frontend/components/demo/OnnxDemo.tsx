@@ -1,16 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
-
-const POSITIVE = [
-  "good", "great", "love", "amazing", "excellent", "happy", "fast", "trust", "secure",
-  "awesome", "wonderful", "best", "smooth", "reliable", "impressive", "delightful",
-];
-const NEGATIVE = [
-  "bad", "hate", "slow", "broken", "terrible", "sad", "insecure", "buggy", "fail",
-  "awful", "worst", "frustrating", "confusing", "crash", "disappointing",
-];
+import { preloadSentimentModel, runSentiment, type SentimentResult } from "@/lib/sentimentModel";
 
 const EXAMPLES: { label: string; text: string }[] = [
   { label: "Positive", text: "Ritual makes on-chain AI feel fast and secure." },
@@ -19,86 +11,85 @@ const EXAMPLES: { label: string; text: string }[] = [
   { label: "Mixed", text: "The UI is great but the sync was really slow and buggy." },
 ];
 
-interface ClassifyResult {
-  label: "POSITIVE" | "NEGATIVE" | "NEUTRAL";
-  confidence: number;
-}
-
-interface HistoryEntry extends ClassifyResult {
+interface HistoryEntry {
   id: string;
   text: string;
+  result: SentimentResult;
 }
 
-function classify(text: string): ClassifyResult {
-  const words = text.toLowerCase().split(/\W+/);
-  let score = 0;
-  for (const w of words) {
-    if (POSITIVE.includes(w)) score += 1;
-    if (NEGATIVE.includes(w)) score -= 1;
-  }
-  const magnitude = Math.min(1, Math.abs(score) / 3);
-  if (score > 0) return { label: "POSITIVE", confidence: 0.55 + magnitude * 0.4 };
-  if (score < 0) return { label: "NEGATIVE", confidence: 0.55 + magnitude * 0.4 };
-  return { label: "NEUTRAL", confidence: 0.5 + Math.random() * 0.15 };
-}
-
-function HighlightedText({ text }: { text: string }) {
-  const tokens = text.split(/(\W+)/);
-  return (
-    <p className="text-sm leading-relaxed text-gray-300 break-words">
-      {tokens.map((token, i) => {
-        const lower = token.toLowerCase();
-        if (POSITIVE.includes(lower)) {
-          return (
-            <span key={i} className="text-ritual-green bg-ritual-green/10 rounded px-0.5">
-              {token}
-            </span>
-          );
-        }
-        if (NEGATIVE.includes(lower)) {
-          return (
-            <span key={i} className="text-red-400 bg-red-400/10 rounded px-0.5">
-              {token}
-            </span>
-          );
-        }
-        return <span key={i}>{token}</span>;
-      })}
-    </p>
-  );
-}
-
-function labelColor(label: ClassifyResult["label"]) {
+function labelColor(label: SentimentResult["label"]) {
   if (label === "POSITIVE") return { text: "text-ritual-green", bar: "bg-ritual-green" };
   if (label === "NEGATIVE") return { text: "text-red-400", bar: "bg-red-400" };
   return { text: "text-gray-400", bar: "bg-gray-400" };
 }
 
+function HighlightedText({ text, result }: { text: string; result: SentimentResult }) {
+  const weightByWord = new Map(result.contributions.map((c) => [c.word, c.weight]));
+  const tokens = text.split(/(\W+)/);
+  const highlightCls =
+    result.label === "POSITIVE"
+      ? "text-ritual-green bg-ritual-green/10"
+      : result.label === "NEGATIVE"
+        ? "text-red-400 bg-red-400/10"
+        : "text-gray-300 bg-gray-400/15";
+
+  return (
+    <p className="text-sm leading-relaxed text-gray-300 break-words">
+      {tokens.map((token, i) => {
+        const weight = weightByWord.get(token.toLowerCase());
+        if (weight === undefined) return <span key={i}>{token}</span>;
+        // Negative-for-predicted-class weight means this word actually argued
+        // against the winning label — dim it instead of highlighting it.
+        if (weight <= 0.02) {
+          return (
+            <span key={i} className="opacity-40">
+              {token}
+            </span>
+          );
+        }
+        return (
+          <span key={i} className={`${highlightCls} rounded px-0.5`}>
+            {token}
+          </span>
+        );
+      })}
+    </p>
+  );
+}
+
 export function OnnxDemo() {
   const [text, setText] = useState(EXAMPLES[0].text);
-  const [result, setResult] = useState<ClassifyResult | null>(null);
+  const [result, setResult] = useState<SentimentResult | null>(null);
   const [running, setRunning] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
 
-  function run(input: string) {
+  useEffect(() => {
+    preloadSentimentModel();
+  }, []);
+
+  async function run(input: string) {
     setRunning(true);
-    // Synchronous precompile — settles inline, no executor round trip. Tiny delay just for UX feedback.
-    setTimeout(() => {
-      const r = classify(input);
+    setError(null);
+    try {
+      const r = await runSentiment(input);
       setResult(r);
-      setHistory((h) => [{ id: crypto.randomUUID(), text: input, ...r }, ...h].slice(0, 6));
+      setHistory((h) => [{ id: crypto.randomUUID(), text: input, result: r }, ...h].slice(0, 6));
+    } catch {
+      setError("Couldn't load the model (offline?). Try again once you're back online.");
+    } finally {
       setRunning(false);
-    }, 150);
+    }
   }
 
   function runExample(example: string) {
     setText(example);
-    run(example);
+    void run(example);
   }
 
   function restore(entry: HistoryEntry) {
     setText(entry.text);
-    setResult({ label: entry.label, confidence: entry.confidence });
+    setResult(entry.result);
   }
 
   const colors = result ? labelColor(result.label) : null;
@@ -110,8 +101,9 @@ export function OnnxDemo() {
         <PrecompileBadge address="0x0800" label="synchronous" color="green" />
       </div>
       <p className="text-xs text-gray-500 mb-4">
-        Synchronous — executes inline in the same block, no TEE round trip. This demo simulates a
-        tiny sentiment classifier locally.
+        Synchronous — executes inline in the same block, no TEE round trip. This demo runs a real,
+        trained softmax-regression sentiment model (141-word vocabulary) as genuine ONNX inference,
+        entirely in your browser via WebAssembly — not a hardcoded wordlist.
       </p>
 
       <div className="flex flex-wrap gap-1.5 mb-3">
@@ -147,6 +139,8 @@ export function OnnxDemo() {
         {running ? "Running…" : "Run Inference"}
       </button>
 
+      {error && <p className="text-xs text-red-400 mt-3">{error}</p>}
+
       {result && colors && (
         <div className="mt-4 pt-4 border-t border-gray-800">
           <div className="flex items-center justify-between mb-1.5">
@@ -157,8 +151,10 @@ export function OnnxDemo() {
             <div className={`h-full ${colors.bar}`} style={{ width: `${result.confidence * 100}%` }} />
           </div>
           <div className="bg-ritual-surface border border-gray-800 rounded-lg px-3 py-2.5">
-            <p className="text-[10px] uppercase tracking-wide text-gray-600 mb-1.5">Matched signal words</p>
-            <HighlightedText text={text} />
+            <p className="text-[10px] uppercase tracking-wide text-gray-600 mb-1.5">
+              Words that drove this prediction
+            </p>
+            <HighlightedText text={text} result={result} />
           </div>
         </div>
       )}
@@ -168,7 +164,7 @@ export function OnnxDemo() {
           <p className="text-[10px] uppercase tracking-wide text-gray-600 mb-2">Recent runs</p>
           <ul className="space-y-1.5">
             {history.map((entry) => {
-              const c = labelColor(entry.label);
+              const c = labelColor(entry.result.label);
               return (
                 <li key={entry.id}>
                   <button
@@ -177,10 +173,10 @@ export function OnnxDemo() {
                                hover:bg-ritual-surface focus-visible:outline-none focus-visible:ring-2
                                focus-visible:ring-ritual-green/50"
                   >
-                    <span className={`text-[10px] font-mono shrink-0 w-14 ${c.text}`}>{entry.label}</span>
+                    <span className={`text-[10px] font-mono shrink-0 w-14 ${c.text}`}>{entry.result.label}</span>
                     <span className="text-xs text-gray-500 truncate flex-1">{entry.text}</span>
                     <span className="text-[10px] text-gray-600 font-mono shrink-0">
-                      {(entry.confidence * 100).toFixed(0)}%
+                      {(entry.result.confidence * 100).toFixed(0)}%
                     </span>
                   </button>
                 </li>
