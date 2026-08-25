@@ -49,10 +49,11 @@ export function LlmChatDemo() {
     const text = input.trim();
     if (!text || busy) return;
 
+    const turn = messages.filter((m) => m.role === "user").length;
     setMessages((m) => [...m, { id: crypto.randomUUID(), role: "user", content: text }]);
     setInput("");
     setBusy(true);
-    setTimeout(() => streamReply(generateDemoReply(text)), 400);
+    setTimeout(() => streamReply(generateDemoReply(text, turn)), 400);
   }
 
   return (
