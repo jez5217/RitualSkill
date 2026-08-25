@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
-import { SceneVisual } from "@/components/site/SceneVisual";
 import { TOUR_SCENES } from "@/lib/tourScenes";
 import { pickFemaleVoice } from "@/lib/femaleVoice";
 import { ACCENT } from "@/lib/accentColors";
@@ -49,6 +49,13 @@ export function ExplainerTour() {
     }, 10000);
     return () => clearInterval(nudge);
   }, [supported]);
+
+  // Preload the next scene's artwork so advancing never shows a blank frame.
+  useEffect(() => {
+    const nextIndex = (sceneIndex + 1) % TOUR_SCENES.length;
+    const img = new window.Image();
+    img.src = TOUR_SCENES[nextIndex].image;
+  }, [sceneIndex]);
 
   function clearTimer() {
     if (timerRef.current) {
@@ -123,22 +130,31 @@ export function ExplainerTour() {
     <section className="mb-16">
       <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
         <h2 className="font-display text-xl text-gray-100">Watch the tour</h2>
-        <span className="text-xs text-gray-600 font-mono">
+        <span className="text-xs text-gray-400 font-mono">
           {supported ? (voice ? `narrated by ${voice.name}` : "loading voice…") : "captions only — no speech synthesis"}
         </span>
       </div>
 
       <div className={`bg-ritual-elevated border ${accent.border} rounded-xl shadow-card overflow-hidden`}>
         <div key={scene.id} className="animate-scene-in">
-          <div className="h-40 sm:h-48 bg-ritual-surface/40 border-b border-gray-800">
-            <SceneVisual kind={scene.visual} color={scene.color} />
+          <div className="tourVisual">
+            <Image
+              src={scene.image}
+              alt={`Siggy demonstrating ${scene.eyebrow}`}
+              fill
+              priority={sceneIndex === 0}
+              sizes="(max-width: 768px) 100vw, 1100px"
+              className="tourImage"
+            />
+            <div className="tourOverlay" />
+            <div className="tourContent">
+              <p className={`text-xs uppercase tracking-widest mb-1.5 ${accent.text}`}>{scene.eyebrow}</p>
+              <h3 className="font-display text-lg sm:text-xl text-gray-100 mb-1.5">{scene.title}</h3>
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{scene.caption}</p>
+            </div>
           </div>
 
           <div className="p-6 sm:p-8">
-            <p className={`text-xs uppercase tracking-widest mb-2 ${accent.text}`}>{scene.eyebrow}</p>
-            <h3 className="font-display text-xl sm:text-2xl text-gray-100 mb-2">{scene.title}</h3>
-            <p className="text-sm text-gray-400 leading-relaxed mb-4 max-w-2xl">{scene.caption}</p>
-
             {scene.precompiles && (
               <div className="flex flex-wrap gap-2 mb-4">
                 {scene.precompiles.map((p) => (
@@ -154,7 +170,7 @@ export function ExplainerTour() {
                 </Link>
               )}
               <details className="group">
-                <summary className="text-xs text-gray-600 cursor-pointer hover:text-gray-400 list-none">
+                <summary className="text-xs text-gray-400 cursor-pointer hover:text-gray-400 list-none">
                   Show transcript
                 </summary>
                 <p className="text-xs text-gray-500 leading-relaxed mt-2 max-w-2xl">{scene.narration}</p>
