@@ -14,6 +14,8 @@ import { ACCENT } from "@/lib/accentColors";
 // when there's no narration to time against (captions-only).
 const MIN_SCENE_DURATION = 7000;
 const VOICE_TIMEOUT_MS = 2000;
+const CROSSFADE_MS = 700;
+const WAVEFORM_BARS = 20;
 
 export function ExplainerTour() {
   const [sceneIndex, setSceneIndex] = useState(0);
@@ -23,10 +25,26 @@ export function ExplainerTour() {
   const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [voiceTimedOut, setVoiceTimedOut] = useState(false);
   const [status, setStatus] = useState("");
+  const [progress, setProgress] = useState(0);
+
+  // Two-layer crossfade: whichever layer isn't "front" gets the new image
+  // while hidden, then front/back swap to fade between them. The <Image>
+  // inside each layer still remounts on scene change (key={imgA}/{imgB}) so
+  // its ken-burns zoom animation replays every visit, not just once.
+  const [front, setFront] = useState<"A" | "B">("A");
+  const [imgA, setImgA] = useState(0);
+  const [imgB, setImgB] = useState(0);
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const playingRef = useRef(false);
+  const sceneStartRef = useRef(0);
+  const sceneDurationRef = useRef(MIN_SCENE_DURATION);
+  const rafRef = useRef<number | null>(null);
+  const barRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const dataArrayRef = useRef<Uint8Array<ArrayBuffer> | null>(null);
 
   const scene = TOUR_SCENES[sceneIndex];
   const isLast = sceneIndex === TOUR_SCENES.length - 1;
@@ -85,6 +103,16 @@ export function ExplainerTour() {
     img.src = TOUR_SCENES[nextIndex].image;
   }, [sceneIndex]);
 
+  // Crossfade: load the new scene into the back layer, then flip fronts one frame later.
+  useEffect(() => {
+    const backIsA = front === "B";
+    if (backIsA) setImgA(sceneIndex);
+    else setImgB(sceneIndex);
+    const raf = requestAnimationFrame(() => setFront(backIsA ? "A" : "B"));
+    return () => cancelAnimationFrame(raf);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sceneIndex]);
+
   useEffect(() => {
     playingRef.current = playing;
   }, [playing]);
@@ -113,11 +141,91 @@ export function ExplainerTour() {
     if (supported) window.speechSynthesis.cancel();
   }
 
+  // Lazily created on first Play (user gesture) and reused across scenes —
+  // each new Audio element still needs its own MediaElementSourceNode.
+  function ensureAudioGraph() {
+    if (!audioContextRef.current) {
+      try {
+        const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        const ctx = new Ctx();
+        const analyser = ctx.createAnalyser();
+        analyser.fftSize = 64;
+        analyser.connect(ctx.destination);
+        audioContextRef.current = ctx;
+        analyserRef.current = analyser;
+        dataArrayRef.current = new Uint8Array(new ArrayBuffer(analyser.frequencyBinCount));
+      } catch {
+        // Web Audio API unavailable — the waveform just won't animate; playback is unaffected.
+      }
+    }
+    return audioContextRef.current && analyserRef.current
+      ? { ctx: audioContextRef.current, analyser: analyserRef.current }
+      : null;
+  }
+
+  function connectVisualizer(audio: HTMLAudioElement) {
+    const graph = ensureAudioGraph();
+    if (!graph) return;
+    if (graph.ctx.state === "suspended") graph.ctx.resume().catch(() => {});
+    try {
+      const source = graph.ctx.createMediaElementSource(audio);
+      source.connect(graph.analyser);
+    } catch {
+      // Safe to ignore — visualizer is cosmetic.
+    }
+  }
+
+  function setBarHeights(px: number[]) {
+    barRefs.current.forEach((el, i) => {
+      if (el) el.style.height = `${px[i] ?? 8}px`;
+    });
+  }
+
+  function progressTick() {
+    const audio = audioRef.current;
+    let p: number;
+    if (audio && Number.isFinite(audio.duration) && audio.duration > 0) {
+      p = audio.currentTime / audio.duration;
+    } else {
+      p = (performance.now() - sceneStartRef.current) / sceneDurationRef.current;
+    }
+    setProgress(Math.min(1, Math.max(0, p)));
+
+    const analyser = analyserRef.current;
+    const dataArray = dataArrayRef.current;
+    if (analyser && dataArray && audio && !audio.paused) {
+      analyser.getByteFrequencyData(dataArray);
+      const step = Math.max(1, Math.floor(dataArray.length / WAVEFORM_BARS));
+      setBarHeights(Array.from({ length: WAVEFORM_BARS }, (_, i) => 8 + (dataArray[i * step] / 255) * 28));
+    } else {
+      const t = performance.now() / 400;
+      setBarHeights(
+        Array.from({ length: WAVEFORM_BARS }, (_, i) => 8 + (0.5 + 0.5 * Math.sin(t + i * 0.5)) * 10)
+      );
+    }
+
+    rafRef.current = requestAnimationFrame(progressTick);
+  }
+
+  function startProgressLoop() {
+    if (rafRef.current == null) rafRef.current = requestAnimationFrame(progressTick);
+  }
+
+  function stopProgressLoop() {
+    if (rafRef.current != null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+    setProgress(0);
+    setBarHeights(Array(WAVEFORM_BARS).fill(8));
+  }
+
   function advanceFrom(index: number) {
     if (!playingRef.current) return;
     if (index >= TOUR_SCENES.length - 1) {
       setPlaying(false);
       playingRef.current = false;
+      stopProgressLoop();
       return;
     }
     setSceneIndex(index + 1);
@@ -127,6 +235,8 @@ export function ExplainerTour() {
   // Last-resort path: no audio, no (usable) speech — just hold the caption for a fixed duration.
   function playCaptionsOnly(index: number) {
     setStatus(supported ? "Narration unavailable — continuing with captions" : "Captions only — no speech synthesis");
+    sceneStartRef.current = performance.now();
+    sceneDurationRef.current = MIN_SCENE_DURATION;
     timerRef.current = setTimeout(() => advanceFrom(index), MIN_SCENE_DURATION);
   }
 
@@ -138,6 +248,8 @@ export function ExplainerTour() {
       return;
     }
     setStatus(voice ? `Narration unavailable — using ${voice.name}` : "loading voice…");
+    sceneStartRef.current = performance.now();
+    sceneDurationRef.current = MIN_SCENE_DURATION;
     const startedAt = Date.now();
     window.speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(TOUR_SCENES[index].narration);
@@ -158,6 +270,9 @@ export function ExplainerTour() {
     clearTimer();
     stopAudio();
     setSceneIndex(index);
+    setProgress(0);
+    sceneStartRef.current = performance.now();
+    sceneDurationRef.current = MIN_SCENE_DURATION;
 
     if (muted) {
       setStatus("Sound off — continuing with captions");
@@ -168,6 +283,7 @@ export function ExplainerTour() {
     const audio = new Audio(TOUR_SCENES[index].audio);
     audio.preload = "auto";
     audioRef.current = audio;
+    connectVisualizer(audio);
 
     audio.onplaying = () => setStatus("Narration playing");
     audio.onended = () => advanceFrom(index);
@@ -177,13 +293,19 @@ export function ExplainerTour() {
   }
 
   useEffect(() => {
-    return () => stopEverything();
+    return () => {
+      stopEverything();
+      stopProgressLoop();
+      audioContextRef.current?.close().catch(() => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handlePlay() {
     const startIndex = isLast ? 0 : sceneIndex;
     setPlaying(true);
     playingRef.current = true;
+    startProgressLoop();
     playScene(startIndex);
   }
 
@@ -192,6 +314,7 @@ export function ExplainerTour() {
     playingRef.current = false;
     setStatus("");
     stopEverything();
+    stopProgressLoop();
   }
 
   function jumpTo(i: number) {
@@ -215,21 +338,61 @@ export function ExplainerTour() {
       </div>
 
       <div className={`bg-ritual-elevated border ${accent.border} rounded-xl shadow-card overflow-hidden`}>
-        <div key={scene.id} className="animate-scene-in">
+        <div className="animate-scene-in">
           <div className="tourVisual">
-            <Image
-              src={scene.image}
-              alt={`Siggy demonstrating ${scene.eyebrow}`}
-              fill
-              priority={sceneIndex === 0}
-              sizes="(max-width: 768px) 100vw, 1100px"
-              className="tourImage"
-            />
+            <div
+              className="absolute inset-0"
+              style={{ opacity: front === "A" ? 1 : 0, transition: `opacity ${CROSSFADE_MS}ms ease` }}
+            >
+              <Image
+                key={imgA}
+                src={TOUR_SCENES[imgA].image}
+                alt={`Siggy demonstrating ${TOUR_SCENES[imgA].eyebrow}`}
+                fill
+                priority={imgA === 0}
+                sizes="(max-width: 768px) 100vw, 1100px"
+                className="tourImage"
+              />
+            </div>
+            <div
+              className="absolute inset-0"
+              style={{ opacity: front === "B" ? 1 : 0, transition: `opacity ${CROSSFADE_MS}ms ease` }}
+            >
+              <Image
+                key={imgB}
+                src={TOUR_SCENES[imgB].image}
+                alt={`Siggy demonstrating ${TOUR_SCENES[imgB].eyebrow}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 1100px"
+                className="tourImage"
+              />
+            </div>
+
             <div className="tourOverlay" />
-            <div className="tourContent">
+
+            <div className="absolute top-0 inset-x-0 h-1 bg-white/10">
+              <div
+                className={`h-full ${accent.dot}`}
+                style={{ width: `${progress * 100}%`, transition: playing ? "width 100ms linear" : "none" }}
+              />
+            </div>
+
+            <div key={scene.id} className="tourContent animate-scene-in">
               <p className={`text-xs uppercase tracking-widest mb-1.5 ${accent.text}`}>{scene.eyebrow}</p>
               <h3 className="font-display text-lg sm:text-xl text-gray-100 mb-1.5">{scene.title}</h3>
-              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{scene.caption}</p>
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-2">{scene.caption}</p>
+              <div className="flex items-end gap-[3px] h-9" aria-hidden>
+                {Array.from({ length: WAVEFORM_BARS }, (_, i) => (
+                  <div
+                    key={i}
+                    ref={(el) => {
+                      barRefs.current[i] = el;
+                    }}
+                    className={`w-[3px] rounded-full ${accent.dot} opacity-70`}
+                    style={{ height: "8px" }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
