@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { PrivateKey, decrypt, encrypt } from "eciesjs";
 import { bytesToHex, hexToBytes } from "viem";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { StatusBadge } from "@/components/site/StatusBadge";
 // Importing lib/secrets.ts sets ECIES_CONFIG.symmetricNonceLength = 12 as a module side effect,
 // so this demo uses the exact same encryption config as the real submit flow.
 import "@/lib/secrets";
@@ -40,7 +41,10 @@ export function SecretsDemo() {
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Secret Encryption</h3>
-        <PrecompileBadge address="ECIES" label="real crypto, demo keypair" color="gold" />
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="local" />
+          <PrecompileBadge address="ECIES" label="real crypto, demo keypair" color="gold" />
+        </div>
       </div>
       <p className="text-xs text-gray-500 mb-4">
         This runs the actual ECIES encryption used by the app (12-byte AES-GCM nonce, same as
@@ -91,7 +95,7 @@ export function SecretsDemo() {
         </div>
       )}
 
-      <p className="text-xs text-gray-600 mt-4 pt-3 border-t border-gray-800">
+      <p className="text-xs text-gray-400 mt-4 pt-3 border-t border-gray-800">
         In a request, the plaintext key name (e.g. <code className="font-mono">API_KEY</code>) is
         used as a placeholder in headers/URL/body. The executor decrypts this blob inside its TEE
         and replaces every literal occurrence of that placeholder — the real value is never visible

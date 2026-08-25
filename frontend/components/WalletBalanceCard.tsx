@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useAccount, useBlockNumber } from "wagmi";
 import { useRitualWallet } from "@/hooks/useRitualWallet";
+import { StatusBadge } from "@/components/site/StatusBadge";
 
 export function WalletBalanceCard() {
   const { address } = useAccount();
@@ -36,13 +37,16 @@ export function WalletBalanceCard() {
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-display text-lg text-gray-100">RitualWallet</h2>
-        <span
-          className={`text-xs uppercase tracking-wider px-2 py-1 rounded ${
-            isFunded ? "text-ritual-green bg-ritual-green/10" : "text-ritual-gold bg-ritual-gold/10"
-          }`}
-        >
-          {isFunded ? "Funded" : "Needs deposit"}
-        </span>
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="live" />
+          <span
+            className={`text-xs uppercase tracking-wider px-2 py-1 rounded ${
+              isFunded ? "text-ritual-green bg-ritual-green/10" : "text-ritual-gold bg-ritual-gold/10"
+            }`}
+          >
+            {isFunded ? "Funded" : "Needs deposit"}
+          </span>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-4">

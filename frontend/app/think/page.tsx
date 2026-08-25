@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/site/PageHeader";
 import { DemoNote } from "@/components/site/DemoNote";
 import { InfoCard } from "@/components/site/InfoCard";
 import { LlmChatDemo } from "@/components/demo/LlmChatDemo";
 import { OnnxDemo } from "@/components/demo/OnnxDemo";
+
+export const metadata: Metadata = {
+  title: "Think — AI & Inference",
+  description:
+    "Chat with an LLM, run a real trained ONNX model synchronously in your browser, and see how FHE inference computes over encrypted data — all as native Ritual precompiles.",
+  alternates: { canonical: "/think" },
+};
 
 export default function ThinkPage() {
   return (

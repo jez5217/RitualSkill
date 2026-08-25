@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/site/PageHeader";
 import { DemoNote } from "@/components/site/DemoNote";
 import { InfoCard } from "@/components/site/InfoCard";
 import { SecretsDemo } from "@/components/demo/SecretsDemo";
+
+export const metadata: Metadata = {
+  title: "Keep Secrets — Privacy & Keys",
+  description:
+    "Real ECIES encryption, generated and verified right in your browser — plus access control and micropayments for secret-gated APIs.",
+  alternates: { canonical: "/secrets" },
+};
 
 export default function SecretsPage() {
   return (

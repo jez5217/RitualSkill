@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/site/PageHeader";
 import { DemoNote } from "@/components/site/DemoNote";
 import { InfoCard } from "@/components/site/InfoCard";
 import { DemoWalletBalanceCard } from "@/components/demo/DemoWalletBalanceCard";
 import { AsyncLifecycleDemo } from "@/components/demo/AsyncLifecycleDemo";
+
+export const metadata: Metadata = {
+  title: "RitualWallet & Job Lifecycle",
+  description:
+    "How every precompile call is prepaid through RitualWallet, and the 9-state lifecycle every async job passes through from submission to settlement.",
+  alternates: { canonical: "/wallet" },
+};
 
 export default function WalletPage() {
   return (

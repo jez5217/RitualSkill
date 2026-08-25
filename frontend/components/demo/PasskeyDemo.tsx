@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { StatusBadge } from "@/components/site/StatusBadge";
 
 type Stage = "idle" | "registering" | "registered" | "signing" | "verified";
 
@@ -30,7 +31,10 @@ export function PasskeyDemo() {
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Passkey Transaction Signing</h3>
-        <PrecompileBadge address="0x77 / 0x0100" label="TxPasskey + SECP256R1" color="lime" />
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="simulation" />
+          <PrecompileBadge address="0x77 / 0x0100" label="TxPasskey + SECP256R1" color="lime" />
+        </div>
       </div>
       <p className="text-xs text-gray-500 mb-4">
         Sign a Ritual transaction directly with a device passkey (Face ID / Touch ID / Windows
@@ -80,7 +84,7 @@ export function PasskeyDemo() {
             <div className="flex items-center gap-2 text-sm">
               <span className="text-ritual-green">✔</span>
               <span className="text-ritual-green">Signature verified via SECP256R1 precompile</span>
-              <span className="text-gray-600">· 3,450 gas</span>
+              <span className="text-gray-400">· 3,450 gas</span>
             </div>
           )}
         </div>

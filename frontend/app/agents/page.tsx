@@ -4,6 +4,8 @@ import { useState } from "react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { DemoNote } from "@/components/site/DemoNote";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { StatusBadge } from "@/components/site/StatusBadge";
+import { CodeBlock } from "@/components/site/CodeBlock";
 import { PersistentAgentDemo } from "@/components/demo/PersistentAgentDemo";
 import { DemoWalletBalanceCard } from "@/components/demo/DemoWalletBalanceCard";
 import { DemoResearchForm } from "@/components/demo/DemoResearchForm";
@@ -37,10 +39,17 @@ function SovereignAgentSection() {
   return (
     <div className="space-y-4">
       {!RESEARCH_REGISTRY_CONFIGURED && (
-        <div className="border border-ritual-gold/40 bg-ritual-gold/5 text-ritual-gold text-sm rounded-lg p-4">
-          <strong>Not deployed yet.</strong> Run <code className="font-mono">forge script script/Deploy.s.sol</code>{" "}
-          in <code className="font-mono">contracts/</code> and set{" "}
-          <code className="font-mono">NEXT_PUBLIC_RESEARCH_REGISTRY</code>.
+        <div className="border border-ritual-gold/40 bg-ritual-gold/5 text-ritual-gold text-sm rounded-lg p-4 space-y-3">
+          <p>
+            <strong>Not deployed yet.</strong> Get a funded testnet wallet, then deploy the contract
+            from <code className="font-mono">contracts/</code>:
+          </p>
+          <CodeBlock label="contracts/" code={"forge script script/Deploy.s.sol:DeployScript \\\n  --rpc-url $RITUAL_RPC_URL --broadcast"} />
+          <p className="text-xs text-ritual-gold/80">
+            Then set <code className="font-mono">NEXT_PUBLIC_RESEARCH_REGISTRY</code> to the deployed
+            address and <code className="font-mono">NEXT_PUBLIC_DEMO_MODE=false</code> in{" "}
+            <code className="font-mono">frontend/.env.local</code>.
+          </p>
         </div>
       )}
       <ChainGuard>
@@ -67,7 +76,10 @@ export default function AgentsPage() {
       <section className="mb-10">
         <div className="flex items-center justify-between mb-1">
           <h2 className="font-display text-lg text-gray-100">Sovereign Agent — Research Job</h2>
-          <PrecompileBadge address="0x080C" label="ZeroClaw · one-shot" color="pink" />
+          <div className="flex items-center gap-2 flex-wrap">
+            <StatusBadge status={DEMO_MODE ? "simulation" : "live"} />
+            <PrecompileBadge address="0x080C" label="ZeroClaw · one-shot" color="pink" />
+          </div>
         </div>
         <p className="text-sm text-gray-500 mb-4">
           Submit a topic; a ZeroClaw-harnessed agent researches it and reports back once.{" "}
@@ -83,6 +95,7 @@ export default function AgentsPage() {
       <section>
         <div className="flex items-center justify-between mb-1">
           <h2 className="font-display text-lg text-gray-100">Persistent Agent — Long-Lived Identity</h2>
+          <StatusBadge status="simulation" />
         </div>
         <p className="text-sm text-gray-500 mb-4">
           An always-on assistant with memory, identity, and automatic revival if its executor goes

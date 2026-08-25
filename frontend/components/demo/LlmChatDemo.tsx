@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { StatusBadge } from "@/components/site/StatusBadge";
 import { generateDemoReply } from "@/lib/demoLlm";
 
 interface ChatMessage {
@@ -58,7 +59,10 @@ export function LlmChatDemo() {
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5 flex flex-col">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">LLM Chat</h3>
-        <PrecompileBadge address="0x0802" label="zai-org/GLM-4.7-FP8" color="pink" />
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="simulation" />
+          <PrecompileBadge address="0x0802" label="zai-org/GLM-4.7-FP8" color="pink" />
+        </div>
       </div>
 
       <div ref={scrollRef} className="flex-1 min-h-[280px] max-h-[380px] overflow-y-auto space-y-3 mb-4 pr-1">

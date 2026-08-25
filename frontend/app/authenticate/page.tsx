@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/site/PageHeader";
 import { DemoNote } from "@/components/site/DemoNote";
 import { InfoCard } from "@/components/site/InfoCard";
 import { PasskeyDemo } from "@/components/demo/PasskeyDemo";
+
+export const metadata: Metadata = {
+  title: "Authenticate — Signatures & Identity",
+  description:
+    "Native support for the signature schemes the real world already uses — passkeys, Ed25519 (Solana/SSH/DKIM), and P-256.",
+  alternates: { canonical: "/authenticate" },
+};
 
 export default function AuthenticatePage() {
   return (

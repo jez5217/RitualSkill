@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { StatusBadge } from "@/components/site/StatusBadge";
 
 const STATES = [
   { name: "SUBMITTING", detail: "Local — wallet interaction, transaction not yet sent." },
@@ -37,7 +38,10 @@ export function AsyncLifecycleDemo() {
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Async Job Lifecycle</h3>
-        <PrecompileBadge address="AsyncJobTracker" label="9 states" color="green" />
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="simulation" />
+          <PrecompileBadge address="AsyncJobTracker" label="9 states" color="green" />
+        </div>
       </div>
       <p className="text-xs text-gray-500 mb-4">
         Every async precompile call — HTTP, LLM, agents, multimodal — moves through this state

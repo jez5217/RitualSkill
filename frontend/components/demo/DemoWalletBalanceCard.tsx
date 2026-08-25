@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useDemoStore } from "@/hooks/demo/useDemoStore";
+import { StatusBadge } from "@/components/site/StatusBadge";
 
 export function DemoWalletBalanceCard() {
   const connected = useDemoStore((s) => s.connected);
@@ -23,13 +24,16 @@ export function DemoWalletBalanceCard() {
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-display text-lg text-gray-100">RitualWallet</h2>
-        <span
-          className={`text-xs uppercase tracking-wider px-2 py-1 rounded ${
-            balance > 0 ? "text-ritual-green bg-ritual-green/10" : "text-ritual-gold bg-ritual-gold/10"
-          }`}
-        >
-          {balance > 0 ? "Funded" : "Needs deposit"}
-        </span>
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="simulation" />
+          <span
+            className={`text-xs uppercase tracking-wider px-2 py-1 rounded ${
+              balance > 0 ? "text-ritual-green bg-ritual-green/10" : "text-ritual-gold bg-ritual-gold/10"
+            }`}
+          >
+            {balance > 0 ? "Funded" : "Needs deposit"}
+          </span>
+        </div>
       </div>
 
       <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Balance</p>

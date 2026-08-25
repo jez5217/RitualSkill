@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { StatusBadge } from "@/components/site/StatusBadge";
 
 interface Msg {
   id: string;
@@ -71,7 +72,10 @@ export function PersistentAgentDemo() {
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
       <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Persistent Agent</h3>
-        <PrecompileBadge address="0x0820" label="stateful, revivable" color="pink" />
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="simulation" />
+          <PrecompileBadge address="0x0820" label="stateful, revivable" color="pink" />
+        </div>
       </div>
       <p className="text-xs text-gray-500 mb-4">
         Identity: <span className="font-mono">{IDENTITY_CID.slice(0, 20)}…</span> · DA-backed memory
@@ -84,7 +88,7 @@ export function PersistentAgentDemo() {
             <>
               <span className="w-2 h-2 rounded-full bg-ritual-green animate-pulse" />
               <span className="text-ritual-green">Alive</span>
-              <span className="text-gray-600">· last heartbeat {heartbeatSec}s ago</span>
+              <span className="text-gray-400">· last heartbeat {heartbeatSec}s ago</span>
             </>
           )}
           {status === "offline" && (
@@ -111,7 +115,7 @@ export function PersistentAgentDemo() {
 
       <div ref={scrollRef} className="min-h-[160px] max-h-[280px] overflow-y-auto space-y-2.5 mb-4 pr-1">
         {messages.length === 0 && (
-          <p className="text-sm text-gray-600">Say something — this agent remembers it for the rest of the chat.</p>
+          <p className="text-sm text-gray-400">Say something — this agent remembers it for the rest of the chat.</p>
         )}
         {messages.map((m) => (
           <div key={m.id} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>

@@ -26,24 +26,28 @@ export function SiteHeader() {
           </Link>
           <DemoConnectWalletButton />
         </div>
-        <nav className="flex gap-1 overflow-x-auto pb-3 -mt-1 text-sm scrollbar-none">
-          {NAV.map((item) => {
-            const active = pathname === item.href || pathname?.startsWith(item.href + "/");
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`px-3 py-1.5 rounded-lg whitespace-nowrap border transition-colors ${
-                  active
-                    ? "border-ritual-green text-ritual-green bg-ritual-green/10"
-                    : "border-transparent text-gray-500 hover:text-gray-300 hover:border-gray-800"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="relative -mx-4 sm:mx-0">
+          <nav className="flex gap-1 overflow-x-auto pb-3 -mt-1 text-sm scrollbar-none px-4 sm:px-0">
+            {NAV.map((item) => {
+              const active = pathname === item.href || pathname?.startsWith(item.href + "/");
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`px-3 py-1.5 rounded-lg whitespace-nowrap border transition-colors ${
+                    active
+                      ? "border-ritual-green text-ritual-green bg-ritual-green/10"
+                      : "border-transparent text-gray-500 hover:text-gray-300 hover:border-gray-800"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+          {/* Hints that the nav scrolls horizontally — it has no other visual affordance on narrow screens. */}
+          <div className="pointer-events-none absolute right-0 top-0 bottom-3 w-8 bg-gradient-to-l from-black to-transparent sm:hidden" />
+        </div>
       </div>
     </header>
   );

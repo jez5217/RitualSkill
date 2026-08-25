@@ -1,4 +1,5 @@
 import { PrecompileBadge } from "./PrecompileBadge";
+import { StatusBadge } from "./StatusBadge";
 
 export function InfoCard({
   title,
@@ -15,7 +16,10 @@ export function InfoCard({
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl p-5">
       <div className="flex items-center justify-between mb-2 gap-3 flex-wrap">
         <h3 className="font-display text-base text-gray-100">{title}</h3>
-        <PrecompileBadge address={address} label="reference only" color={color} />
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="concept" />
+          <PrecompileBadge address={address} label="reference only" color={color} />
+        </div>
       </div>
       <p className="text-sm text-gray-500 leading-relaxed">{children}</p>
     </div>

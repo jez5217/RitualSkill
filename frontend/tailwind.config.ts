@@ -13,6 +13,7 @@ const config: Config = {
           lime: "#BFFF00",
           pink: "#FF1DCE",
           gold: "#FACC15",
+          purple: "#8B5CF6",
         },
       },
       fontFamily: {

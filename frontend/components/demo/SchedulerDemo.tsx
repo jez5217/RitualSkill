@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { StatusBadge } from "@/components/site/StatusBadge";
 
 type CallState = "scheduled" | "executing" | "completed" | "cancelled" | "expired";
 
@@ -9,8 +10,8 @@ const STATE_STYLE: Record<CallState, string> = {
   scheduled: "text-ritual-gold",
   executing: "text-ritual-green animate-pulse",
   completed: "text-ritual-green",
-  cancelled: "text-gray-600",
-  expired: "text-gray-600",
+  cancelled: "text-gray-400",
+  expired: "text-gray-400",
 };
 
 const STATE_ICON: Record<CallState, string> = {
@@ -62,7 +63,10 @@ export function SchedulerDemo() {
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Scheduler</h3>
-        <PrecompileBadge address="Scheduler" label="recurring self-invocation" color="gold" />
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="simulation" />
+          <PrecompileBadge address="Scheduler" label="recurring self-invocation" color="gold" />
+        </div>
       </div>
       <p className="text-xs text-gray-500 mb-4">
         A contract schedules a future call to itself — recurring or one-shot — enforced at the

@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/site/PageHeader";
 import { DemoNote } from "@/components/site/DemoNote";
 import { InfoCard } from "@/components/site/InfoCard";
 import { HttpCallDemo } from "@/components/demo/HttpCallDemo";
 import { MultimodalDemo } from "@/components/demo/MultimodalDemo";
+
+export const metadata: Metadata = {
+  title: "See · Hear · Act — Real-World Compute & Multimodal",
+  description:
+    "Call any HTTP API, and generate images, audio, and video — with every result attested inside a trusted execution environment.",
+  alternates: { canonical: "/act" },
+};
 
 export default function ActPage() {
   return (

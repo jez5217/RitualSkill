@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { StatusBadge } from "@/components/site/StatusBadge";
 import { preloadSentimentModel, runSentiment, type SentimentResult } from "@/lib/sentimentModel";
 
 const EXAMPLES: { label: string; text: string }[] = [
@@ -98,7 +99,10 @@ export function OnnxDemo() {
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-4 sm:p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Classical Inference (ONNX)</h3>
-        <PrecompileBadge address="0x0800" label="synchronous" color="green" />
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="local" />
+          <PrecompileBadge address="0x0800" label="synchronous" color="green" />
+        </div>
       </div>
       <p className="text-xs text-gray-500 mb-4">
         Synchronous — executes inline in the same block, no TEE round trip. This demo runs a real,
@@ -151,7 +155,7 @@ export function OnnxDemo() {
             <div className={`h-full ${colors.bar}`} style={{ width: `${result.confidence * 100}%` }} />
           </div>
           <div className="bg-ritual-surface border border-gray-800 rounded-lg px-3 py-2.5">
-            <p className="text-[10px] uppercase tracking-wide text-gray-600 mb-1.5">
+            <p className="text-[10px] uppercase tracking-wide text-gray-400 mb-1.5">
               Words that drove this prediction
             </p>
             <HighlightedText text={text} result={result} />
@@ -161,7 +165,7 @@ export function OnnxDemo() {
 
       {history.length > 0 && (
         <div className="mt-4 pt-4 border-t border-gray-800">
-          <p className="text-[10px] uppercase tracking-wide text-gray-600 mb-2">Recent runs</p>
+          <p className="text-[10px] uppercase tracking-wide text-gray-400 mb-2">Recent runs</p>
           <ul className="space-y-1.5">
             {history.map((entry) => {
               const c = labelColor(entry.result.label);
@@ -175,7 +179,7 @@ export function OnnxDemo() {
                   >
                     <span className={`text-[10px] font-mono shrink-0 w-14 ${c.text}`}>{entry.result.label}</span>
                     <span className="text-xs text-gray-500 truncate flex-1">{entry.text}</span>
-                    <span className="text-[10px] text-gray-600 font-mono shrink-0">
+                    <span className="text-[10px] text-gray-400 font-mono shrink-0">
                       {(entry.result.confidence * 100).toFixed(0)}%
                     </span>
                   </button>

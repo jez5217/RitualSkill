@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { StatusBadge } from "@/components/site/StatusBadge";
 import { gradientFromPrompt, waveformBars } from "@/lib/demoMultimodal";
 
 type Modality = "image" | "audio" | "video";
@@ -34,11 +35,14 @@ export function MultimodalDemo() {
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Multimodal Generation</h3>
-        <PrecompileBadge
-          address={MODALITY_CONFIG[modality].address}
-          label={MODALITY_CONFIG[modality].label}
-          color="pink"
-        />
+        <div className="flex items-center gap-2 flex-wrap">
+          <StatusBadge status="simulation" />
+          <PrecompileBadge
+            address={MODALITY_CONFIG[modality].address}
+            label={MODALITY_CONFIG[modality].label}
+            color="pink"
+          />
+        </div>
       </div>
 
       <div className="flex gap-1 mb-4 text-xs">
