@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { DemoNote } from "@/components/site/DemoNote";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
+import { ExplainerTour } from "@/components/site/ExplainerTour";
 import { FEATURE_GROUPS } from "@/lib/featureGroups";
 
 const PROPERTIES = [
@@ -41,6 +42,8 @@ export default function Home() {
         required. The Sovereign Agent research flow under <strong>Agents</strong> also has a real,
         deployable on-chain implementation (see the repo&apos;s <code className="font-mono">contracts/</code>).
       </DemoNote>
+
+      <ExplainerTour />
 
       <section className="mb-16">
         <h2 className="font-display text-xl text-gray-100 mb-5">Explore by capability</h2>

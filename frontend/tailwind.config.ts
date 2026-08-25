@@ -25,6 +25,15 @@ const config: Config = {
         "glow-pink": "0 0 30px -5px rgba(255, 29, 206, 0.2)",
         card: "0 4px 40px -12px rgba(0, 0, 0, 0.5)",
       },
+      keyframes: {
+        sceneIn: {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "scene-in": "sceneIn 0.45s ease-out",
+      },
     },
   },
   plugins: [],
