@@ -19,16 +19,32 @@ type AgentStatus = "alive" | "offline" | "reviving";
 // stable constant is correct, not a client-only workaround.
 const IDENTITY_CID = "bafy2bzacedqj7x4n9k2m8p3q5r1s6t0v";
 
+function truncate(text: string, max = 48): string {
+  return text.length > max ? `${text.slice(0, max)}…` : text;
+}
+
+// Cycled (not random) by turn count so a back-and-forth conversation doesn't
+// repeat the exact same acknowledgment every time -- the previous version
+// used one fixed template for every follow-up, which read as broken/canned
+// when tested with more than one message.
+const OPENERS = ["Got it", "Noted", "Recorded", "Understood", "Makes sense"];
+const MEMORY_FLAVORS = [
+  "A live Persistent Agent would append this turn to its DA-backed memory (soul/memory refs), available on the next wakeup even from a different executor.",
+  "That's the real difference from a Sovereign Agent job — this conversation is part of my persistent identity, not thrown away when the turn ends.",
+  "If my executor went down right now, AgentHeartbeat would catch it, and a real Persistent Agent would revive with this still in memory.",
+  "I'm folding this in alongside everything else you've told me in this thread, not just your last message.",
+  "This kind of running context is exactly what DKMS-derived, DA-backed identity is for — memory that survives a restart, not just a session.",
+];
+
 function remembersReply(history: Msg[], text: string): string {
   const priorUser = history.filter((m) => m.role === "user");
   if (priorUser.length === 0) {
     return `Hi, I'm your persistent agent — identity ${IDENTITY_CID.slice(0, 16)}…. I keep memory across every message, not just this session.`;
   }
-  const last = priorUser[priorUser.length - 1]?.content;
-  return (
-    `Got it — noted alongside what you told me before ("${last?.slice(0, 40)}${(last?.length ?? 0) > 40 ? "…" : ""}"). ` +
-    "A live Persistent Agent would append this turn to its DA-backed memory (soul/memory refs) so it's available on the next wakeup, even from a different executor."
-  );
+  const turn = priorUser.length;
+  const opener = OPENERS[turn % OPENERS.length];
+  const flavor = MEMORY_FLAVORS[turn % MEMORY_FLAVORS.length];
+  return `${opener} — "${truncate(text)}" noted. ${flavor}`;
 }
 
 export function PersistentAgentDemo() {
