@@ -8,7 +8,15 @@ import { TOUR_SCENES } from "@/lib/tourScenes";
 import { pickFemaleVoice } from "@/lib/femaleVoice";
 import { ACCENT } from "@/lib/accentColors";
 
-const MUTED_SCENE_MS = 6000;
+// Every scene stays on screen at least this long, whether or not narration is
+// actually playing — guards against a browser firing an utterance's `onend`
+// almost instantly (e.g. no voice ever resolved), which otherwise raced
+// through all nine scenes in ~2.5s. Also the fixed duration used when there's
+// no narration to time against at all (unsupported/muted/voice-timed-out).
+const MIN_SCENE_DURATION = 7000;
+// How long to wait for a voice to resolve before giving up and falling back
+// to timer-paced captions-only playback.
+const VOICE_TIMEOUT_MS = 2000;
 
 export function ExplainerTour() {
   const [sceneIndex, setSceneIndex] = useState(0);
@@ -16,16 +24,22 @@ export function ExplainerTour() {
   const [muted, setMuted] = useState(false);
   const [supported, setSupported] = useState(false);
   const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
+  const [voiceTimedOut, setVoiceTimedOut] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const sceneStartedAtRef = useRef(0);
 
   const scene = TOUR_SCENES[sceneIndex];
   const isLast = sceneIndex === TOUR_SCENES.length - 1;
   const accent = ACCENT[scene.color];
+  // No voice ever resolved within the grace period — stop waiting and drive
+  // playback off the fixed timer instead of attempting (silent) speech.
+  const useTimerFallback = muted || !supported || (voiceTimedOut && !voice);
 
   // Voice discovery — getVoices() is async and unpopulated on first call in most browsers.
   useEffect(() => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) {
       setSupported(false);
+      setVoiceTimedOut(true);
       return;
     }
     setSupported(true);
@@ -35,7 +49,11 @@ export function ExplainerTour() {
     }
     loadVoices();
     window.speechSynthesis.addEventListener("voiceschanged", loadVoices);
-    return () => window.speechSynthesis.removeEventListener("voiceschanged", loadVoices);
+    const timeout = setTimeout(() => setVoiceTimedOut(true), VOICE_TIMEOUT_MS);
+    return () => {
+      window.speechSynthesis.removeEventListener("voiceschanged", loadVoices);
+      clearTimeout(timeout);
+    };
   }, []);
 
   // Chrome silently cuts off long utterances (~15s) unless nudged periodically.
@@ -79,8 +97,10 @@ export function ExplainerTour() {
     clearTimer();
     if (!playing) return;
 
-    if (muted || !supported) {
-      timerRef.current = setTimeout(goNext, MUTED_SCENE_MS);
+    sceneStartedAtRef.current = Date.now();
+
+    if (useTimerFallback) {
+      timerRef.current = setTimeout(goNext, MIN_SCENE_DURATION);
       return () => clearTimer();
     }
 
@@ -89,15 +109,20 @@ export function ExplainerTour() {
     if (voice) utter.voice = voice;
     utter.rate = 0.98;
     utter.pitch = 1.03;
-    utter.onend = goNext;
-    utter.onerror = goNext;
+
+    function advanceAfterMinimumDuration() {
+      const elapsed = Date.now() - sceneStartedAtRef.current;
+      timerRef.current = setTimeout(goNext, Math.max(0, MIN_SCENE_DURATION - elapsed));
+    }
+    utter.onend = advanceAfterMinimumDuration;
+    utter.onerror = advanceAfterMinimumDuration;
     window.speechSynthesis.speak(utter);
 
     return () => {
       window.speechSynthesis.cancel();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sceneIndex, playing, muted, supported, voice]);
+  }, [sceneIndex, playing, useTimerFallback, voice]);
 
   useEffect(() => {
     return () => {
@@ -131,7 +156,13 @@ export function ExplainerTour() {
       <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
         <h2 className="font-display text-xl text-gray-100">Watch the tour</h2>
         <span className="text-xs text-gray-400 font-mono">
-          {supported ? (voice ? `narrated by ${voice.name}` : "loading voice…") : "captions only — no speech synthesis"}
+          {!supported
+            ? "captions only — no speech synthesis"
+            : voice
+              ? `narrated by ${voice.name}`
+              : voiceTimedOut
+                ? "Voice unavailable — continuing with captions"
+                : "loading voice…"}
         </span>
       </div>
 
