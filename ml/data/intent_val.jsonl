@@ -1,0 +1,26 @@
+{"text": "hello there", "label": "GREETING"}
+{"text": "how does ritual foundation work?", "label": "RITUAL"}
+{"text": "what does ritual chain do differently from other L1s?", "label": "RITUAL"}
+{"text": "tell me about ritual's roadmap", "label": "RITUAL"}
+{"text": "is ritual's LLM precompile live yet?", "label": "RITUAL"}
+{"text": "Yo whats up!", "label": "GREETING"}
+{"text": "what is why the sky is blue?", "label": "QUESTION"}
+{"text": "my cat is sleeping on my keyboard", "label": "OTHER"}
+{"text": "hi, how are you", "label": "GREETING"}
+{"text": "yo whats up", "label": "GREETING"}
+{"text": "what's the deal with ritual", "label": "RITUAL"}
+{"text": "I'll try that later", "label": "OTHER"}
+{"text": "here's what i found so far", "label": "OTHER"}
+{"text": "Greetings!", "label": "GREETING"}
+{"text": "can you help me with why the sky is blue?", "label": "QUESTION"}
+{"text": "is ritual live yet?", "label": "RITUAL"}
+{"text": "explain how to fix a flat tire to me", "label": "QUESTION"}
+{"text": "why is the best way to learn Python the way it is?", "label": "QUESTION"}
+{"text": "the server restarted on its own", "label": "OTHER"}
+{"text": "do you know how to reset my password?", "label": "QUESTION"}
+{"text": "how does how to center a div in CSS work?", "label": "QUESTION"}
+{"text": "why is why my code keeps crashing the way it is?", "label": "QUESTION"}
+{"text": "who is on your team?", "label": "QUESTION"}
+{"text": "is ritual's TEE model live yet?", "label": "RITUAL"}
+{"text": "explain how to reset my password to me", "label": "QUESTION"}
+{"text": "this is a test message", "label": "OTHER"}

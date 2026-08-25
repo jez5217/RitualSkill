@@ -1,3 +1,5 @@
+import type { Intent } from "@/lib/intentModel";
+
 /** Small canned-response generator standing in for the LLM precompile (0x0802) in Demo Mode. */
 
 // Cycled by turn count (not random, so it stays deterministic) rather than
@@ -50,14 +52,30 @@ function defaultReply(msg: string, turn: number): string {
   return variants[turn % variants.length];
 }
 
-export function generateDemoReply(userMessage: string, turn = 0): string {
-  const msg = userMessage.trim();
-  const lower = msg.toLowerCase();
+/**
+ * Pure, dependency-free fallback used only if the real intent classifier
+ * (lib/intentModel.ts, a trained ONNX model) fails to load — e.g. offline on
+ * first visit before the model is cached. Keeps the demo from ever breaking,
+ * at the cost of the cruder substring matching the real model replaced.
+ */
+export function keywordIntentFallback(userMessage: string): Intent {
+  const lower = userMessage.trim().toLowerCase();
+  if (lower.includes("ritual")) return "RITUAL";
+  if (lower.includes("hello") || lower.includes("hi") || userMessage.trim().length < 8) return "GREETING";
+  if (lower.includes("?")) return "QUESTION";
+  return "OTHER";
+}
 
-  if (lower.includes("ritual")) return RITUAL_REPLIES[turn % RITUAL_REPLIES.length];
-  if (lower.includes("hello") || lower.includes("hi") || msg.length < 8) {
-    return GREETING_REPLIES[turn % GREETING_REPLIES.length];
+export function generateDemoReply(userMessage: string, intent: Intent, turn = 0): string {
+  const msg = userMessage.trim();
+  switch (intent) {
+    case "RITUAL":
+      return RITUAL_REPLIES[turn % RITUAL_REPLIES.length];
+    case "GREETING":
+      return GREETING_REPLIES[turn % GREETING_REPLIES.length];
+    case "QUESTION":
+      return questionReply(msg, turn);
+    default:
+      return defaultReply(msg, turn);
   }
-  if (lower.includes("?")) return questionReply(msg, turn);
-  return defaultReply(msg, turn);
 }

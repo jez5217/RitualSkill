@@ -1,18 +1,16 @@
-# Sentiment model — training pipeline
+# Trained model pipelines
 
-A small, genuinely trained model backing the Classical Inference (`0x0800`)
-demo on `/think`. Replaces what used to be a hardcoded +1/-1 wordlist with a
-real softmax-regression classifier exported to ONNX and run client-side via
-`onnxruntime-web` (WASM) — see `frontend/lib/sentimentModel.ts`.
+Two small, genuinely trained models on this site — both bag-of-words →
+`Gemm` → `Softmax` linear classifiers, trained with plain numpy gradient
+descent (no ML framework beyond `numpy` + `onnx` for export), running
+client-side via `onnxruntime-web` (WASM). Both load onnxruntime-web through
+the shared `frontend/lib/ortRuntime.ts` helper (see that file's comment for
+why it isn't a plain npm `import()`).
 
-## Model
+## Sentiment model (`/think`, Classical Inference `0x0800`)
 
-Bag-of-words counts over a ~140-word vocabulary → linear layer (`Gemm`) →
-`Softmax` over three classes (`NEGATIVE` / `NEUTRAL` / `POSITIVE`). Trained
-with plain numpy gradient descent, no ML framework dependency beyond
-`numpy` + `onnx` for the export.
-
-## Files
+Replaces what used to be a hardcoded +1/-1 wordlist. ~140-word vocabulary,
+3 classes (`NEGATIVE` / `NEUTRAL` / `POSITIVE`). Frontend: `sentimentModel.ts`.
 
 | File | Purpose |
 |---|---|
@@ -20,6 +18,20 @@ with plain numpy gradient descent, no ML framework dependency beyond
 | `train.py` | Trains the classifier, prints train/val accuracy, writes `frontend/public/models/sentiment/{model.onnx,vocab.json}` |
 | `validate.py` | Sanity-checks the exported ONNX file against a few hand-written unseen sentences via `onnxruntime` |
 | `data/*.jsonl` | The actual labeled dataset, one `{"text", "label"}` per line — committed so the training data is inspectable, not just the weights |
+
+## Intent model (`/think`, LLM Chat demo)
+
+Replaces `.includes("ritual")` / `.includes("hello")` / `.includes("?")`
+substring matching for picking which canned-reply bucket a chat message
+routes to. ~160-word vocabulary, 4 classes (`GREETING` / `OTHER` /
+`QUESTION` / `RITUAL`). Frontend: `intentModel.ts`, consumed by
+`components/demo/LlmChatDemo.tsx` (with `demoLlm.ts`'s `keywordIntentFallback`
+as a pure-JS fallback if the model itself fails to load).
+
+| File | Purpose |
+|---|---|
+| `generate_intent_dataset.py` | Builds `data/intent_train.jsonl` / `data/intent_val.jsonl` |
+| `train_intent.py` | Trains the classifier, writes `frontend/public/models/intent/{model.onnx,vocab.json}` |
 
 ## Retraining
 
