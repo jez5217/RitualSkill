@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const REPO = "https://github.com/jez5217/RitualSkill";
+const SKILLS_URL = "https://skills.ritualfoundation.org";
 
 const PROPERTIES = [
   { name: "Immortal", detail: "Runs indefinitely via self-scheduling — no human has to keep it alive." },
@@ -52,7 +52,7 @@ export default function Home() {
             Try an AI Agent in 60 Seconds
           </Link>
           <a
-            href={REPO}
+            href={SKILLS_URL}
             target="_blank"
             rel="noreferrer"
             className="px-5 py-3 border border-gray-700 text-gray-300 hover:border-gray-500 rounded-lg font-semibold transition-colors"
@@ -72,13 +72,11 @@ export default function Home() {
           <p className="text-xs text-gray-500 leading-relaxed">See what an AI-native chain can do — start with Think.</p>
         </Link>
         <a
-          href={REPO}
-          target="_blank"
-          rel="noreferrer"
+          href="#for-developers"
           className="border border-gray-800 hover:border-gray-700 rounded-lg p-4 transition-colors"
         >
           <p className="text-sm text-gray-200 font-semibold mb-1">I&apos;m a developer</p>
-          <p className="text-xs text-gray-500 leading-relaxed">Read the source, clone it, and run it locally.</p>
+          <p className="text-xs text-gray-500 leading-relaxed">See how to deploy the contract and call a precompile.</p>
         </a>
         <Link
           href="/agents"
@@ -96,7 +94,7 @@ export default function Home() {
         <span className="text-ritual-gold">interactive simulation</span>, or{" "}
         <span className="text-gray-400">concept/reference</span>. The Sovereign Agent research flow
         under <strong>Agents</strong> is the one with a real, deployable on-chain implementation
-        (see <code className="font-mono">contracts/</code> on GitHub).
+        (see <code className="font-mono">contracts/</code> in this project).
       </DemoNote>
 
       <ExplainerTour />
@@ -171,24 +169,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section id="for-developers">
         <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
           <h2 className="font-display text-xl text-gray-100">For developers</h2>
-          <a href={REPO} target="_blank" rel="noreferrer" className="text-sm text-ritual-green hover:underline">
-            View source on GitHub →
+          <a href={SKILLS_URL} target="_blank" rel="noreferrer" className="text-sm text-ritual-green hover:underline">
+            Start building →
           </a>
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
-          <div className="bg-ritual-elevated border border-gray-800 rounded-xl p-5">
-            <p className="text-sm text-gray-200 font-semibold mb-1">Clone and run it</p>
-            <p className="text-xs text-gray-500 leading-relaxed mb-3">
-              No API keys or wallet needed for Demo Mode.
-            </p>
-            <CodeBlock
-              label="shell"
-              code={`git clone ${REPO}.git\ncd RitualSkill/frontend\nnpm install && npm run dev`}
-            />
-          </div>
           <div className="bg-ritual-elevated border border-gray-800 rounded-xl p-5">
             <p className="text-sm text-gray-200 font-semibold mb-1">Deploy the real contract</p>
             <p className="text-xs text-gray-500 leading-relaxed mb-3">

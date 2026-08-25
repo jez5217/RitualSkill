@@ -8,12 +8,12 @@ export function SiteFooter() {
         </span>
         <span className="flex gap-4">
           <a
-            href="https://github.com/jez5217/RitualSkill"
+            href="https://skills.ritualfoundation.org"
             target="_blank"
             rel="noreferrer"
             className="hover:text-gray-400"
           >
-            GitHub ↗
+            Start Building ↗
           </a>
           <a
             href="https://docs.ritualfoundation.org/"
