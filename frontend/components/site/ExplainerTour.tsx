@@ -8,14 +8,11 @@ import { TOUR_SCENES } from "@/lib/tourScenes";
 import { pickFemaleVoice } from "@/lib/femaleVoice";
 import { ACCENT } from "@/lib/accentColors";
 
-// Every scene stays on screen at least this long, whether or not narration is
-// actually playing — guards against a browser firing an utterance's `onend`
-// almost instantly (e.g. no voice ever resolved), which otherwise raced
-// through all nine scenes in ~2.5s. Also the fixed duration used when there's
-// no narration to time against at all (unsupported/muted/voice-timed-out).
+// Fallback-only: used when a scene's prerecorded audio fails to load/play at
+// all. Guards against a browser speechSynthesis utterance's `onend` firing
+// almost instantly (no voice ever resolved), and is the flat duration used
+// when there's no narration to time against (captions-only).
 const MIN_SCENE_DURATION = 7000;
-// How long to wait for a voice to resolve before giving up and falling back
-// to timer-paced captions-only playback.
 const VOICE_TIMEOUT_MS = 2000;
 
 export function ExplainerTour() {
@@ -25,17 +22,21 @@ export function ExplainerTour() {
   const [supported, setSupported] = useState(false);
   const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [voiceTimedOut, setVoiceTimedOut] = useState(false);
+  const [status, setStatus] = useState("");
+
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const sceneStartedAtRef = useRef(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playingRef = useRef(false);
 
   const scene = TOUR_SCENES[sceneIndex];
   const isLast = sceneIndex === TOUR_SCENES.length - 1;
   const accent = ACCENT[scene.color];
-  // No voice ever resolved within the grace period — stop waiting and drive
-  // playback off the fixed timer instead of attempting (silent) speech.
-  const useTimerFallback = muted || !supported || (voiceTimedOut && !voice);
+  // speechSynthesis fallback only kicks in once we know audio has failed; this
+  // just decides whether that fallback can attempt real speech at all.
+  const canUseSpeechFallback = supported && !muted && (voice || !voiceTimedOut);
 
-  // Voice discovery — getVoices() is async and unpopulated on first call in most browsers.
+  // Voice discovery for the speechSynthesis fallback — getVoices() is async
+  // and unpopulated on first call in most browsers.
   useEffect(() => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) {
       setSupported(false);
@@ -56,7 +57,7 @@ export function ExplainerTour() {
     };
   }, []);
 
-  // Chrome silently cuts off long utterances (~15s) unless nudged periodically.
+  // Chrome silently cuts off long speechSynthesis utterances (~15s) unless nudged periodically.
   useEffect(() => {
     if (!supported) return;
     const nudge = setInterval(() => {
@@ -68,12 +69,25 @@ export function ExplainerTour() {
     return () => clearInterval(nudge);
   }, [supported]);
 
+  // Preload every scene's narration audio up front so playback never stalls mid-tour.
+  useEffect(() => {
+    TOUR_SCENES.forEach((s) => {
+      const a = new Audio();
+      a.preload = "auto";
+      a.src = s.audio;
+    });
+  }, []);
+
   // Preload the next scene's artwork so advancing never shows a blank frame.
   useEffect(() => {
     const nextIndex = (sceneIndex + 1) % TOUR_SCENES.length;
     const img = new window.Image();
     img.src = TOUR_SCENES[nextIndex].image;
   }, [sceneIndex]);
+
+  useEffect(() => {
+    playingRef.current = playing;
+  }, [playing]);
 
   function clearTimer() {
     if (timerRef.current) {
@@ -82,88 +96,122 @@ export function ExplainerTour() {
     }
   }
 
-  function goNext() {
-    setSceneIndex((i) => {
-      if (i >= TOUR_SCENES.length - 1) {
-        setPlaying(false);
-        return i;
-      }
-      return i + 1;
-    });
+  function stopAudio() {
+    const a = audioRef.current;
+    if (a) {
+      a.onplaying = null;
+      a.onended = null;
+      a.onerror = null;
+      a.pause();
+      audioRef.current = null;
+    }
   }
 
-  // Drives narration/auto-advance whenever the active scene or playback state changes.
-  useEffect(() => {
+  function stopEverything() {
     clearTimer();
-    if (!playing) return;
+    stopAudio();
+    if (supported) window.speechSynthesis.cancel();
+  }
 
-    sceneStartedAtRef.current = Date.now();
-
-    if (useTimerFallback) {
-      timerRef.current = setTimeout(goNext, MIN_SCENE_DURATION);
-      return () => clearTimer();
+  function advanceFrom(index: number) {
+    if (!playingRef.current) return;
+    if (index >= TOUR_SCENES.length - 1) {
+      setPlaying(false);
+      playingRef.current = false;
+      return;
     }
+    setSceneIndex(index + 1);
+    playScene(index + 1);
+  }
 
+  // Last-resort path: no audio, no (usable) speech — just hold the caption for a fixed duration.
+  function playCaptionsOnly(index: number) {
+    setStatus(supported ? "Narration unavailable — continuing with captions" : "Captions only — no speech synthesis");
+    timerRef.current = setTimeout(() => advanceFrom(index), MIN_SCENE_DURATION);
+  }
+
+  // Fallback path when this scene's audio file fails: try the browser voice, guaranteeing
+  // a minimum duration regardless of how quickly `onend` fires; otherwise captions-only.
+  function playWithSpeechFallback(index: number) {
+    if (!canUseSpeechFallback) {
+      playCaptionsOnly(index);
+      return;
+    }
+    setStatus(voice ? `Narration unavailable — using ${voice.name}` : "loading voice…");
+    const startedAt = Date.now();
     window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(scene.narration);
+    const utter = new SpeechSynthesisUtterance(TOUR_SCENES[index].narration);
     if (voice) utter.voice = voice;
     utter.rate = 0.98;
     utter.pitch = 1.03;
-
-    function advanceAfterMinimumDuration() {
-      const elapsed = Date.now() - sceneStartedAtRef.current;
-      timerRef.current = setTimeout(goNext, Math.max(0, MIN_SCENE_DURATION - elapsed));
+    function advance() {
+      const elapsed = Date.now() - startedAt;
+      timerRef.current = setTimeout(() => advanceFrom(index), Math.max(0, MIN_SCENE_DURATION - elapsed));
     }
-    utter.onend = advanceAfterMinimumDuration;
-    utter.onerror = advanceAfterMinimumDuration;
+    utter.onend = advance;
+    utter.onerror = advance;
     window.speechSynthesis.speak(utter);
+  }
 
-    return () => {
-      window.speechSynthesis.cancel();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sceneIndex, playing, useTimerFallback, voice]);
+  // Primary path: play this scene's prerecorded narration; only fall back on real failure.
+  function playScene(index: number) {
+    clearTimer();
+    stopAudio();
+    setSceneIndex(index);
+
+    if (muted) {
+      setStatus("Sound off — continuing with captions");
+      timerRef.current = setTimeout(() => advanceFrom(index), MIN_SCENE_DURATION);
+      return;
+    }
+
+    const audio = new Audio(TOUR_SCENES[index].audio);
+    audio.preload = "auto";
+    audioRef.current = audio;
+
+    audio.onplaying = () => setStatus("Narration playing");
+    audio.onended = () => advanceFrom(index);
+    audio.onerror = () => playWithSpeechFallback(index);
+
+    audio.play().catch(() => playWithSpeechFallback(index));
+  }
 
   useEffect(() => {
-    return () => {
-      clearTimer();
-      if (supported) window.speechSynthesis.cancel();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => stopEverything();
   }, []);
 
   function handlePlay() {
-    if (isLast) setSceneIndex(0);
+    const startIndex = isLast ? 0 : sceneIndex;
     setPlaying(true);
+    playingRef.current = true;
+    playScene(startIndex);
   }
 
   function handlePause() {
     setPlaying(false);
-    clearTimer();
-    if (supported) window.speechSynthesis.cancel();
+    playingRef.current = false;
+    setStatus("");
+    stopEverything();
   }
 
   function jumpTo(i: number) {
-    setSceneIndex(i);
+    stopEverything();
+    if (playingRef.current) {
+      playScene(i);
+    } else {
+      setSceneIndex(i);
+    }
   }
 
   function step(delta: number) {
-    setSceneIndex((i) => Math.min(TOUR_SCENES.length - 1, Math.max(0, i + delta)));
+    jumpTo(Math.min(TOUR_SCENES.length - 1, Math.max(0, sceneIndex + delta)));
   }
 
   return (
     <section className="mb-16">
       <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
         <h2 className="font-display text-xl text-gray-100">Watch the tour</h2>
-        <span className="text-xs text-gray-400 font-mono">
-          {!supported
-            ? "captions only — no speech synthesis"
-            : voice
-              ? `narrated by ${voice.name}`
-              : voiceTimedOut
-                ? "Voice unavailable — continuing with captions"
-                : "loading voice…"}
-        </span>
+        <span className="text-xs text-gray-400 font-mono">{status}</span>
       </div>
 
       <div className={`bg-ritual-elevated border ${accent.border} rounded-xl shadow-card overflow-hidden`}>
@@ -239,16 +287,21 @@ export function ExplainerTour() {
             Next ›
           </button>
 
-          {supported && (
-            <button
-              onClick={() => setMuted((m) => !m)}
-              className="px-2.5 py-1.5 border border-gray-700 text-gray-400 rounded-lg text-xs
-                         hover:border-gray-600 focus-visible:outline-none focus-visible:ring-2
-                         focus-visible:ring-ritual-green/50"
-            >
-              {muted ? "🔇 Sound off" : "🔊 Sound on"}
-            </button>
-          )}
+          <button
+            onClick={() => {
+              const next = !muted;
+              setMuted(next);
+              if (playingRef.current) {
+                // Restart the current scene under the new mode instead of waiting for it to end.
+                playScene(sceneIndex);
+              }
+            }}
+            className="px-2.5 py-1.5 border border-gray-700 text-gray-400 rounded-lg text-xs
+                       hover:border-gray-600 focus-visible:outline-none focus-visible:ring-2
+                       focus-visible:ring-ritual-green/50"
+          >
+            {muted ? "🔇 Sound off" : "🔊 Sound on"}
+          </button>
 
           <div className="flex-1" />
 

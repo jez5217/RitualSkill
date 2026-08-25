@@ -6,10 +6,12 @@ export interface TourScene {
   title: string;
   /** Short on-screen line — the background image + voice carry the explanation, this is just a label. */
   caption: string;
-  /** Full narration, spoken only (not printed) — also shown in the collapsed transcript for accessibility. */
+  /** Full narration text — also shown in the collapsed transcript for accessibility. */
   narration: string;
   /** Background artwork for this scene, in public/images/siggy-tour/. */
   image: string;
+  /** Prerecorded narration audio, in public/audio/siggy-tour/ — primary playback path, not the Web Speech API. */
+  audio: string;
   precompiles?: { address: string; name: string }[];
   href?: string;
   color: "green" | "pink" | "lime" | "gold";
@@ -34,6 +36,7 @@ export const TOUR_SCENES: TourScene[] = [
       "think, see, hear, and act. This is a guided tour of every one Ritual ships, built directly " +
       "into the chain itself, running here in Demo Mode — no wallet or testnet required.",
     image: "/images/siggy-tour/01-ritual-introduction.png",
+    audio: "/audio/siggy-tour/01-ritual-introduction.wav",
     color: "green",
   },
   {
@@ -48,6 +51,7 @@ export const TOUR_SCENES: TourScene[] = [
       "simulation. Fully Homomorphic Encryption inference computes directly on encrypted data " +
       "inside a trusted execution environment, so not even the operator sees your input.",
     image: "/images/siggy-tour/02-ai-inference.png",
+    audio: "/audio/siggy-tour/02-ai-inference.wav",
     precompiles: think.precompiles,
     href: think.href,
     color: think.color,
@@ -63,6 +67,7 @@ export const TOUR_SCENES: TourScene[] = [
       "Long-Running HTTP handles slower external calls asynchronously, delivering the result back " +
       "on chain through a callback.",
     image: "/images/siggy-tour/03-see-hear-act.png",
+    audio: "/audio/siggy-tour/03-see-hear-act.wav",
     precompiles: act.precompiles,
     href: act.href,
     color: act.color,
@@ -79,6 +84,7 @@ export const TOUR_SCENES: TourScene[] = [
       "readable by anyone, no backend database required. The Persistent Agent alongside it " +
       "demonstrates an agent with memory across conversations.",
     image: "/images/siggy-tour/04-autonomous-agents.png",
+    audio: "/audio/siggy-tour/04-autonomous-agents.wav",
     precompiles: agents.precompiles,
     href: agents.href,
     color: agents.color,
@@ -93,6 +99,7 @@ export const TOUR_SCENES: TourScene[] = [
       "without any off-chain cron job watching it. Decentralized key management, or D-K-M-S, " +
       "handles key derivation for an agent's identity across encrypted workflows.",
     image: "/images/siggy-tour/05-memory-scheduling.png",
+    audio: "/audio/siggy-tour/05-memory-scheduling.wav",
     precompiles: remember.precompiles,
     href: remember.href,
     color: remember.color,
@@ -107,6 +114,7 @@ export const TOUR_SCENES: TourScene[] = [
       "phrase, backed by transaction-level passkey signing. Ed25519 signature verification is " +
       "available directly as a precompile for contracts that need to verify it natively.",
     image: "/images/siggy-tour/06-authentication.png",
+    audio: "/audio/siggy-tour/06-authentication.wav",
     precompiles: authenticate.precompiles,
     href: authenticate.href,
     color: authenticate.color,
@@ -122,6 +130,7 @@ export const TOUR_SCENES: TourScene[] = [
       "uses, so the ciphertext you see is genuinely encrypted. Access control and the ex-four-oh-" +
       "two micropayment protocol are covered alongside it.",
     image: "/images/siggy-tour/07-secret-encryption.png",
+    audio: "/audio/siggy-tour/07-secret-encryption.wav",
     precompiles: secrets.precompiles,
     href: secrets.href,
     color: secrets.color,
@@ -137,6 +146,7 @@ export const TOUR_SCENES: TourScene[] = [
       "settlement, and the registry of trusted execution environment operators that carry out " +
       "the work.",
     image: "/images/siggy-tour/08-ritual-wallet.png",
+    audio: "/audio/siggy-tour/08-ritual-wallet.wav",
     href: "/wallet",
     color: "gold",
   },
@@ -146,9 +156,10 @@ export const TOUR_SCENES: TourScene[] = [
     title: "Try it yourself",
     caption: "Every precompile Ritual ships today — pick a page above and try one.",
     narration:
-      "That's every enshrined AI precompile Ritual ships today, all runnable right now with no " +
-      "wallet and no testnet. Pick any page from the navigation above and try it for yourself.",
+      "That's every AI precompile Ritual ships today, all runnable right now with no wallet and " +
+      "no testnet. Pick any page from the navigation above and try it for yourself.",
     image: "/images/siggy-tour/09-global-finale.png",
+    audio: "/audio/siggy-tour/09-global-finale.wav",
     color: "green",
   },
 ];
