@@ -11,7 +11,12 @@ interface Msg {
 
 type AgentStatus = "alive" | "offline" | "reviving";
 
-const IDENTITY_CID = "bafy2bzacedq" + Math.random().toString(36).slice(2, 10);
+// Fixed, not random: this module is evaluated separately by the server (SSR)
+// and the client (hydration) bundles, so Math.random() here produced a
+// different string in each render pass — a hydration mismatch (React errors
+// #418/#423/#425). It's cosmetic demo flavor text, not a real identity, so a
+// stable constant is correct, not a client-only workaround.
+const IDENTITY_CID = "bafy2bzacedqj7x4n9k2m8p3q5r1s6t0v";
 
 function remembersReply(history: Msg[], text: string): string {
   const priorUser = history.filter((m) => m.role === "user");
