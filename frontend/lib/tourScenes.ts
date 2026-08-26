@@ -27,19 +27,6 @@ const secrets = FEATURE_GROUPS.find((g) => g.slug === "secrets")!;
 /** Narration is hand-written for pacing, not auto-generated from the feature data below. */
 export const TOUR_SCENES: TourScene[] = [
   {
-    id: "intro",
-    eyebrow: "Ritual Chain",
-    title: "Smart contracts that think, see, hear, and act.",
-    caption: "A blockchain where contracts think, see, hear, and act.",
-    narration:
-      "Ritual Chain is a blockchain built around native AI precompiles — smart contracts that can " +
-      "think, see, hear, and act. This is a guided tour of every one Ritual ships, built directly " +
-      "into the chain itself, running here in Demo Mode — no wallet or testnet required.",
-    image: "/images/ritual/ritual-floating-crystal.png",
-    audio: "/audio/siggy-tour/01-ritual-introduction.wav",
-    color: "green",
-  },
-  {
     id: think.slug,
     eyebrow: think.name,
     title: think.tagline,

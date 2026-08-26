@@ -48,6 +48,10 @@ export function ExplainerTour() {
 
   const scene = TOUR_SCENES[sceneIndex];
   const isLast = sceneIndex === TOUR_SCENES.length - 1;
+  // Next.js serves <Image> through its own optimized /_next/image URL, not the raw file path —
+  // so the actual preload has to be a same-shaped <Image> too, or it warms a cache entry the
+  // real one never requests and the swap still stalls.
+  const nextIndex = (sceneIndex + 1) % TOUR_SCENES.length;
   const accent = ACCENT[scene.color];
   // speechSynthesis fallback only kicks in once we know audio has failed; this
   // just decides whether that fallback can attempt real speech at all.
@@ -95,13 +99,6 @@ export function ExplainerTour() {
       a.src = s.audio;
     });
   }, []);
-
-  // Preload the next scene's artwork so advancing never shows a blank frame.
-  useEffect(() => {
-    const nextIndex = (sceneIndex + 1) % TOUR_SCENES.length;
-    const img = new window.Image();
-    img.src = TOUR_SCENES[nextIndex].image;
-  }, [sceneIndex]);
 
   // Crossfade: load the new scene into the back layer, then flip fronts one frame later.
   useEffect(() => {
@@ -350,7 +347,7 @@ export function ExplainerTour() {
               <Image
                 key={imgA}
                 src={TOUR_SCENES[imgA].image}
-                alt={`Siggy demonstrating ${TOUR_SCENES[imgA].eyebrow}`}
+                alt=""
                 fill
                 priority={imgA === 0}
                 sizes="(max-width: 768px) 100vw, 1100px"
@@ -364,12 +361,24 @@ export function ExplainerTour() {
               <Image
                 key={imgB}
                 src={TOUR_SCENES[imgB].image}
-                alt={`Siggy demonstrating ${TOUR_SCENES[imgB].eyebrow}`}
+                alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 1100px"
                 className="tourImage"
               />
             </div>
+
+            {/* Not shown — same URL shape as the visible layers above, so the browser/Next.js
+                image cache is warm by the time this scene becomes current via Next/Prev. */}
+            <Image
+              key={`preload-${nextIndex}`}
+              src={TOUR_SCENES[nextIndex].image}
+              alt=""
+              fill
+              loading="eager"
+              sizes="(max-width: 768px) 100vw, 1100px"
+              className="absolute inset-0 opacity-0 pointer-events-none"
+            />
 
             <div className="tourOverlay" />
 
