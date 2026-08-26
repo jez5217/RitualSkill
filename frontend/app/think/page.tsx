@@ -19,6 +19,7 @@ export default function ThinkPage() {
         eyebrow="Think"
         title="AI & Inference"
         description="Chat with an LLM, run classical ML inference synchronously, and compute over encrypted data — all as native precompiles a contract can call directly."
+        color="pink"
       />
       <DemoNote>
         Chat replies are simulated locally — no LLM was called. The classifier below is a real,

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 
 const container: Variants = {
@@ -15,8 +15,15 @@ const item: Variants = {
 
 /** Wraps a grid/flex container; its RevealItem children fade+slide in, staggered, the first time it scrolls into view. */
 export function RevealGroup({ className, children }: { className?: string; children: ReactNode }) {
+  const reduceMotion = useReducedMotion();
   return (
-    <motion.div className={className} variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
+    <motion.div
+      className={className}
+      variants={container}
+      initial={reduceMotion ? "show" : "hidden"}
+      whileInView="show"
+      viewport={{ once: true, margin: "-80px" }}
+    >
       {children}
     </motion.div>
   );

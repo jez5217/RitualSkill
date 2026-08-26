@@ -18,6 +18,7 @@ export default function SecretsPage() {
         eyebrow="Keep Secrets"
         title="Privacy & Keys"
         description="API keys and other secrets are ECIES-encrypted to an executor's TEE public key — visible on-chain only as ciphertext, decrypted only inside the enclave."
+        color="gold"
       />
       <DemoNote>The encryption below is real (using a throwaway in-browser keypair) — everything else on this page is descriptive.</DemoNote>
 

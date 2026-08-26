@@ -5,6 +5,7 @@ import { PrecompileBadge } from "@/components/site/PrecompileBadge";
 import { ExplainerTour } from "@/components/site/ExplainerTour";
 import { CodeBlock } from "@/components/site/CodeBlock";
 import { RevealGroup, RevealItem } from "@/components/site/Reveal";
+import { HomeHero } from "@/components/site/HomeHero";
 import { FEATURE_GROUPS } from "@/lib/featureGroups";
 
 export const metadata: Metadata = {
@@ -35,34 +36,7 @@ const USE_CASES = [
 export default function Home() {
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-      <div className="max-w-2xl mb-8">
-        <p className="text-xs text-ritual-green uppercase tracking-widest mb-3">Ritual Chain</p>
-        <h1 className="font-display text-4xl sm:text-5xl text-gray-100 tracking-tight leading-[1.05] mb-5">
-          Build an autonomous AI agent that lives on-chain.
-        </h1>
-        <p className="text-base text-gray-400 leading-relaxed mb-6">
-          Ritual is a blockchain with AI verified inside trusted hardware built directly into every
-          contract call — an LLM, ML inference, and autonomous agents, natively. This site is a
-          hands-on tour of what that makes possible.
-        </p>
-        <div className="flex flex-wrap items-center gap-3 mb-3">
-          <Link
-            href="/agents"
-            className="px-5 py-3 bg-ritual-green text-black font-semibold rounded-lg hover:bg-ritual-green/90 transition-colors"
-          >
-            Try an AI Agent in 60 Seconds
-          </Link>
-          <a
-            href={SKILLS_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="px-5 py-3 border border-gray-700 text-gray-300 hover:border-gray-500 rounded-lg font-semibold transition-colors"
-          >
-            Start Building →
-          </a>
-        </div>
-        <p className="text-xs text-gray-400">No wallet required · Takes about 60 seconds</p>
-      </div>
+      <HomeHero skillsUrl={SKILLS_URL} />
 
       <RevealGroup className="grid sm:grid-cols-3 gap-3 mb-10">
         <RevealItem>

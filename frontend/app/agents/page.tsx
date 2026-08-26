@@ -71,6 +71,7 @@ export default function AgentsPage() {
         eyebrow="Autonomous Agents"
         title="Agents That Live On-Chain"
         description="Two agent primitives: a one-shot job for task-shaped work, and a long-lived, revivable identity for always-on services."
+        color="pink"
       />
 
       <section className="mb-10">

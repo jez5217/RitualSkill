@@ -18,6 +18,7 @@ export default function AuthenticatePage() {
         eyebrow="Authenticate"
         title="Signatures & Identity"
         description="Native support for the signature schemes the real world already uses — passkeys, Solana/SSH/DKIM (Ed25519), and P-256."
+        color="lime"
       />
       <DemoNote>No real WebAuthn prompt is triggered — the flow below is simulated for reliability across browsers.</DemoNote>
 

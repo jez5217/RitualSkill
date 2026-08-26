@@ -18,6 +18,7 @@ export default function RememberPage() {
         eyebrow="Remember"
         title="Scheduling & Identity"
         description="How Ritual gives contracts a sense of time — recurring self-invocation — and gives agents a persistent, derivable identity."
+        color="gold"
       />
       <DemoNote>The schedule below ticks on an accelerated demo clock, not real block times.</DemoNote>
 

@@ -19,6 +19,7 @@ export default function ActPage() {
         eyebrow="See · Hear · Act"
         title="Real-World Compute & Multimodal"
         description="Reach beyond the chain — call any HTTP API, and generate images, audio, and video — with every result attested inside a TEE."
+        color="green"
       />
       <DemoNote>Requests below are simulated locally — nothing leaves your browser.</DemoNote>
 
