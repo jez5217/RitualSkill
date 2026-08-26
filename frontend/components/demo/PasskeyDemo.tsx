@@ -28,7 +28,7 @@ export function PasskeyDemo() {
   }
 
   return (
-    <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
+    <div className="feature-card p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Passkey Transaction Signing</h3>
         <div className="flex items-center gap-2 flex-wrap">
@@ -36,7 +36,7 @@ export function PasskeyDemo() {
           <PrecompileBadge address="0x77 / 0x0100" label="TxPasskey + SECP256R1" color="lime" />
         </div>
       </div>
-      <p className="text-xs text-gray-500 mb-4">
+      <p className="text-xs text-gray-400 mb-4">
         Sign a Ritual transaction directly with a device passkey (Face ID / Touch ID / Windows
         Hello) — no browser extension wallet, no seed phrase, no ERC-4337 bundler.
       </p>
@@ -59,7 +59,7 @@ export function PasskeyDemo() {
 
       {(stage === "registered" || stage === "signing" || stage === "verified") && (
         <div className="space-y-3">
-          <div className="border border-gray-800 rounded-lg p-3 text-xs font-mono text-gray-500 space-y-1">
+          <div className="border border-gray-800 rounded-lg p-3 text-xs font-mono text-gray-400 space-y-1">
             <p>
               credentialId: <span className="text-gray-300">{credentialId}</span>
             </p>

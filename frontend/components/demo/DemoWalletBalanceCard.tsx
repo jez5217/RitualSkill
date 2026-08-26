@@ -21,7 +21,7 @@ export function DemoWalletBalanceCard() {
   }
 
   return (
-    <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-6">
+    <div className="feature-card p-6">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h2 className="font-display text-lg text-gray-100">RitualWallet</h2>
         <div className="flex items-center gap-2 flex-wrap">
@@ -36,7 +36,7 @@ export function DemoWalletBalanceCard() {
         </div>
       </div>
 
-      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Balance</p>
+      <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Balance</p>
       <p className="text-sm text-gray-300 font-mono mb-4">{balance.toFixed(4)} RITUAL</p>
 
       <div className="flex gap-2">
@@ -59,7 +59,7 @@ export function DemoWalletBalanceCard() {
           {depositing ? "Depositing…" : "Deposit RITUAL"}
         </button>
       </div>
-      <p className="text-xs text-gray-500 mt-2">Simulated deposit — no transaction is sent.</p>
+      <p className="text-xs text-gray-400 mt-2">Simulated deposit — no transaction is sent.</p>
     </div>
   );
 }

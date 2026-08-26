@@ -32,7 +32,7 @@ export function MultimodalDemo() {
   }
 
   return (
-    <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
+    <div className="feature-card p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Multimodal Generation</h3>
         <div className="flex items-center gap-2 flex-wrap">
@@ -54,7 +54,7 @@ export function MultimodalDemo() {
               setResult(null);
             }}
             className={`px-3 py-1.5 rounded-lg border capitalize ${
-              modality === m ? "border-ritual-pink text-ritual-pink" : "border-gray-700 text-gray-500"
+              modality === m ? "border-ritual-pink text-ritual-pink" : "border-gray-700 text-gray-400"
             }`}
           >
             {m}
@@ -82,7 +82,7 @@ export function MultimodalDemo() {
 
       {generating && (
         <div className="mt-4 h-40 rounded-lg bg-ritual-surface animate-pulse flex items-center justify-center">
-          <span className="text-xs text-gray-500">Executor rendering in TEE…</span>
+          <span className="text-xs text-gray-400">Executor rendering in TEE…</span>
         </div>
       )}
 
@@ -111,7 +111,7 @@ export function MultimodalDemo() {
               </div>
             </div>
           )}
-          <p className="text-xs text-gray-500 mt-2">
+          <p className="text-xs text-gray-400 mt-2">
             Simulated {result.modality} output for &ldquo;{result.prompt}&rdquo; · in live mode this
             would upload to a DA provider (GCS/HF/Pinata) and return a content-addressed URI.
           </p>

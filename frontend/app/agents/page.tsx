@@ -82,7 +82,7 @@ export default function AgentsPage() {
             <PrecompileBadge address="0x080C" label="ZeroClaw · one-shot" color="pink" />
           </div>
         </div>
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-gray-400 mb-4">
           Submit a topic; a ZeroClaw-harnessed agent researches it and reports back once.{" "}
           {DEMO_MODE ? (
             <>This is the same flow as the deployable contract in <code className="font-mono">contracts/</code>, running here in Demo Mode.</>
@@ -98,7 +98,7 @@ export default function AgentsPage() {
           <h2 className="font-display text-lg text-gray-100">Persistent Agent — Long-Lived Identity</h2>
           <StatusBadge status="simulation" />
         </div>
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-gray-400 mb-4">
           An always-on assistant with memory, identity, and automatic revival if its executor goes
           down. Demo-only — no on-chain implementation in this repo yet.
         </p>

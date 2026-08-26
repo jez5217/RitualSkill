@@ -35,7 +35,7 @@ export function AsyncLifecycleDemo() {
   }, [playing, active]);
 
   return (
-    <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
+    <div className="feature-card p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Async Job Lifecycle</h3>
         <div className="flex items-center gap-2 flex-wrap">
@@ -43,7 +43,7 @@ export function AsyncLifecycleDemo() {
           <PrecompileBadge address="AsyncJobTracker" label="9 states" color="green" />
         </div>
       </div>
-      <p className="text-xs text-gray-500 mb-4">
+      <p className="text-xs text-gray-400 mb-4">
         Every async precompile call — HTTP, LLM, agents, multimodal — moves through this state
         machine. Short-running calls skip straight from COMMITTED to SETTLED.
       </p>
@@ -69,7 +69,7 @@ export function AsyncLifecycleDemo() {
             <span className={`font-mono text-xs w-40 shrink-0 ${active === i ? "text-ritual-green" : "text-gray-400"}`}>
               {s.name}
             </span>
-            <span className="text-xs text-gray-500">{s.detail}</span>
+            <span className="text-xs text-gray-400">{s.detail}</span>
           </li>
         ))}
       </ol>

@@ -42,7 +42,7 @@ export function PageHeader({
       <h1 className="font-display text-4xl sm:text-6xl text-gray-100 tracking-tight leading-[1.02] mb-4 max-w-3xl">
         {title}
       </h1>
-      <p className="text-base text-gray-500 max-w-[65ch] leading-relaxed">{description}</p>
+      <p className="text-base text-gray-400 max-w-[65ch] leading-relaxed">{description}</p>
     </motion.div>
   );
 }

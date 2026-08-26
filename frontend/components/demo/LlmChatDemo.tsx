@@ -71,7 +71,7 @@ export function LlmChatDemo() {
   }
 
   return (
-    <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5 flex flex-col">
+    <div className="feature-card p-5 flex flex-col">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">LLM Chat</h3>
         <div className="flex items-center gap-2 flex-wrap">
@@ -79,7 +79,7 @@ export function LlmChatDemo() {
           <PrecompileBadge address="0x0802" label="zai-org/GLM-4.7-FP8" color="pink" />
         </div>
       </div>
-      <p className="text-[11px] text-gray-600 mb-3 -mt-1">
+      <p className="text-[11px] text-gray-400 mb-3 -mt-1">
         Replies are canned per category (Demo Mode), but which category is picked is a real ONNX
         intent classifier running locally — not keyword matching.
       </p>
@@ -89,7 +89,7 @@ export function LlmChatDemo() {
           <div key={m.id} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
             <div className="max-w-[85%]">
               {m.routedBy && (
-                <p className="text-[10px] font-mono text-gray-600 mb-1">
+                <p className="text-[10px] font-mono text-gray-400 mb-1">
                   routed as {m.routedBy.intent}
                   {m.routedBy.confidence > 0 ? ` (${(m.routedBy.confidence * 100).toFixed(0)}%)` : ""}
                 </p>

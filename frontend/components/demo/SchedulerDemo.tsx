@@ -60,7 +60,7 @@ export function SchedulerDemo() {
   const running = ticks?.some((t) => t === "scheduled" || t === "executing") ?? false;
 
   return (
-    <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
+    <div className="feature-card p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Scheduler</h3>
         <div className="flex items-center gap-2 flex-wrap">
@@ -68,13 +68,13 @@ export function SchedulerDemo() {
           <PrecompileBadge address="Scheduler" label="recurring self-invocation" color="gold" />
         </div>
       </div>
-      <p className="text-xs text-gray-500 mb-4">
+      <p className="text-xs text-gray-400 mb-4">
         A contract schedules a future call to itself — recurring or one-shot — enforced at the
         consensus layer, no off-chain cron or keeper network needed.
       </p>
 
       <div className="flex items-center gap-3 mb-4">
-        <label className="text-xs text-gray-500">Calls</label>
+        <label className="text-xs text-gray-400">Calls</label>
         <input
           type="number"
           min={1}
@@ -108,7 +108,7 @@ export function SchedulerDemo() {
           {ticks.map((state, i) => (
             <div key={i} className="flex flex-col items-center gap-1 border border-gray-800 rounded-lg px-3 py-2 min-w-[72px]">
               <span className={`text-lg ${STATE_STYLE[state]}`}>{STATE_ICON[state]}</span>
-              <span className="text-[10px] text-gray-500 uppercase tracking-wider">{state}</span>
+              <span className="text-[10px] text-gray-400 uppercase tracking-wider">{state}</span>
             </div>
           ))}
         </div>

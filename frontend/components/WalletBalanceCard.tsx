@@ -34,7 +34,7 @@ export function WalletBalanceCard() {
   }
 
   return (
-    <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-6">
+    <div className="feature-card p-6">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h2 className="font-display text-lg text-gray-100">RitualWallet</h2>
         <div className="flex items-center gap-2 flex-wrap">
@@ -51,11 +51,11 @@ export function WalletBalanceCard() {
 
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div>
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Balance</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Balance</p>
           <p className="text-sm text-gray-300 font-mono">{Number(balanceFormatted).toFixed(4)} RITUAL</p>
         </div>
         <div>
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Locked until</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Locked until</p>
           <p className="text-sm text-gray-300 font-mono">
             {isLocked ? `block ${lockUntilBlock.toString()}` : "unlocked"}
           </p>
@@ -82,7 +82,7 @@ export function WalletBalanceCard() {
           {depositing || isConfirming ? "Depositing…" : "Deposit RITUAL"}
         </button>
       </div>
-      <p className="text-xs text-gray-500 mt-2">
+      <p className="text-xs text-gray-400 mt-2">
         A sovereign agent research run costs roughly 0.5–1 RITUAL. Deposits lock for ~9.7 hours
         (100,000 blocks) and can be withdrawn once unlocked.
       </p>

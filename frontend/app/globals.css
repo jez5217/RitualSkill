@@ -6,10 +6,39 @@
   --font-display: "Archivo Black", "Archivo", system-ui, sans-serif;
   --font-body: "Barlow", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Layered dark surfaces — replaces flat #000 everywhere so sections read as
+     distinct bands instead of merging into one undifferentiated block. */
+  --page-black: #020504;
+  --surface-emerald: #08110e;
+  --surface-tour: #070b10;
+  --surface-blue-slate: #0b0e16;
+  --surface-violet: #100b16;
+  --surface-cyan: #071014;
+  --surface-footer: #030504;
+
+  --card: rgba(15, 23, 28, 0.72);
+  --card-hover: rgba(20, 34, 38, 0.88);
+  --card-border: rgba(255, 255, 255, 0.09);
+}
+
+html,
+body {
+  /* The full-bleed hero/section-band technique (w-screen + left-1/2
+     -translate-x-1/2) reads viewport width via `vw`, which on Windows/most
+     desktop browsers *includes* the vertical scrollbar's own width -- so a
+     100vw element is a few pixels wider than the page's actual scrollable
+     area whenever a scrollbar is present, producing a persistent ~8-17px
+     horizontal overflow. Clipping it here is the standard, safe fix: nothing
+     in this layout intentionally needs body-level horizontal scroll (the nav
+     row and code blocks scroll within their own overflow-x-auto containers,
+     which this does not affect).
+     Fixes: 8px overflow reported from the full-bleed hero. */
+  overflow-x: hidden;
 }
 
 body {
-  background: #000000;
+  background: var(--page-black);
 }
 
 ::selection {
@@ -103,4 +132,48 @@ body {
     animation: none;
     -webkit-text-fill-color: #f3f4f6;
   }
+}
+
+/* Card style — replaces the flat bg-ritual-elevated/border-gray-800 combo used
+   across every card site-wide with a layered glass surface. */
+.feature-card {
+  position: relative;
+  background:
+    linear-gradient(145deg, rgba(41, 242, 154, 0.07), transparent 45%),
+    var(--card);
+  border: 1px solid var(--card-border-override, var(--card-border));
+  border-radius: 18px;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  background:
+    linear-gradient(145deg, rgba(41, 242, 154, 0.12), transparent 50%),
+    var(--card-hover);
+  border-color: rgba(41, 242, 154, 0.32);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-card {
+    transition: border-color 180ms ease, background 180ms ease;
+  }
+  .feature-card:hover {
+    transform: none;
+  }
+}
+
+/* Ambient world background keyframe — used by SectionBand's `ambient` prop
+   (an actual positioned div, not a pseudo-element) for the "What people are
+   building" band: slow drift, capped opacity. Disabled via Tailwind's
+   motion-reduce: variant at the call site. */
+@keyframes worldDrift {
+  from { transform: scale(1.03) translate3d(-0.5%, 0, 0); }
+  to { transform: scale(1.08) translate3d(1%, -0.8%, 0); }
 }

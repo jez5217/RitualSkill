@@ -23,7 +23,7 @@ export function HttpCallDemo() {
   }
 
   return (
-    <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
+    <div className="feature-card p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">HTTP Call</h3>
         <div className="flex items-center gap-2 flex-wrap">
@@ -31,7 +31,7 @@ export function HttpCallDemo() {
           <PrecompileBadge address="0x0801" label="short-running async" color="green" />
         </div>
       </div>
-      <p className="text-xs text-gray-500 mb-4">
+      <p className="text-xs text-gray-400 mb-4">
         One request in, one response out — settled in the same transaction via the SPC mechanism.
         Try the ETH price or weather examples below.
       </p>
@@ -57,14 +57,14 @@ export function HttpCallDemo() {
         <button
           type="button"
           onClick={() => setUrl("https://api.example.com/eth-price")}
-          className="text-xs text-gray-500 hover:text-gray-300"
+          className="text-xs text-gray-400 hover:text-gray-300"
         >
           eth-price
         </button>
         <button
           type="button"
           onClick={() => setUrl("https://api.example.com/weather")}
-          className="text-xs text-gray-500 hover:text-gray-300"
+          className="text-xs text-gray-400 hover:text-gray-300"
         >
           weather
         </button>
@@ -97,7 +97,7 @@ export function HttpCallDemo() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-ritual-green">{response.statusCode}</span>
                 <span className="text-gray-400">·</span>
-                <span className="text-gray-500">{response.latencyMs.toFixed(0)}ms</span>
+                <span className="text-gray-400">{response.latencyMs.toFixed(0)}ms</span>
                 <span className="text-gray-400">·</span>
                 <span className="text-ritual-green">TEE attested</span>
               </div>

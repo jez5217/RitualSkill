@@ -85,7 +85,7 @@ export function PersistentAgentDemo() {
   }
 
   return (
-    <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-5">
+    <div className="feature-card p-5">
       <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Persistent Agent</h3>
         <div className="flex items-center gap-2 flex-wrap">
@@ -93,7 +93,7 @@ export function PersistentAgentDemo() {
           <PrecompileBadge address="0x0820" label="stateful, revivable" color="pink" />
         </div>
       </div>
-      <p className="text-xs text-gray-500 mb-4">
+      <p className="text-xs text-gray-400 mb-4">
         Identity: <span className="font-mono">{IDENTITY_CID.slice(0, 20)}…</span> · DA-backed memory
         · liveness monitored by AgentHeartbeat
       </p>
@@ -123,7 +123,7 @@ export function PersistentAgentDemo() {
         <button
           onClick={simulateCrashAndRevive}
           disabled={status !== "alive"}
-          className="text-xs px-2.5 py-1 border border-gray-700 text-gray-500 hover:text-gray-300 rounded disabled:opacity-30"
+          className="text-xs px-2.5 py-1 border border-gray-700 text-gray-400 hover:text-gray-300 rounded disabled:opacity-30"
         >
           Simulate crash + revival
         </button>

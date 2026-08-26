@@ -30,14 +30,14 @@ export function DemoResearchForm({ onSubmitted }: { onSubmitted: (jobId: `0x${st
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-6">
+    <form onSubmit={handleSubmit} className="feature-card p-6">
       <h2 className="font-display text-lg text-gray-100 mb-1">New Research</h2>
-      <p className="text-sm text-gray-500 mb-4">
+      <p className="text-sm text-gray-400 mb-4">
         Simulates Ritual&apos;s Sovereign Agent precompile (
         <span className="font-mono text-xs">0x080C</span>) end to end.
       </p>
 
-      <label htmlFor="demo-topic" className="text-xs text-gray-500 uppercase tracking-wider">
+      <label htmlFor="demo-topic" className="text-xs text-gray-400 uppercase tracking-wider">
         Topic
       </label>
       <textarea
@@ -51,7 +51,7 @@ export function DemoResearchForm({ onSubmitted }: { onSubmitted: (jobId: `0x${st
                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ritual-pink/50"
       />
 
-      {!connected && <p className="text-xs text-gray-500 mb-3">Connect a wallet to submit research.</p>}
+      {!connected && <p className="text-xs text-gray-400 mb-3">Connect a wallet to submit research.</p>}
       {connected && balance <= 0 && (
         <p className="text-xs text-ritual-gold mb-3">Deposit RITUAL above before submitting.</p>
       )}

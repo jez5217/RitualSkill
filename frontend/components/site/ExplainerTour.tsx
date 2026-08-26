@@ -337,7 +337,10 @@ export function ExplainerTour() {
         <span className="text-xs text-gray-400 font-mono">{status}</span>
       </div>
 
-      <div className={`bg-ritual-elevated border ${accent.border} rounded-xl shadow-card overflow-hidden`}>
+      <div
+        className="feature-card overflow-hidden"
+        style={{ "--card-border-override": `${accent.hex}66` } as React.CSSProperties}
+      >
         <div className="animate-scene-in">
           <div className="tourVisual">
             <div
@@ -412,10 +415,10 @@ export function ExplainerTour() {
                 </Link>
               )}
               <details className="group">
-                <summary className="text-xs text-gray-400 cursor-pointer hover:text-gray-400 list-none">
+                <summary className="text-xs text-gray-400 cursor-pointer hover:text-gray-200 list-none">
                   Show transcript
                 </summary>
-                <p className="text-xs text-gray-500 leading-relaxed mt-2 max-w-2xl">{scene.narration}</p>
+                <p className="text-xs text-gray-400 leading-relaxed mt-2 max-w-2xl">{scene.narration}</p>
               </details>
             </div>
           </div>

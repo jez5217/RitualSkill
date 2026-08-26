@@ -96,7 +96,7 @@ export function OnnxDemo() {
   const colors = result ? labelColor(result.label) : null;
 
   return (
-    <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-4 sm:p-5">
+    <div className="feature-card p-4 sm:p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="font-display text-base text-gray-100">Classical Inference (ONNX)</h3>
         <div className="flex items-center gap-2 flex-wrap">
@@ -104,7 +104,7 @@ export function OnnxDemo() {
           <PrecompileBadge address="0x0800" label="synchronous" color="green" />
         </div>
       </div>
-      <p className="text-xs text-gray-500 mb-4">
+      <p className="text-xs text-gray-400 mb-4">
         Synchronous — executes inline in the same block, no TEE round trip. This demo runs a real,
         trained softmax-regression sentiment model (141-word vocabulary) as genuine ONNX inference,
         entirely in your browser via WebAssembly — not a hardcoded wordlist.
@@ -149,7 +149,7 @@ export function OnnxDemo() {
         <div className="mt-4 pt-4 border-t border-gray-800">
           <div className="flex items-center justify-between mb-1.5">
             <span className={`text-sm font-mono ${colors.text}`}>{result.label}</span>
-            <span className="text-xs text-gray-500 font-mono">{(result.confidence * 100).toFixed(1)}%</span>
+            <span className="text-xs text-gray-400 font-mono">{(result.confidence * 100).toFixed(1)}%</span>
           </div>
           <div className="h-1.5 bg-ritual-surface rounded-full overflow-hidden mb-3">
             <div className={`h-full ${colors.bar}`} style={{ width: `${result.confidence * 100}%` }} />
@@ -178,7 +178,7 @@ export function OnnxDemo() {
                                focus-visible:ring-ritual-green/50"
                   >
                     <span className={`text-[10px] font-mono shrink-0 w-14 ${c.text}`}>{entry.result.label}</span>
-                    <span className="text-xs text-gray-500 truncate flex-1">{entry.text}</span>
+                    <span className="text-xs text-gray-400 truncate flex-1">{entry.text}</span>
                     <span className="text-[10px] text-gray-400 font-mono shrink-0">
                       {(entry.result.confidence * 100).toFixed(0)}%
                     </span>

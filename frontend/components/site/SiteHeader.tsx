@@ -18,7 +18,7 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-20 border-b border-gray-800 bg-black/90 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-white/10 bg-black/70 backdrop-blur-[18px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="font-display text-lg text-gray-100 tracking-tight shrink-0">
@@ -37,7 +37,7 @@ export function SiteHeader() {
                   className={`px-3 py-1.5 rounded-lg whitespace-nowrap border transition-colors ${
                     active
                       ? "border-ritual-green text-ritual-green bg-ritual-green/10"
-                      : "border-transparent text-gray-500 hover:text-gray-300 hover:border-gray-800"
+                      : "border-transparent text-gray-400 hover:text-gray-300 hover:border-gray-800"
                   }`}
                 >
                   {item.label}

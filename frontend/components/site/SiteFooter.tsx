@@ -1,6 +1,6 @@
 export function SiteFooter() {
   return (
-    <footer className="border-t border-gray-800 mt-16">
+    <footer className="border-t border-gray-800 mt-16" style={{ background: "var(--surface-footer)" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-xs text-gray-400 flex flex-wrap gap-x-6 gap-y-2 justify-between">
         <span>
           Every card on this site is labeled Live on Ritual, Real local computation, Interactive
@@ -11,7 +11,7 @@ export function SiteFooter() {
             href="https://skills.ritualfoundation.org"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-gray-400"
+            className="hover:text-gray-200"
           >
             Start Building ↗
           </a>
@@ -19,7 +19,7 @@ export function SiteFooter() {
             href="https://docs.ritualfoundation.org/"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-gray-400"
+            className="hover:text-gray-200"
           >
             Ritual Docs ↗
           </a>
@@ -27,7 +27,7 @@ export function SiteFooter() {
             href="https://explorer.ritualfoundation.org"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-gray-400"
+            className="hover:text-gray-200"
           >
             Explorer ↗
           </a>
