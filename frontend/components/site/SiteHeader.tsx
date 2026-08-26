@@ -20,9 +20,9 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-white/10 bg-black/70 backdrop-blur-[18px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="font-display text-lg text-gray-100 tracking-tight shrink-0">
-            Ritual<span className="text-ritual-green">.</span>Demo
+        <div className="flex items-center justify-between gap-3 h-16">
+          <Link href="/" className="font-display text-sm sm:text-lg text-gray-100 tracking-tight shrink-0">
+            Ritual Agent Lab <span className="text-ritual-green">Demo</span>
           </Link>
           <DemoConnectWalletButton />
         </div>
