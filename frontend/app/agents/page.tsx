@@ -74,7 +74,7 @@ export default function AgentsPage() {
       />
 
       <section className="mb-10">
-        <div className="flex items-center justify-between mb-1">
+        <div className="flex items-center justify-between flex-wrap gap-x-3 gap-y-1 mb-1">
           <h2 className="font-display text-lg text-gray-100">Sovereign Agent — Research Job</h2>
           <div className="flex items-center gap-2 flex-wrap">
             <StatusBadge status={DEMO_MODE ? "simulation" : "live"} />
@@ -93,7 +93,7 @@ export default function AgentsPage() {
       </section>
 
       <section>
-        <div className="flex items-center justify-between mb-1">
+        <div className="flex items-center justify-between flex-wrap gap-x-3 gap-y-1 mb-1">
           <h2 className="font-display text-lg text-gray-100">Persistent Agent — Long-Lived Identity</h2>
           <StatusBadge status="simulation" />
         </div>

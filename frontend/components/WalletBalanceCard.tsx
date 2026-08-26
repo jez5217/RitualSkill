@@ -35,7 +35,7 @@ export function WalletBalanceCard() {
 
   return (
     <div className="bg-ritual-elevated border border-gray-800 rounded-xl shadow-card p-6">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h2 className="font-display text-lg text-gray-100">RitualWallet</h2>
         <div className="flex items-center gap-2 flex-wrap">
           <StatusBadge status="live" />

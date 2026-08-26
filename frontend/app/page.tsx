@@ -177,7 +177,7 @@ export default function Home() {
           </a>
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
-          <div className="bg-ritual-elevated border border-gray-800 rounded-xl p-5">
+          <div className="bg-ritual-elevated border border-gray-800 rounded-xl p-5 min-w-0">
             <p className="text-sm text-gray-200 font-semibold mb-1">Deploy the real contract</p>
             <p className="text-xs text-gray-500 leading-relaxed mb-3">
               Foundry project in <code className="font-mono">contracts/</code> — 11/11 tests passing.
@@ -187,7 +187,7 @@ export default function Home() {
               code={`cp .env.example .env   # set PRIVATE_KEY\nforge test\nforge script script/Deploy.s.sol:DeployScript \\\n  --rpc-url $RITUAL_RPC_URL --broadcast`}
             />
           </div>
-          <div className="bg-ritual-elevated border border-gray-800 rounded-xl p-5 sm:col-span-2">
+          <div className="bg-ritual-elevated border border-gray-800 rounded-xl p-5 sm:col-span-2 min-w-0">
             <p className="text-sm text-gray-200 font-semibold mb-1">Call a precompile from the frontend</p>
             <p className="text-xs text-gray-500 leading-relaxed mb-3">
               wagmi&apos;s <code className="font-mono">useWriteContract</code> simulates first and always
