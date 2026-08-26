@@ -180,6 +180,106 @@ body {
   grid-column: 1 / -1;
 }
 
+/* Think page hero — two-column layout with a generated AI-core image that
+   pops toward the viewer on load, then settles into a slow breathing float.
+   Kept behind/beside the heading (z-index 1 vs 2) and pointer-events: none
+   so it never intercepts clicks meant for the chat/demo controls below. */
+.think-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+  align-items: center;
+  gap: 3rem;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.think-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+}
+
+.think-visual {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  perspective: 1200px;
+  pointer-events: none;
+}
+
+.think-visual-entry {
+  animation: thinkEnter 1.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.think-core {
+  width: min(43vw, 560px);
+  height: auto;
+
+  /* Blends the image's dark background into the page instead of showing a
+     rectangular edge, since the source PNG has no real alpha channel. */
+  mix-blend-mode: screen;
+
+  -webkit-mask-image: radial-gradient(ellipse 67% 73% at 52% 50%, black 48%, transparent 100%);
+  mask-image: radial-gradient(ellipse 67% 73% at 52% 50%, black 48%, transparent 100%);
+
+  filter: drop-shadow(0 0 30px rgba(41, 242, 154, 0.18)) drop-shadow(0 0 55px rgba(217, 45, 167, 0.12));
+
+  animation: thinkFloat 8s ease-in-out 1.35s infinite;
+  transform-origin: 52% 55%;
+}
+
+@keyframes thinkEnter {
+  0% {
+    opacity: 0;
+    transform: translate3d(70px, 45px, -500px) rotate(-7deg) scale(0.52);
+    filter: blur(10px);
+  }
+  68% {
+    opacity: 1;
+    transform: translate3d(-8px, -8px, 90px) rotate(1deg) scale(1.09);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes thinkFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-0.8deg) scale(1);
+  }
+  50% {
+    transform: translate3d(-8px, -12px, 70px) rotate(1deg) scale(1.055);
+  }
+}
+
+@media (max-width: 800px) {
+  .think-hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: auto;
+    padding-bottom: 2rem;
+  }
+  .think-visual {
+    height: 330px;
+    margin-top: -1rem;
+  }
+  .think-core {
+    width: min(92vw, 420px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .think-visual-entry,
+  .think-core {
+    animation: none;
+  }
+}
+
 /* Ambient world background keyframe — used by SectionBand's `ambient` prop
    (an actual positioned div, not a pseudo-element) for the "What people are
    building" band: slow drift, capped opacity. Disabled via Tailwind's
