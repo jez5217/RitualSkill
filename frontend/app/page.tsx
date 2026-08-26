@@ -4,6 +4,7 @@ import { DemoNote } from "@/components/site/DemoNote";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
 import { ExplainerTour } from "@/components/site/ExplainerTour";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { RevealGroup, RevealItem } from "@/components/site/Reveal";
 import { FEATURE_GROUPS } from "@/lib/featureGroups";
 
 export const metadata: Metadata = {
@@ -63,29 +64,35 @@ export default function Home() {
         <p className="text-xs text-gray-400">No wallet required · Takes about 60 seconds</p>
       </div>
 
-      <section className="grid sm:grid-cols-3 gap-3 mb-10">
-        <Link
-          href="/think"
-          className="border border-gray-800 hover:border-gray-700 rounded-lg p-4 transition-colors"
-        >
-          <p className="text-sm text-gray-200 font-semibold mb-1">I&apos;m exploring Ritual</p>
-          <p className="text-xs text-gray-500 leading-relaxed">See what an AI-native chain can do — start with Think.</p>
-        </Link>
-        <a
-          href="#for-developers"
-          className="border border-gray-800 hover:border-gray-700 rounded-lg p-4 transition-colors"
-        >
-          <p className="text-sm text-gray-200 font-semibold mb-1">I&apos;m a developer</p>
-          <p className="text-xs text-gray-500 leading-relaxed">See how to deploy the contract and call a precompile.</p>
-        </a>
-        <Link
-          href="/agents"
-          className="border border-gray-800 hover:border-gray-700 rounded-lg p-4 transition-colors"
-        >
-          <p className="text-sm text-gray-200 font-semibold mb-1">I want to deploy an agent</p>
-          <p className="text-xs text-gray-500 leading-relaxed">Deploy the real Sovereign Agent contract to testnet.</p>
-        </Link>
-      </section>
+      <RevealGroup className="grid sm:grid-cols-3 gap-3 mb-10">
+        <RevealItem>
+          <Link
+            href="/think"
+            className="block border border-gray-800 hover:border-gray-700 rounded-lg p-4 transition-colors"
+          >
+            <p className="text-sm text-gray-200 font-semibold mb-1">I&apos;m exploring Ritual</p>
+            <p className="text-xs text-gray-500 leading-relaxed">See what an AI-native chain can do — start with Think.</p>
+          </Link>
+        </RevealItem>
+        <RevealItem>
+          <a
+            href="#for-developers"
+            className="block border border-gray-800 hover:border-gray-700 rounded-lg p-4 transition-colors"
+          >
+            <p className="text-sm text-gray-200 font-semibold mb-1">I&apos;m a developer</p>
+            <p className="text-xs text-gray-500 leading-relaxed">See how to deploy the contract and call a precompile.</p>
+          </a>
+        </RevealItem>
+        <RevealItem>
+          <Link
+            href="/agents"
+            className="block border border-gray-800 hover:border-gray-700 rounded-lg p-4 transition-colors"
+          >
+            <p className="text-sm text-gray-200 font-semibold mb-1">I want to deploy an agent</p>
+            <p className="text-xs text-gray-500 leading-relaxed">Deploy the real Sovereign Agent contract to testnet.</p>
+          </Link>
+        </RevealItem>
+      </RevealGroup>
 
       <DemoNote>
         Every card below is labeled with what it actually is —{" "}
@@ -101,72 +108,75 @@ export default function Home() {
 
       <section className="mb-16">
         <h2 className="font-display text-xl text-gray-100 mb-5">Explore by capability</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <RevealGroup className="grid sm:grid-cols-2 gap-4">
           {FEATURE_GROUPS.map((group) => (
+            <RevealItem key={group.slug}>
+              <Link
+                href={group.href}
+                className="group block bg-ritual-elevated border border-gray-800 hover:border-gray-700 rounded-xl p-5
+                           shadow-card transition-colors"
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <h3 className="font-display text-lg text-gray-100 group-hover:text-ritual-green transition-colors">
+                    {group.name}
+                  </h3>
+                  <span className="text-gray-400 group-hover:text-ritual-green transition-colors">→</span>
+                </div>
+                <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">{group.tagline}</p>
+                <p className="text-sm text-gray-400 leading-relaxed mb-4">{group.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {group.precompiles.map((p) => (
+                    <PrecompileBadge key={p.address} address={p.address} label={p.name} color={group.color} />
+                  ))}
+                </div>
+              </Link>
+            </RevealItem>
+          ))}
+
+          <RevealItem className="sm:col-span-2">
             <Link
-              key={group.slug}
-              href={group.href}
-              className="group bg-ritual-elevated border border-gray-800 hover:border-gray-700 rounded-xl p-5
+              href="/wallet"
+              className="group block bg-ritual-elevated border border-gray-800 hover:border-gray-700 rounded-xl p-5
                          shadow-card transition-colors"
             >
               <div className="flex items-center justify-between mb-1">
                 <h3 className="font-display text-lg text-gray-100 group-hover:text-ritual-green transition-colors">
-                  {group.name}
+                  RitualWallet & Job Lifecycle
                 </h3>
                 <span className="text-gray-400 group-hover:text-ritual-green transition-colors">→</span>
               </div>
-              <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">{group.tagline}</p>
-              <p className="text-sm text-gray-400 leading-relaxed mb-4">{group.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {group.precompiles.map((p) => (
-                  <PrecompileBadge key={p.address} address={p.address} label={p.name} color={group.color} />
-                ))}
-              </div>
+              <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">Fee escrow & async tracking</p>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                How every precompile call is funded, and the 9-state lifecycle every async job passes
+                through from submission to settlement.
+              </p>
             </Link>
-          ))}
-
-          <Link
-            href="/wallet"
-            className="group bg-ritual-elevated border border-gray-800 hover:border-gray-700 rounded-xl p-5
-                       shadow-card transition-colors sm:col-span-2"
-          >
-            <div className="flex items-center justify-between mb-1">
-              <h3 className="font-display text-lg text-gray-100 group-hover:text-ritual-green transition-colors">
-                RitualWallet & Job Lifecycle
-              </h3>
-              <span className="text-gray-400 group-hover:text-ritual-green transition-colors">→</span>
-            </div>
-            <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">Fee escrow & async tracking</p>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              How every precompile call is funded, and the 9-state lifecycle every async job passes
-              through from submission to settlement.
-            </p>
-          </Link>
-        </div>
+          </RevealItem>
+        </RevealGroup>
       </section>
 
       <section className="mb-16">
         <h2 className="font-display text-xl text-gray-100 mb-5">Seven properties of an autonomous agent</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {PROPERTIES.map((p) => (
-            <div key={p.name} className="border border-gray-800 rounded-lg p-4">
+            <RevealItem key={p.name} className="border border-gray-800 rounded-lg p-4">
               <p className="text-sm text-ritual-pink font-semibold mb-1">{p.name}</p>
               <p className="text-xs text-gray-500 leading-relaxed">{p.detail}</p>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </section>
 
       <section className="mb-16">
         <h2 className="font-display text-xl text-gray-100 mb-5">What people are building</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {USE_CASES.map((u) => (
-            <div key={u.title} className="border border-gray-800 rounded-lg p-4">
+            <RevealItem key={u.title} className="border border-gray-800 rounded-lg p-4">
               <p className="text-sm text-gray-200 font-semibold mb-1">{u.title}</p>
               <p className="text-xs text-gray-500 leading-relaxed">{u.body}</p>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </section>
 
       <section id="for-developers">
@@ -176,8 +186,8 @@ export default function Home() {
             Start building →
           </a>
         </div>
-        <div className="grid sm:grid-cols-2 gap-4">
-          <div className="bg-ritual-elevated border border-gray-800 rounded-xl p-5 min-w-0">
+        <RevealGroup className="grid sm:grid-cols-2 gap-4">
+          <RevealItem className="bg-ritual-elevated border border-gray-800 rounded-xl p-5 min-w-0">
             <p className="text-sm text-gray-200 font-semibold mb-1">Deploy the real contract</p>
             <p className="text-xs text-gray-500 leading-relaxed mb-3">
               Foundry project in <code className="font-mono">contracts/</code> — 11/11 tests passing.
@@ -186,8 +196,8 @@ export default function Home() {
               label="contracts/"
               code={`cp .env.example .env   # set PRIVATE_KEY\nforge test\nforge script script/Deploy.s.sol:DeployScript \\\n  --rpc-url $RITUAL_RPC_URL --broadcast`}
             />
-          </div>
-          <div className="bg-ritual-elevated border border-gray-800 rounded-xl p-5 sm:col-span-2 min-w-0">
+          </RevealItem>
+          <RevealItem className="bg-ritual-elevated border border-gray-800 rounded-xl p-5 sm:col-span-2 min-w-0">
             <p className="text-sm text-gray-200 font-semibold mb-1">Call a precompile from the frontend</p>
             <p className="text-xs text-gray-500 leading-relaxed mb-3">
               wagmi&apos;s <code className="font-mono">useWriteContract</code> simulates first and always
@@ -198,8 +208,8 @@ export default function Home() {
               label="hooks/useRitualWrite.ts"
               code={`const data = encodeFunctionData({ abi, functionName, args });\nawait sendTransactionAsync({ to: address, data, gas: 500_000n });`}
             />
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
       </section>
     </main>
   );
