@@ -61,3 +61,46 @@ body {
     animation: none;
   }
 }
+
+/* Homepage hero — continuous "breathing" zoom (always animating, independent of
+   scroll) so there's visible motion the instant the page loads, not just on interaction. */
+@keyframes heroBreathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+}
+.hero-breathe {
+  animation: heroBreathe 16s ease-in-out infinite;
+}
+
+/* Cursor-reactive glow — hero tracks the mouse via --mx/--my custom properties set in JS. */
+.hero-glow {
+  background: radial-gradient(
+    480px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(25, 209, 132, 0.18),
+    transparent 70%
+  );
+}
+
+/* Animated gradient sweep across the hero headline text. */
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.text-shine {
+  background: linear-gradient(90deg, #f3f4f6 0%, #f3f4f6 35%, #19d184 50%, #f3f4f6 65%, #f3f4f6 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-breathe {
+    animation: none;
+  }
+  .text-shine {
+    animation: none;
+    -webkit-text-fill-color: #f3f4f6;
+  }
+}
