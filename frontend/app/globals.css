@@ -169,6 +169,17 @@ body {
   }
 }
 
+/* Odd-count grid widows: rather than hand-picking a col-span on whichever
+   data entry happens to land last, center/stretch whatever the last rendered
+   card turns out to be — survives the list growing or shrinking by one. */
+.properties-grid > :last-child {
+  grid-column: 2;
+}
+
+.capability-grid > :last-child {
+  grid-column: 1 / -1;
+}
+
 /* Ambient world background keyframe — used by SectionBand's `ambient` prop
    (an actual positioned div, not a pseudo-element) for the "What people are
    building" band: slow drift, capped opacity. Disabled via Tailwind's

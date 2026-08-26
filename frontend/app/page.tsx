@@ -78,7 +78,7 @@ export default function Home() {
 
       <SectionBand bg="var(--surface-blue-slate)" innerClassName="py-14">
         <h2 className="font-display text-xl text-gray-100 mb-5">Explore by capability</h2>
-        <RevealGroup className="grid sm:grid-cols-2 gap-4">
+        <RevealGroup className="capability-grid grid sm:grid-cols-2 gap-4">
           {FEATURE_GROUPS.map((group) => (
             <RevealItem key={group.slug}>
               <Link href={group.href} className="feature-card group block p-5">
@@ -99,7 +99,7 @@ export default function Home() {
             </RevealItem>
           ))}
 
-          <RevealItem className="sm:col-span-2">
+          <RevealItem>
             <Link href="/wallet" className="feature-card group block p-5">
               <div className="flex items-center justify-between mb-1">
                 <h3 className="font-display text-lg text-gray-100 group-hover:text-ritual-green transition-colors">
@@ -119,7 +119,7 @@ export default function Home() {
 
       <SectionBand bg="var(--surface-violet)" innerClassName="py-14">
         <h2 className="font-display text-xl text-gray-100 mb-5">Seven properties of an autonomous agent</h2>
-        <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <RevealGroup className="properties-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {PROPERTIES.map((p) => (
             <RevealItem key={p.name} className="feature-card p-4">
               <p className="text-sm text-ritual-pink font-semibold mb-1">{p.name}</p>

@@ -23,7 +23,7 @@ export function SectionBand({
       {ambient && (
         <>
           <div
-            className="absolute inset-[-6%] -z-20 bg-cover bg-center opacity-20
+            className="absolute inset-[-6%] -z-20 bg-cover bg-center opacity-[0.17]
                        animate-[worldDrift_28s_ease-in-out_infinite_alternate] motion-reduce:animate-none"
             style={{ backgroundImage: `url(${ambient})` }}
           />
