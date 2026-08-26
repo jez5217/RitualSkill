@@ -5,7 +5,7 @@ import { PrecompileBadge } from "@/components/site/PrecompileBadge";
 import { ExplainerTour } from "@/components/site/ExplainerTour";
 import { CodeBlock } from "@/components/site/CodeBlock";
 import { RevealGroup, RevealItem } from "@/components/site/Reveal";
-import { HomeHero } from "@/components/site/HomeHero";
+import RitualCrystalHero from "@/components/RitualCrystalHero";
 import { SectionBand } from "@/components/site/SectionBand";
 import { FEATURE_GROUPS } from "@/lib/featureGroups";
 
@@ -37,7 +37,35 @@ const USE_CASES = [
 export default function Home() {
   return (
     <main>
-      <HomeHero skillsUrl={SKILLS_URL} />
+      <section className="ritual-hero">
+        <RitualCrystalHero priority />
+
+        <div className="ritual-hero-content">
+          <p className="ritual-eyebrow">RITUAL CHAIN</p>
+
+          <h1>
+            Build an autonomous AI agent that lives <span>on-chain.</span>
+          </h1>
+
+          <p className="ritual-hero-description">
+            Ritual is a blockchain with AI verified inside trusted hardware built directly into
+            every contract call — an LLM, ML inference, and autonomous agents, natively. This site
+            is a hands-on tour of what that makes possible.
+          </p>
+
+          <div className="ritual-hero-actions">
+            <Link href="/agents" className="ritual-primary-button">
+              Try an AI Agent in 60 Seconds
+            </Link>
+
+            <a href={SKILLS_URL} target="_blank" rel="noreferrer" className="ritual-secondary-button">
+              Start Building →
+            </a>
+          </div>
+
+          <p className="ritual-hero-note">No wallet required · Takes about 60 seconds</p>
+        </div>
+      </section>
 
       <SectionBand bg="var(--surface-emerald)" innerClassName="py-10">
         <RevealGroup className="grid sm:grid-cols-3 gap-3">

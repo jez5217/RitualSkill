@@ -57,7 +57,8 @@ body {
 
 .tourImage {
   object-fit: cover;
-  animation: tourZoom 8s ease-out forwards;
+  object-position: center;
+  animation: tourCrystalZoom 9s ease-in-out infinite alternate;
 }
 
 .tourOverlay {
@@ -80,9 +81,9 @@ body {
   color: white;
 }
 
-@keyframes tourZoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.06); }
+@keyframes tourCrystalZoom {
+  from { transform: scale(1.01); }
+  to { transform: scale(1.055); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -91,46 +92,215 @@ body {
   }
 }
 
-/* Homepage hero — continuous "breathing" zoom (always animating, independent of
-   scroll) so there's visible motion the instant the page loads, not just on interaction. */
-@keyframes heroBreathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.07); }
-}
-.hero-breathe {
-  animation: heroBreathe 16s ease-in-out infinite;
-}
-
-/* Cursor-reactive glow — hero tracks the mouse via --mx/--my custom properties set in JS. */
-.hero-glow {
-  background: radial-gradient(
-    480px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(25, 209, 132, 0.18),
-    transparent 70%
-  );
+/* Homepage hero — floating crystal visual that pops toward the viewer on
+   load (outer wrapper, one-time), then settles into a slow continuous float
+   (inner wrapper, looping). Kept as two separate animated layers so the
+   entrance and float transforms never fight each other. */
+.ritual-hero {
+  position: relative;
+  min-height: clamp(620px, 76vh, 820px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: #020504;
 }
 
-/* Animated gradient sweep across the hero headline text. */
-@keyframes textShine {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+.ritual-crystal-stage {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  perspective: 1300px;
+  overflow: hidden;
+  background: #020504;
 }
-.text-shine {
-  background: linear-gradient(90deg, #f3f4f6 0%, #f3f4f6 35%, #19d184 50%, #f3f4f6 65%, #f3f4f6 100%);
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textShine 6s linear infinite;
+
+.ritual-crystal-entry,
+.ritual-crystal-float {
+  position: absolute;
+  inset: -3%;
+}
+
+.ritual-crystal-entry {
+  animation: crystalEntrance 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ritual-crystal-float {
+  transform-origin: 67% 53%;
+  animation: crystalFloat 10s ease-in-out 1.5s infinite;
+}
+
+.ritual-crystal-image {
+  object-fit: cover;
+  object-position: center;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.ritual-crystal-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.96) 0%,
+      rgba(0, 0, 0, 0.84) 28%,
+      rgba(0, 0, 0, 0.28) 58%,
+      rgba(0, 0, 0, 0.08) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.42) 0%,
+      transparent 32%,
+      transparent 68%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+}
+
+.ritual-hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 2rem, 1120px);
+  margin-inline: auto;
+  padding-block: 6rem;
+}
+
+.ritual-hero-content h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #f3f4f6;
+  font-size: clamp(3rem, 6.3vw, 5.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.ritual-hero-content h1 span {
+  color: #29f29a;
+}
+
+.ritual-eyebrow {
+  margin-bottom: 1.4rem;
+  color: #29f29a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.ritual-hero-description {
+  max-width: 600px;
+  margin-top: 1.6rem;
+  color: #b6bdc8;
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
+.ritual-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.ritual-primary-button,
+.ritual-secondary-button {
+  padding: 0.9rem 1.25rem;
+  border-radius: 0.65rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.ritual-primary-button {
+  color: #020504;
+  background: #29f29a;
+}
+
+.ritual-secondary-button {
+  color: #f3f4f6;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(4, 9, 8, 0.55);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.ritual-primary-button:hover,
+.ritual-secondary-button:hover {
+  transform: translateY(-2px);
+}
+
+.ritual-hero-note {
+  margin-top: 0.8rem;
+  color: #828b98;
+  font-size: 0.8rem;
+}
+
+@keyframes crystalEntrance {
+  0% {
+    opacity: 0;
+    transform: translate3d(70px, 25px, -450px) scale(0.72);
+    filter: blur(8px);
+  }
+  68% {
+    opacity: 1;
+    transform: translate3d(-6px, -4px, 75px) scale(1.045);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes crystalFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1.01);
+  }
+  50% {
+    transform: translate3d(-0.7%, -0.9%, 55px) scale(1.055);
+  }
+}
+
+@media (max-width: 768px) {
+  .ritual-hero {
+    min-height: 720px;
+    align-items: flex-start;
+  }
+  .ritual-hero-content {
+    padding-top: 5rem;
+    padding-bottom: 18rem;
+  }
+  .ritual-crystal-image {
+    object-position: 68% center;
+  }
+  .ritual-crystal-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.78) 48%,
+      rgba(0, 0, 0, 0.15) 76%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+  }
+  .ritual-hero-description {
+    max-width: 95%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-breathe {
+  .ritual-crystal-entry,
+  .ritual-crystal-float {
     animation: none;
   }
-  .text-shine {
-    animation: none;
-    -webkit-text-fill-color: #f3f4f6;
+  .ritual-primary-button,
+  .ritual-secondary-button {
+    transition: none;
   }
 }
 

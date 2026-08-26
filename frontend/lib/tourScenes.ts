@@ -35,7 +35,7 @@ export const TOUR_SCENES: TourScene[] = [
       "Ritual Chain is a blockchain built around native AI precompiles — smart contracts that can " +
       "think, see, hear, and act. This is a guided tour of every one Ritual ships, built directly " +
       "into the chain itself, running here in Demo Mode — no wallet or testnet required.",
-    image: "/images/siggy-tour/01-ritual-introduction.png",
+    image: "/images/ritual/ritual-floating-crystal.png",
     audio: "/audio/siggy-tour/01-ritual-introduction.wav",
     color: "green",
   },
