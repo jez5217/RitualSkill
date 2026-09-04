@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { PrivateKey, decrypt, encrypt } from "eciesjs";
 import { bytesToHex, hexToBytes } from "viem";
 import { PrecompileBadge } from "@/components/site/PrecompileBadge";
@@ -8,6 +8,9 @@ import { StatusBadge } from "@/components/site/StatusBadge";
 // Importing lib/secrets.ts sets ECIES_CONFIG.symmetricNonceLength = 12 as a module side effect,
 // so this demo uses the exact same encryption config as the real submit flow.
 import "@/lib/secrets";
+import { classifySecret, preloadSecretsClassifier, type SecretClassification } from "@/lib/secretsClassifier";
+
+const CLASSIFY_DEBOUNCE_MS = 300;
 
 export function SecretsDemo() {
   // A throwaway keypair generated in-browser, standing in for a TEE executor's ECIES keypair.
@@ -19,6 +22,28 @@ export function SecretsDemo() {
   const [ciphertext, setCiphertext] = useState<string | null>(null);
   const [decrypted, setDecrypted] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [classification, setClassification] = useState<SecretClassification | null>(null);
+
+  useEffect(() => {
+    preloadSecretsClassifier();
+  }, []);
+
+  useEffect(() => {
+    if (!secretValue.trim()) {
+      setClassification(null);
+      return;
+    }
+    let cancelled = false;
+    const timer = setTimeout(() => {
+      classifySecret(secretValue).then((result) => {
+        if (!cancelled) setClassification(result);
+      });
+    }, CLASSIFY_DEBOUNCE_MS);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [secretValue]);
 
   function runEncrypt() {
     setBusy(true);
@@ -52,13 +77,32 @@ export function SecretsDemo() {
         below is genuine, not a mock string.
       </p>
 
-      <label className="text-xs text-gray-400 uppercase tracking-wider">Secret value (e.g. an API key)</label>
+      <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
+        <label className="text-xs text-gray-400 uppercase tracking-wider">Secret value (e.g. an API key)</label>
+        {classification && (
+          <span
+            className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${
+              classification.label === "SECRET"
+                ? "border-ritual-gold/40 text-ritual-gold bg-ritual-gold/10"
+                : "border-ritual-green/40 text-ritual-green bg-ritual-green/10"
+            }`}
+          >
+            {classification.label === "SECRET" ? "🔒 looks like a secret" : "✓ looks safe"}{" "}
+            ({(classification.confidence * 100).toFixed(0)}%)
+          </span>
+        )}
+      </div>
       <input
         value={secretValue}
         onChange={(e) => setSecretValue(e.target.value)}
-        className="w-full mt-1 mb-3 bg-ritual-surface border border-gray-700 rounded-lg px-4 py-2.5 text-sm
+        className="w-full mt-1 mb-1 bg-ritual-surface border border-gray-700 rounded-lg px-4 py-2.5 text-sm
                    text-gray-300 font-mono focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ritual-gold/50"
       />
+      <p className="text-[11px] text-gray-400 mb-3">
+        That badge is a real ONNX classifier (97% val accuracy, trained on ~300 examples) guessing
+        whether this text should be ECIES-encrypted — the same call the <code className="font-mono">piiEnabled</code>{" "}
+        flag on the HTTP and LLM precompiles asks a contract to make.
+      </p>
 
       <div className="flex gap-2 mb-4">
         <button
