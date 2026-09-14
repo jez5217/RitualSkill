@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { DemoConnectWalletButton } from "@/components/demo/DemoConnectWalletButton";
+import { ConnectWalletButton } from "@/components/ConnectWalletButton";
+import { DEMO_MODE } from "@/lib/demoMode";
 
 const NAV = [
   { href: "/think", label: "Think" },
@@ -24,7 +26,7 @@ export function SiteHeader() {
           <Link href="/" className="font-display text-sm sm:text-lg text-gray-100 tracking-tight shrink-0">
             Ritual Agent Lab <span className="text-ritual-green">Demo</span>
           </Link>
-          <DemoConnectWalletButton />
+          {DEMO_MODE ? <DemoConnectWalletButton /> : <ConnectWalletButton />}
         </div>
         <div className="relative -mx-4 sm:mx-0">
           <nav className="flex gap-1 overflow-x-auto pb-3 -mt-1 text-sm scrollbar-none px-4 sm:px-0">
