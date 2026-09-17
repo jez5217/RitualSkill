@@ -154,7 +154,28 @@ export interface PasskeyAssertion {
   clientDataJSONBytes: Uint8Array;
 }
 
-/** Signs a fresh random challenge with the registered passkey — triggers a real biometric prompt. */
+function base64UrlToBytes(base64url: string): Uint8Array {
+  const base64 = base64url.replace(/-/g, "+").replace(/_/g, "/");
+  const padded = base64.padEnd(base64.length + ((4 - (base64.length % 4)) % 4), "=");
+  const binary = atob(padded);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+function bytesEqual(a: Uint8Array, b: Uint8Array): boolean {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+  return true;
+}
+
+/**
+ * Signs a fresh random challenge with the registered passkey — triggers a real biometric prompt.
+ * Verifies the assertion actually answers *this* challenge (not a replayed/stale one) and is a
+ * genuine "get" ceremony before returning it — without this, the signature could be a real,
+ * validly-signed assertion for a *different* challenge, which the caller would otherwise have no
+ * way to notice since it never inspects clientDataJSON itself.
+ */
 export async function signWithPasskey(rawCredentialId: ArrayBuffer): Promise<PasskeyAssertion> {
   const challenge = crypto.getRandomValues(new Uint8Array(32));
 
@@ -167,13 +188,26 @@ export async function signWithPasskey(rawCredentialId: ArrayBuffer): Promise<Pas
   })) as PublicKeyCredential;
 
   const response = assertion.response as AuthenticatorAssertionResponse;
+  const clientDataJSONBytes = new Uint8Array(response.clientDataJSON);
+  const clientData = JSON.parse(new TextDecoder().decode(clientDataJSONBytes)) as {
+    type?: string;
+    challenge?: string;
+  };
+
+  if (clientData.type !== "webauthn.get") {
+    throw new Error(`Unexpected WebAuthn ceremony type: ${clientData.type}`);
+  }
+  if (!clientData.challenge || !bytesEqual(base64UrlToBytes(clientData.challenge), challenge)) {
+    throw new Error("Challenge mismatch — this assertion doesn't answer the request just sent.");
+  }
+
   const { r, s } = parseDerSignature(new Uint8Array(response.signature));
 
   return {
     r,
     s: normalizeS(s),
     authenticatorData: new Uint8Array(response.authenticatorData),
-    clientDataJSONBytes: new Uint8Array(response.clientDataJSON),
+    clientDataJSONBytes,
   };
 }
 
