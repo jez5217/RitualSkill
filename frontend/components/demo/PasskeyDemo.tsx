@@ -117,11 +117,19 @@ export function PasskeyDemo() {
         to the real SECP256R1 precompile on Ritual Chain — no wallet or gas needed, since it&apos;s
         a synchronous read.
       </p>
-      <p className="text-[11px] text-ritual-lime/80 border border-ritual-lime/20 bg-ritual-lime/5 rounded-lg p-2.5 mb-4">
+      <p className="text-[11px] text-ritual-lime/80 border border-ritual-lime/20 bg-ritual-lime/5 rounded-lg p-2.5 mb-2">
         🔒 Your fingerprint/face scan never leaves your device&apos;s secure enclave and never
         reaches this page — the WebAuthn API physically only ever hands JavaScript a{" "}
         <strong>public key</strong> and a <strong>signature</strong>. This demo has no way to
         capture, see, or store a real biometric, and doesn&apos;t try to.
+      </p>
+      <p className="text-[11px] text-ritual-gold/80 border border-ritual-gold/20 bg-ritual-gold/5 rounded-lg p-2.5 mb-4">
+        ⚠️ &quot;No seed phrase&quot; doesn&apos;t mean no recovery secret — it moves the recovery
+        secret, not away. On most devices this key syncs via iCloud Keychain, Google Password
+        Manager, or Windows Hello, so your Apple/Google/Microsoft account becomes the real root of
+        recovery. Losing that account (or all devices in its sync ecosystem) loses the key, same as
+        losing a seed phrase would. For no cloud dependency at all, use a hardware key (e.g. a
+        YubiKey) instead of a synced platform passkey.
       </p>
 
       {!supported && (
