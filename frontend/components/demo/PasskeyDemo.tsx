@@ -111,11 +111,17 @@ export function PasskeyDemo() {
           <PrecompileBadge address="0x0100" label="SECP256R1 · real eth_call" color="lime" />
         </div>
       </div>
-      <p className="text-xs text-gray-400 mb-4">
+      <p className="text-xs text-gray-400 mb-3">
         Register a real passkey with your device (Face ID / Touch ID / Windows Hello), sign with
         it, and this verifies the signature via a genuine <code className="font-mono">eth_call</code>{" "}
         to the real SECP256R1 precompile on Ritual Chain — no wallet or gas needed, since it&apos;s
         a synchronous read.
+      </p>
+      <p className="text-[11px] text-ritual-lime/80 border border-ritual-lime/20 bg-ritual-lime/5 rounded-lg p-2.5 mb-4">
+        🔒 Your fingerprint/face scan never leaves your device&apos;s secure enclave and never
+        reaches this page — the WebAuthn API physically only ever hands JavaScript a{" "}
+        <strong>public key</strong> and a <strong>signature</strong>. This demo has no way to
+        capture, see, or store a real biometric, and doesn&apos;t try to.
       </p>
 
       {!supported && (
