@@ -20,7 +20,11 @@ export default function AuthenticatePage() {
         description="Native support for the signature schemes the real world already uses — passkeys, Solana/SSH/DKIM (Ed25519), and P-256."
         color="lime"
       />
-      <DemoNote>No real WebAuthn prompt is triggered — the flow below is simulated for reliability across browsers.</DemoNote>
+      <DemoNote>
+        This triggers a real WebAuthn prompt on your device and verifies the resulting signature
+        via a genuine <code className="font-mono">eth_call</code> to the SECP256R1 precompile on
+        Ritual Chain — nothing below is mocked.
+      </DemoNote>
 
       <div className="space-y-6">
         <PasskeyDemo />

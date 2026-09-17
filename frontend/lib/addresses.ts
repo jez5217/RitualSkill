@@ -6,6 +6,7 @@ export const ASYNC_JOB_TRACKER: Address = "0xC069FFCa0389f44eCA2C626e55491b0ab04
 export const ASYNC_DELIVERY: Address = "0x5A16214fF555848411544b005f7Ac063742f39F6";
 export const TEE_SERVICE_REGISTRY: Address = "0x9644e8562cE0Fe12b4deeC4163c064A8862Bf47F";
 export const SOVEREIGN_AGENT_PRECOMPILE: Address = "0x000000000000000000000000000000000000080C";
+export const SECP256R1_PRECOMPILE: Address = "0x0000000000000000000000000000000000000100";
 
 /** This project's deployed contract — changes per deployment, always read from env. */
 export const RESEARCH_REGISTRY: Address = (process.env.NEXT_PUBLIC_RESEARCH_REGISTRY ??
