@@ -162,6 +162,52 @@ contract ResearchAgentRegistryTest is Test {
         registry.reapExpired(jobId);
     }
 
+    /// @dev Homework from Ritual Foundation's 2026-10-06 Office Hours post: test the empty path
+    ///      AND the late path. Empty is already covered by
+    ///      `test_OnSovereignAgentResult_TreatsEmptyTextAsFailure`; this covers the specific gap
+    ///      that wasn't yet exercised — a callback that is late (arrives well past
+    ///      `EXPIRY_BLOCKS`) but genuinely carries a real, successful result. The contract must
+    ///      still accept it rather than silently dropping or hanging on it, as long as nobody has
+    ///      reaped the job as expired first.
+    function test_OnSovereignAgentResult_AcceptsLateButGenuineDelivery() public {
+        bytes32 jobId = _submitFixture();
+
+        // Advance well past the expiry window — simulates an executor that is very slow but
+        // still eventually delivers, rather than one that never delivers at all.
+        vm.roll(block.number + registry.EXPIRY_BLOCKS() + 500);
+
+        vm.prank(ASYNC_DELIVERY);
+        registry.onSovereignAgentResult(jobId, _successResult("late but real report"));
+
+        (,,, bool delivered, bool success, string memory report, string memory errorMessage) =
+            registry.requests(jobId);
+        assertTrue(delivered);
+        assertTrue(success);
+        assertEq(report, "late but real report");
+        assertEq(errorMessage, "");
+    }
+
+    /// @dev The other half of the same race: if someone reaps the job as expired first, a
+    ///      genuinely late-but-real callback that arrives afterward must revert cleanly
+    ///      (AlreadyDelivered) instead of hanging, double-processing, or corrupting the
+    ///      already-settled "expired" state recorded by reapExpired.
+    function test_OnSovereignAgentResult_RevertsIfLateDeliveryArrivesAfterReap() public {
+        bytes32 jobId = _submitFixture();
+        vm.roll(block.number + registry.EXPIRY_BLOCKS() + 1);
+
+        registry.reapExpired(jobId);
+
+        vm.prank(ASYNC_DELIVERY);
+        vm.expectRevert(ResearchAgentRegistry.AlreadyDelivered.selector);
+        registry.onSovereignAgentResult(jobId, _successResult("too late, already reaped"));
+
+        // The reaped (expired) state must be untouched by the reverted attempt.
+        (,,, bool delivered, bool success,, string memory errorMessage) = registry.requests(jobId);
+        assertTrue(delivered);
+        assertFalse(success);
+        assertEq(errorMessage, "expired: no delivery received within window");
+    }
+
     function test_OnSovereignAgentResult_IdempotentCallback() public {
         bytes32 jobId = _submitFixture();
         bytes memory result = _successResult("first report");
