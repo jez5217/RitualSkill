@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useReadContract, useWatchContractEvent } from "wagmi";
+import { useCallback, useMemo, useState } from "react";
+import { useBlockNumber, useReadContract, useWatchContractEvent } from "wagmi";
 import { asyncJobTrackerAbi, researchAgentRegistryAbi } from "@/lib/abi";
 import { ASYNC_JOB_TRACKER, RESEARCH_REGISTRY } from "@/lib/addresses";
+import { useRitualWrite } from "./useRitualWrite";
 
 export type ResearchJobStatus =
   | "pending_commitment"
@@ -20,6 +21,9 @@ export interface ResearchJobState {
   report: string;
   errorMessage: string;
   committedBlock: number | null;
+  /** True once EXPIRY_BLOCKS has passed with no Phase 2 callback — reapExpired() can unstick it. */
+  canReap: boolean;
+  blocksUntilReapable: number | null;
 }
 
 /**
@@ -28,6 +32,7 @@ export interface ResearchJobState {
  */
 export function useResearchJob(jobId: `0x${string}` | null | undefined) {
   const [committedBlock, setCommittedBlock] = useState<number | null>(null);
+  const { write, isPending: isReaping } = useRitualWrite();
 
   useWatchContractEvent({
     address: ASYNC_JOB_TRACKER,
@@ -49,16 +54,56 @@ export function useResearchJob(jobId: `0x${string}` | null | undefined) {
     query: { enabled: !!jobId, refetchInterval: (q) => (q.state.data?.[3] ? false : 4_000) },
   });
 
+  const { data: expiryBlocks } = useReadContract({
+    address: RESEARCH_REGISTRY,
+    abi: researchAgentRegistryAbi,
+    functionName: "EXPIRY_BLOCKS",
+  });
+
+  const { data: currentBlock } = useBlockNumber({ watch: true });
+
   const state: ResearchJobState | null = useMemo(() => {
     if (!jobId || !data) return null;
-    const [requester, topic, , delivered, success, report, errorMessage] = data;
+    const [requester, topic, submittedAtBlock, delivered, success, report, errorMessage] = data;
     let status: ResearchJobStatus;
     if (delivered) status = success ? "settled_success" : "settled_failed";
     else if (committedBlock !== null) status = "processing";
     else status = "pending_commitment";
 
-    return { status, topic, requester, delivered, success, report, errorMessage, committedBlock };
-  }, [jobId, data, committedBlock]);
+    let canReap = false;
+    let blocksUntilReapable: number | null = null;
+    if (!delivered && expiryBlocks !== undefined && currentBlock !== undefined) {
+      const reapableAt = submittedAtBlock + expiryBlocks;
+      canReap = currentBlock > reapableAt;
+      blocksUntilReapable = canReap ? 0 : Number(reapableAt - currentBlock);
+    }
 
-  return { state, isLoading, refetch };
+    return {
+      status,
+      topic,
+      requester,
+      delivered,
+      success,
+      report,
+      errorMessage,
+      committedBlock,
+      canReap,
+      blocksUntilReapable,
+    };
+  }, [jobId, data, committedBlock, expiryBlocks, currentBlock]);
+
+  const reapExpired = useCallback(async () => {
+    if (!jobId) return;
+    const hash = await write({
+      address: RESEARCH_REGISTRY,
+      abi: researchAgentRegistryAbi,
+      functionName: "reapExpired",
+      args: [jobId],
+      gas: 150_000n,
+    });
+    setTimeout(refetch, 4_000);
+    return hash;
+  }, [jobId, write, refetch]);
+
+  return { state, isLoading, refetch, reapExpired, isReaping };
 }

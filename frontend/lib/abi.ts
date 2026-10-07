@@ -54,6 +54,20 @@ export const researchAgentRegistryAbi = [
     outputs: [{ type: "uint256" }],
   },
   {
+    type: "function",
+    name: "reapExpired",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "jobId", type: "bytes32" }],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "EXPIRY_BLOCKS",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ type: "uint256" }],
+  },
+  {
     type: "event",
     name: "ResearchSubmitted",
     inputs: [
